@@ -17,7 +17,7 @@ terminal = "urxvt"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 browser = "chromium"
-files = "dolphin /home/jorick/"
+files = "ranger /home/jorick/"
 text_editor = "vim"
 music = "ncmpcpp"
 messenger = "kmess"
@@ -84,6 +84,7 @@ myinternet = {
 
 mymedia = {
     { "ncmpcpp", "urxvt -e ncmpcpp" },
+    { "Mplayer", "mplayer" },
     { "VLC" , "vlc" },
     { "K3b" , "d3b" },
     { "wxCam" , "wxcam" }
@@ -94,6 +95,7 @@ mygraphics = {
     { "GIMP" , "gimp-2.6" },
     { "Inkscape" , "inkscape" },
     { "Draw" , "lodraw %U" },
+    { "Feh" , "feh" },
     { "Gwenview" , "gwenview %U" }
 }
 
@@ -118,17 +120,18 @@ mysystem = {
 myutilities = {
     { "Avast" , "avastgui" },
     { "Gvimm" , "gvim" },
-    { "Virtualbox" , "VirtualBox %U" }
+    { "Virtualbox" , "VirtualBox %U" },
+    { "Dolphin" , "dolphin" }
 }
 
 myplaces = {
-    { "Home" , "dolphin /home/jorick/" },
-    { "Documents" , "dolphin /home/jorick/Documents/" },
-    { "Downloads" , "dolphin /home/jorick/Downloads/" },
-    { "Music" , "dolphin /home/jorick/Music/" },
-    { "Pictures" , "dolphin /home/jorick/Pictures/" },
-    { "Programs" , "dolphin /home/jorick/Programs/" },
-    { "Videos" , "dolphin /home/jorick/Videos/" }
+    { "Home" , "urxvt -e ranger /home/jorick/" },
+    { "Documents" , "urxvt -e ranger /home/jorick/Documents/" },
+    { "Downloads" , "urxvt -e ranger /home/jorick/Downloads/" },
+    { "Music" , "urxvt -e ranger /home/jorick/Music/" },
+    { "Pictures" , "urxvt -e ranger /home/jorick/Pictures/" },
+    { "Programs" , "urxvt -e ranger /home/jorick/Programs/" },
+    { "Videos" , "urxvt -e ranger /home/jorick/Videos/" }
 }
 
 myscience = {    { "Galaxy" , "galaxy" }
@@ -499,6 +502,8 @@ awful.rules.rules = {
    },
     { rule = { class = "Vlc" },
        properties = { floating = true, tag = tags[1][5] } },
+    { rule = { class = "MPlayer" }, 
+    	properties = { floating = true, tag = tags[1][5] } },
     { rule = { class = "Gimp" },
        properties = { floating = true, tag = tags[1][6] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
@@ -523,7 +528,7 @@ awful.rules.rules = {
    { rule = { class = "Xpdf" },
       properties = { tag = tags[1][3] } },
    { rule = { class = "Feh" },
-      properties = { tag = tags[1][3], floating = true } },
+      properties = { tag = tags[1][4], floating = true } },
    { rule = { class = "Dolphin"},
       porperties = { tag = tags[1][4], floating = true } },
 }
