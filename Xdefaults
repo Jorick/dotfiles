@@ -1,0 +1,121 @@
+! Xdefaults - general settings for X and apps -------------------------------
+
+
+! terminal colors ------------------------------------------------------------
+
+! tangoesque scheme
+*background: #151617
+*foreground: #d6d9ba
+! Black (not tango) + DarkGrey
+*color0:  #111111
+*color8:  #555753
+! DarkRed + Red
+*color1:  #d74005
+*color9:  #d76d05
+! DarkGreen + Green
+*color2:  #93d44f
+*color10: #c8e7a8
+! DarkYellow + Yellow
+*color3:  #d3e13b
+*color11: #dee566
+! DarkBlue + Blue
+*color4:  #23abd2
+*color12: #23c8d2
+! DarkMangenta + Mangenta
+*color5:  #de1629
+*color13: #dc3343
+!DarkCyan + Cyan (both not tango)
+*color6:  #89b6e2
+*color14: #46a4ff
+! LightGrey + White
+*color7:  #b8b8b8
+*color15: #ffffff
+
+! Xcursor --------------------------------------------------------------------
+
+Xcursor*theme: Neutral_Plus
+
+! rxvt-unicode ---------------------------------------------------------------
+
+! font preference
+URxvt*font:      -*-MonteCarlo-medium-r-normal-*-11-*-*-*-*-*-*-*
+URxvt*boldFont:  -*-MonteCarlo-bold-r-normal-*-11-*-*-*-*-*-*-*
+!URxvt*font:        xft:Droid Sans Mono:style=Regular:pixelsize=10:hinting=true:hintstyle=hintfull
+!URxvt*boldFont:    xft:Droid Sans Mono:style=Regular:pixelsize=10:hinting=true:hintstyle=hintfull
+!initial size
+URxvt*geometry:           120x35
+!internal whitespace
+URxvt*internalBorder:     0
+!fade text n% upon unfocus
+URxvt*fading:             20
+!darken=(0 to 100) lighten=(-1 to -100)
+URxvt*shading:            0
+!tint background with this color
+URxvt*tintColor:          black
+! background color
+URxvt*background:	  -1
+! foreground color
+!URxvt*foreground:	   green
+!set to 32-bit for real transparency (compositing required) and 24-bit for pseudo-transparency
+URxvt*depth:             32
+!URxvt*inheritPixmap: 	true
+!URxvt*transparent:	true
+!set color for bold, italic, underlined
+!URxvt*colorBD:      	     color4
+!URxvt*colorIT: 		     color3
+!URxvt*colorUL:		     color7
+!save n lines of scrollback buffer
+URxvt*saveLines:          32767
+!flash screen for attention
+URxvt*visualBell:         false
+!jump to bottom (prompt) on keypress
+URxvt*scrollTtyKeypress:  true
+!jump to bottom (prompt) when tty gets new lines
+URxvt*scrollWithBuffer:   false
+!jump to bottom (prompt) on tty output
+URxvt*scrollTtyOutput:    false
+!toggle scrollbar
+URxvt*scrollBar:          true
+!scrollbar styles: rxvt, plain, next or xterm
+URxvt*scrollstyle:        plain
+!scrollbar alignment
+URxvt*scrollBar_right:    true
+URxvt*scrollColor:        #2a2a2a
+URxvt*cursorColor:        #d6d9ba
+!set default directory to home
+URxvt*chdir: 	       	  /home/jorick/
+!enable tabs
+URxvt*perl-ext-common:	default,matcher,tabbed
+URxvt*tabbed*tabbar-fg: 7
+URxvt*tabbed*tabbar-bg: -1
+URxvt*tabbed*tab-fg: -1
+URxvt*tabbed*tab-bg: 7
+!delimiters for double-click mouse selection
+URxvt*cutchars:           "()*,<>[]{}|'
+!screen dump settings
+URxvt*print-pipe:         cat > $(echo URxvt.dump.$(date +'%Y%M%d%H%m%S'))
+!secondary screen scroll (default enabled)
+URxvt*secondaryScroll:    true
+!de-iconify (map) on receipt of a bell character
+URxvt*mapAlert:           true
+!inhibit writing record into the system log file utmp
+URxvt*utmpInhibit:        true
+!! BEGIN urlLauncher settings !!
+URxvt*perl-lib:           /usr/lib/URxvt/perl/
+URxvt*urlLauncher:        /usr/bin/chromium
+URxvt*matcher.button:     1
+!! END urlLauncher settings !!
+
+!transparent=0000 opaque=ffff
+URxvt*background: rgba:0000/0000/0000/bbbb
+
+
+! xpdf -----------------------------------------------------------------------
+
+xpdf*enableFreetype:    yes
+xpdf*antialias:         yes
+!xpdf*foreground:        white
+!xpdf*background:        black
+xpdf*urlCommand:        /usr/bin/chromium %s
+
+
