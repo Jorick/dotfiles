@@ -3,10 +3,10 @@
 
 ! terminal colors ------------------------------------------------------------
 
-! tangoesque scheme
+! soft scheme
 *background: #151617
 *foreground: #d6d9ba
-! Black (not tango) + DarkGrey
+! Black + DarkGrey
 *color0:  #111111
 *color8:  #555753
 ! DarkRed + Red
@@ -33,7 +33,7 @@
 
 ! Xcursor --------------------------------------------------------------------
 
-Xcursor*theme: Neutral_Plus
+Xcursor*theme: ComixCursors-Black-Small
 
 ! rxvt-unicode ---------------------------------------------------------------
 
