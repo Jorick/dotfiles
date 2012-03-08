@@ -5,7 +5,7 @@
 
 ! soft scheme
 *background: #151617
-*foreground: #d6d9ba
+*foreground: #d0d0cc
 ! Black + DarkGrey
 *color0:  #111111
 *color8:  #555753
@@ -31,19 +31,52 @@
 *color7:  #b8b8b8
 *color15: #ffffff
 
+! strong
+!*background: #080808
+!*foreground: #d0d0cc
+! Black + DarkGrey
+!*color0:  #080808
+!*color8:  #3a3a3a
+! DarkRed + Red
+!*color1:  #f40405
+!*color9:  #f42805
+! DarkGreen + Green
+!*color2:  #1d9447
+!*color10: #23b557
+! DarkYellow + Yellow
+!*color3:  #e3a52e
+!*color11: #fbcb5e
+! DarkBlue + Blue
+!*color4:  #394a80
+!*color12: #5166a9
+! DarkMangenta + Mangenta
+!*color5:  #920001
+!*color13: #b82803
+!DarkCyan + Cyan
+!*color6:  #a89313
+!*color14: #e8c73c
+! LightGrey + White
+!*color7:  #b8b8b8
+!*color15: #ffffff
+
+
+
 ! Xcursor --------------------------------------------------------------------
 
+!Xcursor*theme: Neutral_plus
 Xcursor*theme: ComixCursors-Black-Small
 
 ! rxvt-unicode ---------------------------------------------------------------
 
 ! font preference
-URxvt*font:      -*-MonteCarlo-medium-r-normal-*-11-*-*-*-*-*-*-*
-URxvt*boldFont:  -*-MonteCarlo-bold-r-normal-*-11-*-*-*-*-*-*-*
-!URxvt*font:        xft:Droid Sans Mono:style=Regular:pixelsize=10:hinting=true:hintstyle=hintfull
-!URxvt*boldFont:    xft:Droid Sans Mono:style=Regular:pixelsize=10:hinting=true:hintstyle=hintfull
+URxvt*font:      -*-MonteCarlo-medium-*-*-*-*-*-*-*-*-*-*-*
+URxvt*boldFont:  -*-MonteCarlo-bold-*-*-*-*-*-*-*-*-*-*-*
+#URxvt*font:        xft:Terminus:pixelsize=9
+#URxvt*boldFont:    xft:Terminus:pixelsize=9
+!URxvt*font:	xft:gohufont:pixelsize=9
+!Urxvt*boldFont:	xft:gohufont:pixelsize=9
 !initial size
-URxvt*geometry:           120x35
+URxvt*geometry:           120x30
 !internal whitespace
 URxvt*internalBorder:     0
 !fade text n% upon unfocus
@@ -53,17 +86,17 @@ URxvt*shading:            0
 !tint background with this color
 URxvt*tintColor:          black
 ! background color
-URxvt*background:	  -1
+!URxvt*background:	  -1
 ! foreground color
 !URxvt*foreground:	   green
 !set to 32-bit for real transparency (compositing required) and 24-bit for pseudo-transparency
-URxvt*depth:             32
+URxvt*depth:             24
 !URxvt*inheritPixmap: 	true
 !URxvt*transparent:	true
 !set color for bold, italic, underlined
-!URxvt*colorBD:      	     color4
-!URxvt*colorIT: 		     color3
-!URxvt*colorUL:		     color7
+URxvt*colorBD:      	     2
+URxvt*colorIT: 		     cyan
+URxvt*colorUL:		     4
 !save n lines of scrollback buffer
 URxvt*saveLines:          32767
 !flash screen for attention
@@ -75,12 +108,12 @@ URxvt*scrollWithBuffer:   false
 !jump to bottom (prompt) on tty output
 URxvt*scrollTtyOutput:    false
 !toggle scrollbar
-URxvt*scrollBar:          true
+URxvt*scrollBar:          false
 !scrollbar styles: rxvt, plain, next or xterm
 URxvt*scrollstyle:        plain
 !scrollbar alignment
-URxvt*scrollBar_right:    true
-URxvt*scrollColor:        #2a2a2a
+!URxvt*scrollBar_right:    false
+!URxvt*scrollColor:        #2a2a2a
 URxvt*cursorColor:        #d6d9ba
 !set default directory to home
 URxvt*chdir: 	       	  /home/jorick/
@@ -107,7 +140,7 @@ URxvt*matcher.button:     1
 !! END urlLauncher settings !!
 
 !transparent=0000 opaque=ffff
-URxvt*background: rgba:0000/0000/0000/bbbb
+#URxvt*background: rgba:0008/0008/0008/dddd
 
 
 ! xpdf -----------------------------------------------------------------------
