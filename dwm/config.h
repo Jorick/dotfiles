@@ -18,18 +18,18 @@ static const char *tags[] = { "terms", "web", "files", "doc", "media" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       5,            True,        -1 },
-	{ "Firefox",  NULL,       NULL,       2,       False,       -1 },
-	{ "Google-chrome", NULL,  NULL,	      2,	    False,	 -1 },
-	{ "Chromium",	NULL,	  NULL,	      2,	    False,	 -1 },
-	{ "Pcmanfm",  NULL,	  NULL,	      3,	    False,	 -1 },
-	{ "Acroread", NULL,	  NULL,	      3,	    False,	 -1 },
-	{ "gpicview",  NULL,	  NULL,	      3,	    False,	 -1 },
-	{ "libreoffice-writer", NULL, NULL,   4,	    False,	 -1 },
-	{ "libreoffice-calc", NULL, NULL,     4,	    False, 	 -1 },
-	{ "Lyx",	NULL,	NULL,	      4,	    False,	 -1 },
-	{ "VLC",	NULL,	NULL,	      5,	    True,	 -1 },
-	{ "MPlayer",	NULL,	NULL,	      5,	    True,	 -1 },
+	{ "URxvt",	NULL,	  NULL,	      1 << 0,		False,	 -1 }, 
+	{ "Gimp",     NULL,       NULL,       1 << 4,            True,   -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 1,            False,  -1 },
+	{ "Chromium",	NULL,	  NULL,	      1 << 1,	    False,	 -1 },
+	{ "Thunar",	NULL,	  NULL,	      1 << 2,	    False,	 -1 },
+	{ "Acroread", NULL,	  NULL,	      1 << 2,	    False,	 -1 },
+	{ "gpicview",  NULL,	  NULL,	      1 << 2,	    False,	 -1 },
+	{ "libreoffice-writer", NULL, NULL,   1 << 3,	    False,	 -1 },
+	{ "libreoffice-calc", NULL, NULL,     1 << 3,	    False, 	 -1 },
+	{ "Lyx",	NULL,	NULL,	      1 << 3,	    False,	 -1 },
+	{ "VLC",	NULL,	NULL,	      1 << 4,	    True,	 -1 },
+	{ "MPlayer",	NULL,	NULL,	      1 << 4,	    True,	 -1 },
 };
 
 /* layout(s) */
@@ -60,7 +60,7 @@ static const Layout layouts[] = {
 static const char *dmenucmd[] = { "dmenu_run", "-fn", "-*-montecarlo-medium-r-*-*-11-*-*-*-*-*-*-*" , "-nb", "#1b1b1b", "-nf", "#808080", "-sb", "#1b1b1b", "-sf", "#23abd2", NULL };
 static const char *termcmd[]  = { "urxvtc", NULL };
 static const char *chrome[] = { "chromium", NULL };
-static const char *pcmanfm[] = { "pcmanfm", NULL };
+static const char *files[] = { "thunar", NULL };
 static const char *pidgin[] = { "pidgin", NULL };
 static const char *mpdpause[] = { "ncmpcpp", "toggle", NULL };
 static const char *mpdstop[] = { "ncmpcpp", "stop", NULL };
@@ -74,7 +74,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ControlMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,             XK_c, spawn,          {.v = chrome } },
-	{ MODKEY|ControlMask,             XK_f, spawn,          {.v = pcmanfm } },
+	{ MODKEY|ControlMask,             XK_f, spawn,          {.v = files } },
 	{ MODKEY|ControlMask,             XK_p, spawn,          {.v = pidgin } },
 	{ MODKEY,			XK_Down,spawn,		{.v = mpdpause } },
 	{ MODKEY,			XK_Up,  spawn,		{.v = mpdstop } },
@@ -86,6 +86,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,			XK_d,	   incnmaster,	   {.i = -1 } },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
