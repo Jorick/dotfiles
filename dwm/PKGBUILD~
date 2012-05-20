@@ -18,8 +18,7 @@ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	dwm.desktop)
 _patches=('01-dwm-6.0-pertag.diff'
 	  '02-dwm-6.0-uselessgap.diff'
-	  '03-dwm-6.0-urgentcolor.diff'
-	  '04-dwm-6.0-systray.diff'
+	  '03-dwm-6.0-urgentcolor.diff' 
 	  )
 source=(${source[@]} ${_patches[@]})
 
@@ -55,24 +54,3 @@ md5sums=('8bb00d4142259beb11e13473b81c0857'
          '0c92bac9c1b675d0a66e6a60b9ea8c60'
          '1f9072793314aae31d9d24ab3515c9c7'
          '8d142ff2e02eecc0c3e95183f7211d76')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '2da025834c63460d3a5d706c66f59fc9'
-         '939f403a71b6e85261d09fc3412269ee'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         '1f9072793314aae31d9d24ab3515c9c7'
-         '8d142ff2e02eecc0c3e95183f7211d76'
-         'c31724311da785a26ab97ed29efc9df8')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '2da025834c63460d3a5d706c66f59fc9'
-         '939f403a71b6e85261d09fc3412269ee'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         '1f9072793314aae31d9d24ab3515c9c7'
-         '8d142ff2e02eecc0c3e95183f7211d76'
-         'd3a502b4d4a3aa15c20468e13c86f5b0')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         'd22aee15204ab025c9e1a90393cb594a'
-         '939f403a71b6e85261d09fc3412269ee'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         '1f9072793314aae31d9d24ab3515c9c7'
-         '8d142ff2e02eecc0c3e95183f7211d76'
-         'd3a502b4d4a3aa15c20468e13c86f5b0')

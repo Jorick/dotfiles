@@ -17,7 +17,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 static const unsigned int systrayspacing = 1;                // space between systray icons
-static const Bool showsystray            = True;             // False means no systray
+static const Bool showsystray            = False;             // False means no systray
 
 /* tagging */
 static const char *tags[] = { "terms", "web", "files", "doc", "media" };
