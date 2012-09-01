@@ -1,16 +1,16 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[]            = "-*-montecarlo-medium-r-*-*-11-*-*-*-*-*-*-*";
+static const char font[]            = "-*-MonteCarlo-medium-r-*-*-*-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#1b1b1b";
 static const char normbgcolor[]     = "#1b1b1b";
-static const char normfgcolor[]     = "#808080";
-static const char selbordercolor[]  = "#23abd2";
+static const char normfgcolor[]     = "#b99f40";
+static const char selbordercolor[]  = "#e8e8e8";
 static const char selbgcolor[]      = "#1b1b1b";
-static const char selfgcolor[]      = "#23abd2";
+static const char selfgcolor[]      = "#e8e8e8";
 static const char urgbgcolor[]	    = "#1b1b1b";
-static const char urgfgcolor[]	    = "#ff0000";
-static const char urgbordercolor[]  = "#ff0000";
+static const char urgfgcolor[]	    = "#8b171a";
+static const char urgbordercolor[]  = "#f8f8f8";
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx	    = 4;	/* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -20,24 +20,27 @@ static const unsigned int systrayspacing = 1;                // space between sy
 static const Bool showsystray            = True;             // False means no systray
 
 /* tagging */
-static const char *tags[] = { "terms", "web", "files", "doc", "media" };
+static const char *tags[] = { "terms", "web", "mail", "files", "doc", "media" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       1 << 4,           False,   -1 },
+	{ "Gimp",     NULL,       NULL,       1 << 5,           False,   -1 },
 	{ "Inkscape",	NULL,	  NULL,	      1 << 4,		False,	 -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 1,       False,       -1 },
+	{ "URxvt" , NULL,	  NULL,	      1 << 0,	    False,	 -1 },
 	{ "Chromium",	NULL,	  NULL,	      1 << 1,	    False,	 -1 },
 	{ "Google-chrome", NULL,  NULL,	      1 << 1,	    False,	 -1 },
 	{ "Dwb",	NULL,	  NULL,	      1 << 1,	    False,	 -1 },
-	{ "Thunar",  NULL,	  NULL,	      1 << 2,	    False,	 -1 },
-	{ "Acroread", NULL,	  NULL,	      1 << 2,	    False,	 -1 },
-	{ "gpicview",  NULL,	  NULL,	      1 << 2,	    False,	 -1 },
-	{ "libreoffice-writer", NULL, NULL,   1 << 3,	    False,	 -1 },
-	{ "libreoffice-calc", NULL, NULL,     1 << 3,	    False, 	 -1 },
-	{ "Lyx",	NULL,	NULL,	      1 << 3,	    False,	 -1 },
-	{ "VLC",	NULL,	NULL,	      1 << 4,	    True,	 -1 },
-	{ "MPlayer",	NULL,	NULL,	      1 << 4,	    True,	 -1 },
+	{ "Thunderbird", NULL,	  NULL,	      1 << 2,	    False,	 -1 },
+	{ "Thunar",  NULL,	  NULL,	      1 << 3,	    False,	 -1 },
+	{ "Acroread", NULL,	  NULL,	      1 << 3,	    False,	 -1 },
+	{ "gpicview",  NULL,	  NULL,	      1 << 3,	    False,	 -1 },
+	{ "libreoffice-writer", NULL, NULL,   1 << 4,	    False,	 -1 },
+	{ "libreoffice-calc", NULL, NULL,     1 << 4,	    False, 	 -1 },
+	{ "Lyx",	NULL,	NULL,	      1 << 4,	    False,	 -1 },
+	{ "Gvim", 	NULL,	NULL,	      1 << 4,	    False,	 -1 },
+	{ "VLC",	NULL,	NULL,	      1 << 5,	    True,	 -1 },
+	{ "MPlayer",	NULL,	NULL,	      1 << 5,	    True,	 -1 },
 };
 
 /* layout(s) */
@@ -65,12 +68,15 @@ static const Layout layouts[] = {
 /* Include XF86 Keys */
 #include <X11/XF86keysym.h> 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", "-*-montecarlo-medium-r-*-*-11-*-*-*-*-*-*-*" , "-nb", "#1b1b1b", "-nf", "#808080", "-sb", "#1b1b1b", "-sf", "#23abd2", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", "-*-montecarlo-medium-r-*-*-11-*-*-*-*-*-*-*" , "-nb", "#1b1b1b", "-nf", "#b99f40", "-sb", "#1b1b1b", "-sf", "#e8e8e8", NULL };
 static const char *termcmd[]  = { "urxvtc", NULL };
 static const char *chrome[] = { "google-chrome", NULL };
+static const char *chromium[] = { "chromium", NULL };
 static const char *dwb[] = { "dwb", NULL };
+static const char *mail[] = { "thunderbird", NULL };
 static const char *files[] = { "thunar", NULL };
 static const char *pidgin[] = { "pidgin", NULL };
+static const char *text[] = { "gvim", NULL };
 static const char *mpdpause[] = { "ncmpcpp", "toggle", NULL };
 static const char *mpdstop[] = { "ncmpcpp", "stop", NULL };
 static const char *mpdnext[] = { "ncmpcpp", "next", NULL };
@@ -82,10 +88,12 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ControlMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ControlMask,             XK_c, spawn,          {.v = chrome } },
+	{ MODKEY|ControlMask,             XK_c, spawn,          {.v = chromium } },
 	{ MODKEY|ControlMask,		  XK_d, spawn,		{.v = dwb } },
 	{ MODKEY|ControlMask,             XK_f, spawn,          {.v = files } },
 	{ MODKEY|ControlMask,             XK_p, spawn,          {.v = pidgin } },
+	{ MODKEY|ControlMask,             XK_m, spawn,          {.v = mail } },
+	{ MODKEY|ControlMask,		  XK_t, spawn,		{.v = text } },
 	{ MODKEY,			XK_Down,spawn,		{.v = mpdpause } },
 	{ MODKEY,			XK_Up,  spawn,		{.v = mpdstop } },
 	{ MODKEY,			XK_Right, spawn,		{.v = mpdnext } },
