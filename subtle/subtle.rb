@@ -91,16 +91,15 @@ set :tiling, false
 #
 
 screen 1 do
-  top    [ :separator, :views, :center, :volume, :separator, :mpd, :separator, :weather_mod, :center, :spacer, :tray, :separator, :battery, :wifi, :clock, :notify ]
+  top    [ :views, :center, :volume, :separator, :mpd, :separator, :center, :spacer, :tray, :separator, :wifi, :battery, :clock, :notify ]
   bottom [ ]
 end
 
 # Example for a second screen:
-#screen 2 do
-#  top    [ :views, :title, :spacer ]
-#  bottom [ ]
-#end
-
+screen 2 do
+  top    [ :views, :center, :volume, :separator, :mpd, :separator, :center, :spacer, :tray, :separator, :wifi, :battery, :clock, :notify ]
+#bottom [ ]
+end
 #
 # == Styles
 #
@@ -116,7 +115,7 @@ end
 # Style for all style elements
 style :all do
   font        "xft:montecarlo-11"
-  background  "#1b1b1b"
+  background  "#000000"
   border      "#303030", 0
   padding     2, 3
 end
@@ -128,9 +127,9 @@ style :views do
 
   # Style for the active views
   style :focus do
-    foreground  "#ffae00"
-    icon        "#ffae00"
-    border_bottom "#ffae00", 2
+    foreground  "#23abd2"
+    icon        "#23abd2"
+    border_bottom "#23abd2", 2
   end
 
   # Style for urgent window titles and views
@@ -151,7 +150,7 @@ end
 style :sublets do
   foreground  "#d0d0cc"
   padding     2,3
-  icon        "#ffae00"
+  icon        "#23abd2"
 end
 
 # Style for separator
@@ -167,8 +166,8 @@ end
 
 # Style for active/inactive windows
 style :clients do
-  active      "#ffae00", 2
-  inactive    "#808080", 2
+  active      "#23abd2", 2
+  inactive    "#1b1b1b", 2
   margin      4
   width       50
 end
@@ -176,7 +175,7 @@ end
 # Style for subtle
 style :subtle do
   margin      2, 2, 2, 2
-  panel       "#1b1b1b"
+  panel       "#000000"
  # background  "#3d3d3d"
   stipple     "#757575"
 end
@@ -328,13 +327,13 @@ gravity :gimp_dock,      [  90,   0,  10, 100 ]
 #
 
 # Jump to view1, view2, ...
-grab "W-S-1", :ViewJump1
-grab "W-S-2", :ViewJump2
-grab "W-S-3", :ViewJump3
-grab "W-S-4", :ViewJump4
-grab "W-S-5", :ViewJump5
-grab "W-S-6", :ViewJump6
-grab "w-S-7", :ViewJump7
+#grab "W-S-1", :ViewJump1
+#grab "W-S-2", :ViewJump2
+#grab "W-S-3", :ViewJump3
+#grab "W-S-4", :ViewJump4
+#grab "W-S-5", :ViewJump5
+#grab "W-S-6", :ViewJump6
+#grab "w-S-7", :ViewJump7
 
 # Switch current view
 grab "W-1", :ViewSwitch1
@@ -347,6 +346,23 @@ grab "W-7", :ViewSwitch7
 grab "W-8", :ViewSwitch8
 grab "W-9", :ViewSwitch9
 grab "W-0", :ViewSwitch0
+
+# Move client to  different view
+grab "W-S-1" do |c|
+  c.tags = ["terms"]
+end
+
+grab "W-S-2" do |c|
+  c.tags = ["browser"]
+end
+
+grab "W-S-3" do |c|
+  c.tags = ["docs"]
+end
+
+grab "W-S-4" do |c|
+  c.tags = ["IM"]
+end
 
 # Select next and prev view */
 #grab "KP_Add",      :ViewNext
@@ -430,13 +446,11 @@ grab "W-KP_3", [ :bottom_right, :bottom_right66, :bottom_right33 ]
 
 # Exec programs
 grab "W-Return", "urxvtc"
-grab "W-C-c", "chromium"
-grab "W-C-f", "firefox"
+grab "W-C-c", "google-chrome"
+#grab "W-C-f", "firefox"
 grab "W-m", "urxvtc -name ncmpcpp -e ncmpcpp"
 grab "W-C-m", "thunderbird"
-grab "W-C-t", "thunar"
-grab "W-C-p", "pcmanfm"
-grab "W-C-p", "pidgin"
+grab "W-C-f", "thunar"
 grab "W-t", "urxvtc -name ranger -e ranger"
 grab "W-C-w", "dwb"
 grab "W-C-i", "urxvtc -name irssi -e irssi"
@@ -453,8 +467,10 @@ grab "XF86AudioLowerVolume", "amixer -q sset 'Master' 5%-"
 
 # Power control
 
-grab "XF86Sleep", "sudo pm-suspend"
-grab "XF86PowerOff", "sudo halt"
+grab "W-C-S-s", "sudo systemctl reboot"
+grab "W-C-S-h", "sudo systemctl halt"
+#grab "XF86Sleep", "sudo pm-suspend"
+#grab "XF86PowerOff", "sudo halt"
 
 # Run Ruby lambdas
 grab "S-F2" do |c|
@@ -469,21 +485,20 @@ end
 #
 
 begin
-   require "#{ENV["HOME"]}/.config/subtle/sublets/launcher.rb" 
-
-    # Set fonts
-   Subtle::Contrib::Launcher.fonts = [
-     "xft:Montecarlo",
-     "xft:Montecarlo" 
-   ]
-    # Set paths
-   Subtle::Contrib::Launcher.paths = [ "/usr/bin", "/bin", "/sbin" ]
+   require "#{ENV["HOME"]}/.config/subtle/launcher/launcher.rb" 
 rescue LoadError => error
-    puts error
+# Set fonts
+   Subtle::Contrib::Launcher.fonts = [
+     "xft:montecarlo-11",
+     "xft:montecarlo-11" 
+   ]
+# Set paths
+   Subtle::Contrib::Launcher.paths = [ "/usr/bin", "~/bin" , "/sbin" ]
+   puts error
 end
-  
-grab "W-x" do
-  Subtle::Contrib::Launcher.run
+ 
+grab "W-C-p" do
+   Subtle::Contrib::Launcher.run
 end
 
 #
@@ -644,30 +659,29 @@ tag "terms" do
 end
 
 tag "browser" do
-  match :class => "chromium|midori|jumanji|firefox|navigator|dwb"
+  match :class => "chromium|google-chrome|firefox|navigator|dwb"
   match :instance => "chromium"
-  gravity :left66
+  gravity :center
 end
 
 
 tag "files" do
-   match "thunar|xarchiver|qtfm|pcmanfm"
-   match :instance => "ranger", :class => "urxvt"
-   gravity :top_right
+   match :class => "thunar"
+   gravity :top_left
 end
 
-#tag "mail" do
-#  match :class => "Thunderbird"
-#end
+tag "mail" do
+  match :class => "thunderbird"
+end
 
 tag "pics" do
   match "ristretto|feh|gpicview"
-  gravity :left
+  gravity :right
 end
 
 tag "docs" do
   match :class => "lyx|lo-[calc|writer|impress]?|epdfview|gvim"
-  gravity :left
+  gravity :center
 end
 
 tag "default" do
@@ -681,13 +695,13 @@ tag "video" do
 end
 
 tag "music" do
-  match "ario"
+  match "ario|deadbeef"
   match :instance => "ncmpcpp", :class => "urxvt"
   gravity :center66
 end
 
 tag "IM" do
-  match "pidgin"
+  match "pidgin|skype"
   gravity :top_right
 end
 
@@ -824,45 +838,29 @@ end
 #
 
 view "terms" do
- match "terms|files"
- icon "~/.config/subtle/icons/term.xbm"
- icon_only true
+ match "terms"
 end
 
 view "web" do
   match "browser"
-  icon "~/.config/subtle/icons/web.xbm"
-  icon_only true
 end
 
-#view "files" do
-# match "files|pics|docs"
-# icon "~/.config/subtle/icons/files.xbm"
-#end
+view "mail" do
+  match "mail"
+end
+
+view "files" do
+ match "files|pics|default"
+end
 
 view "docs" do
   match "docs|pics"
-  icon "~/.config/subtle/icons/files.xbm"
-  icon_only true
-end
-
-view "mesg" do
- match "IM|irc"
- icon "~/.config/subtle/icons/mesg.xbm"
- icon_only true
 end
 
 view "media" do
-  match "video|music"
-  icon "~/.config/subtle/icons/media.xbm"
-  icon_only true
+  match "video|music|gimp_.*|graphic"
 end
 
-view "misc" do
- match  "gimp_.*|graphic|default"
- icon "~/.config/subtle/icons/graph.xbm"
- icon_only true
-end
 
 #
 # == Sublets
@@ -951,18 +949,18 @@ sublet :mpd do
   stop_color "#ffae00"
 end
 
-sublet :weather_mod do
-  interval 240 
-  locale  "en"
-  units   "c"
-  location  "Gent"
-  temp_suffic "°C"
-  sep "|"
-  current_label "Today"
-  day_color "#d0d0cc"
-  temp_color "#d0d0cc"
-  sep_color "#ffae00"
-end
+#sublet :weather do
+#  interval 3600
+#  locale  "en"
+#  units   "c"
+#  location  "Gent"
+#  temp_suffic "°C"
+#  sep "|"
+#  current_label "Now"
+#  day_color "#d0d0cc"
+#  temp_color "#d0d0cc"
+#  sep_color "#ffae00"
+#end
 #
 # == Hooks
 #
