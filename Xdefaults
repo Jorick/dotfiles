@@ -4,94 +4,94 @@
 ! terminal colors ------------------------------------------------------------
 
 ! soft scheme
-*background: #151617
-*foreground: #d0d0cc
-! Black + DarkGrey
-*color0:  #111111
-*color8:  #555753
-! DarkRed + Red
-*color1:  #d74005
-*color9:  #d76d05
-! DarkGreen + Green
-*color2:  #93d44f
-*color10: #c8e7a8
-! DarkYellow + Yellow
-*color3:  #d3e13b
-*color11: #dee566
-! DarkBlue + Blue
-*color4:  #23abd2
-*color12: #23c8d2
-! DarkMangenta + Mangenta
-*color5:  #de1629
-*color13: #dc3343
-!DarkCyan + Cyan (both not tango)
-*color6:  #89b6e2
-*color14: #46a4ff
-! LightGrey + White
-*color7:  #b8b8b8
-*color15: #ffffff
-
-! strong
-!*background: #080808
+!*background: #2e3436
 !*foreground: #d0d0cc
 ! Black + DarkGrey
-!*color0:  #080808
-!*color8:  #3a3a3a
+!*color0:  #111111
+!*color8:  #555753
 ! DarkRed + Red
-!*color1:  #f40405
-!*color9:  #f42805
+!*color1:  #d74005
+!*color9:  #d76d05
 ! DarkGreen + Green
-!*color2:  #1d9447
-!*color10: #23b557
+!*color2:  #93d44f
+!*color10: #c8e7a8
 ! DarkYellow + Yellow
-!*color3:  #e3a52e
-!*color11: #fbcb5e
+!*color3:  #d3e13b
+!*color11: #dee566
 ! DarkBlue + Blue
-!*color4:  #394a80
-!*color12: #5166a9
+!*color4:  #23abd2
+!*color12: #23c8d2
 ! DarkMangenta + Mangenta
-!*color5:  #920001
-!*color13: #b82803
-!DarkCyan + Cyan
-!*color6:  #a89313
-!*color14: #e8c73c
+!*color5:  #de1629
+!*color13: #dc3343
+!DarkCyan + Cyan (both not tango)
+!*color6:  #89b6e2
+!*color14: #46a4ff
 ! LightGrey + White
 !*color7:  #b8b8b8
 !*color15: #ffffff
 
+!! jellybeans
+!! Back and Foreground
+*foreground:    #c5c5c5
+*background:    #121212
+!! Cursorcolor
+!*cursorColor:   #c5c5c5
+! 
+!Colorsets
+  
+!black
+*color0:#1a1a1a
+*color8:#404040
+!red
+*color1:#d75f5f
+*color9:#ea8484
+!green
+*color2:#87af5f
+*color10:#c7f09f
+!yello
+*color3:#ffaf5f
+*color11:#ffcc9a
+!blue
+*color4:#87afd7
+*color12:#a5caef
+!magenta
+*color5:#8787af
+*color13:#a6a6de
+!cyan
+*color6:#5f8787
+*color14:#69b2b2
+!white
+*color7:#808080
+*color15:#d7d7d7
 
-
-! Xcursor --------------------------------------------------------------------
-
-!Xcursor*theme: Neutral_plus
-Xcursor*theme: ComixCursors-Black-Small
-
-! rxvt-unicode ---------------------------------------------------------------
-
+! set cursor
+!Xcursor.theme: ComixCursors-White
 ! font preference
-URxvt*font:      -*-MonteCarlo-medium-*-*-*-*-*-*-*-*-*-*-*
-URxvt*boldFont:  -*-MonteCarlo-bold-*-*-*-*-*-*-*-*-*-*-*
-#URxvt*font:        xft:Terminus:pixelsize=9
-#URxvt*boldFont:    xft:Terminus:pixelsize=9
+!Rxvt*font:      -*-MonteCarlo-medium-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*boldFont:  -*-MonteCarlo-bold-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*font:        xft:Terminus:pixelsize=9
+!URxvt*boldFont:    xft:Terminus:pixelsize=9
 !URxvt*font:	xft:gohufont:pixelsize=9
 !Urxvt*boldFont:	xft:gohufont:pixelsize=9
 !initial size
-URxvt*geometry:           120x30
+URxvt*geometry:           120x40
 !internal whitespace
-URxvt*internalBorder:     0
+URxvt*internalBorder:     1
 !fade text n% upon unfocus
-URxvt*fading:             20
+URxvt*fading:             0
 !darken=(0 to 100) lighten=(-1 to -100)
 URxvt*shading:            0
 !tint background with this color
-URxvt*tintColor:          black
+!URxvt*tintColor:          black
 ! background color
 !URxvt*background:	  -1
 ! foreground color
 !URxvt*foreground:	   green
 !set to 32-bit for real transparency (compositing required) and 24-bit for pseudo-transparency
-URxvt*depth:             24
+URxvt*depth:             32
 !URxvt*inheritPixmap: 	true
+URxvt*background: [80]#2e3436
 !URxvt*transparent:	true
 !set color for bold, italic, underlined
 URxvt*colorBD:      	     2
@@ -114,7 +114,7 @@ URxvt*scrollstyle:        plain
 !scrollbar alignment
 !URxvt*scrollBar_right:    false
 !URxvt*scrollColor:        #2a2a2a
-URxvt*cursorColor:        #d6d9ba
+!URxvt*cursorColor:        #d6d9ba
 !set default directory to home
 URxvt*chdir: 	       	  /home/jorick/
 !enable tabs
@@ -134,21 +134,10 @@ URxvt*mapAlert:           true
 !inhibit writing record into the system log file utmp
 URxvt*utmpInhibit:        true
 !! BEGIN urlLauncher settings !!
-URxvt*perl-lib:           /usr/lib/URxvt/perl/
-URxvt*urlLauncher:        /usr/bin/chromium
-URxvt*matcher.button:     1
-!! END urlLauncher settings !!
-
-!transparent=0000 opaque=ffff
-#URxvt*background: rgba:0008/0008/0008/dddd
-
-
-! xpdf -----------------------------------------------------------------------
-
-xpdf*enableFreetype:    yes
-xpdf*antialias:         yes
-!xpdf*foreground:        white
-!xpdf*background:        black
-xpdf*urlCommand:        /usr/bin/chromium %s
-
-
+URxvt.perl-ext:      default,url-select
+URxvt.keysym.M-u:    perl:url-select:select_next
+URxvt.url-select.launcher:   /usr/bin/google-chrome-stable
+URxvt.url-select.underline: true
+URxvt.perl-ext-common:  default,matcher
+URxvt.url-launcher:      /usr/bin/google-chrome-stable
+URxvt.matcher.button:   1
