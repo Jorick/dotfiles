@@ -31,7 +31,7 @@ static const Rule rules[] = {
 	{ "Chromium",	NULL,	  NULL,	      1 << 1,	    False,	 -1 },
 	{ "Google-chrome", NULL,  NULL,	      1 << 1,	    False,	 -1 },
 	{ "Dwb",	NULL,	  NULL,	      1 << 1,	    False,	 -1 },
-	{ "Atom", NULL,	  NULL,	      1 << 2,	    False,	 -1 },
+    { "URxvt",  "vim",    "vim",      1 << 2,       False,  -1},
 	{ "Thunar",  NULL,	  NULL,	      1 << 3,	    False,	 -1 },
 	{ "Acroread", NULL,	  NULL,	      1 << 3,	    False,	 -1 },
 	{ "gpicview",  NULL,	  NULL,	      1 << 3,	    False,	 -1 },
@@ -40,8 +40,8 @@ static const Rule rules[] = {
 	{ "Lyx",	NULL,	NULL,	      1 << 4,	    False,	 -1 },
 	{ "Gvim", 	NULL,	NULL,	      1 << 4,	    False,	 -1 },
 	{ "VLC",	NULL,	NULL,	      1 << 5,	    True,	 -1 },
-    { "urxvtc", "Ranger", "ranger",   1 << 3,       False,  -1 },
-    { "urxvtc", "Ncmpcpp", "ncmpcpp", 1 << 5,       False,  -1 },
+    { "URxvt", "ranger", "ranger",   1 << 3,       False,  -1 },
+    { "URxvt", "ncmpcpp", "ncmpcpp", 1 << 5,       False,  -1 },
 	{ "MPlayer",	NULL,	NULL,	      1 << 5,	    True,	 -1 },
 };
 
@@ -75,12 +75,13 @@ static const char *termcmd[]  = { "urxvtc", NULL };
 static const char *chrome[] = { "google-chrome-stable", NULL };
 static const char *chromium[] = { "chromium", NULL };
 static const char *dwb[] = { "dwb", NULL };
-static const char *atom[] = { "atom", NULL };
+static const char *mail[] = { "thunderbird", NULL };
 static const char *files[] = { "thunar", NULL };
-static const char *ranger[] = { "urxvtc", "-title", "ranger", "-e", "ranger" };
+static const char *ranger[] = { "urxvtc", "-title", "ranger", "-e", "ranger", NULL };
 static const char *pidgin[] = { "pidgin", NULL };
 static const char *text[] = { "gvim", NULL };
-static const char *ncmpcpp[] = { "urxvtc" , "-title", "ncmpcpp", "-e", "ncmpcpp" };
+static const char *ncmpcpp[] = { "urxvtc" , "-title", "ncmpcpp", "-e", "ncmpcpp", NULL };
+static const char *vim[] = { "urxvtc" , "-title", "vim", "-e", "vim", NULL };
 static const char *mpdpause[] = { "ncmpcpp", "toggle", NULL };
 static const char *mpdstop[] = { "ncmpcpp", "stop", NULL };
 static const char *mpdnext[] = { "ncmpcpp", "next", NULL };
@@ -96,10 +97,11 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,		  XK_d, spawn,		{.v = dwb } },
 	{ MODKEY|ControlMask,             XK_f, spawn,          {.v = files } },
 	{ MODKEY|ControlMask,             XK_p, spawn,          {.v = pidgin } },
-	{ MODKEY|ControlMask,             XK_a, spawn,          {.v = atom } },
+	{ MODKEY|ControlMask,             XK_m, spawn,          {.v = mail } },
 	{ MODKEY|ControlMask,		  XK_t, spawn,		{.v = text } },
     { MODKEY|ControlMask,           XK_n, spawn,    {.v = ncmpcpp} },
     { MODKEY|ControlMask,           XK_r, spawn,    {.v = ranger} },
+    { MODKEY|ControlMask,           XK_v, spawn,    {.v = vim } },
 	{ MODKEY,			XK_Down,spawn,		{.v = mpdpause } },
 	{ MODKEY,			XK_Up,  spawn,		{.v = mpdstop } },
 	{ MODKEY,			XK_Right, spawn,		{.v = mpdnext } },

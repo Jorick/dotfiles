@@ -50,21 +50,14 @@ package() {
   install -m644 -D $srcdir/dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
 }
 md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '9eeeed57bac5e888b7dabfae28fd0a96'
+         'fef9864c56d824eddcdea796ce3ae021'
          '939f403a71b6e85261d09fc3412269ee'
          '0c92bac9c1b675d0a66e6a60b9ea8c60'
          '1f9072793314aae31d9d24ab3515c9c7'
          '8d142ff2e02eecc0c3e95183f7211d76'
          'd3a502b4d4a3aa15c20468e13c86f5b0')
 md5sums=('8bb00d4142259beb11e13473b81c0857'
-         'c31885174342be3ec60e631530885466'
-         '939f403a71b6e85261d09fc3412269ee'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         '1f9072793314aae31d9d24ab3515c9c7'
-         '8d142ff2e02eecc0c3e95183f7211d76'
-         'd3a502b4d4a3aa15c20468e13c86f5b0')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         'e2f0966310a1fc81170c70f352642bbe'
+         '2b020bc775f8753b3217f7b0334af486'
          '939f403a71b6e85261d09fc3412269ee'
          '0c92bac9c1b675d0a66e6a60b9ea8c60'
          '1f9072793314aae31d9d24ab3515c9c7'
