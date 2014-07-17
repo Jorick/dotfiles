@@ -2,15 +2,15 @@
 
 /* appearance */
 static const char font[]            = "-*-MonteCarlo-medium-r-*-*-*-*-*-*-*-*-*-*";
-static const char normbordercolor[] = "#a5caef";
+static const char normbordercolor[] = "#e8e8e8";
 static const char normbgcolor[]     = "#1b1b1b";
-static const char normfgcolor[]     = "#a5caef";
-static const char selbordercolor[]  = "#e8e8e8";
+static const char normfgcolor[]     = "#e8e8e8";
+static const char selbordercolor[]  = "#ea8484";
 static const char selbgcolor[]      = "#1b1b1b";
-static const char selfgcolor[]      = "#e8e8e8";
+static const char selfgcolor[]      = "#ea8484";
 static const char urgbgcolor[]	    = "#1b1b1b";
-static const char urgfgcolor[]	    = "#8b171a";
-static const char urgbordercolor[]  = "#f8f8f8";
+static const char urgfgcolor[]	    = "#ffcc9a";
+static const char urgbordercolor[]  = "#ffcc9a";
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx	    = 6;	/* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -72,7 +72,7 @@ static const Layout layouts[] = {
 /* Include XF86 Keys */
 #include <X11/XF86keysym.h> 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", "-*-montecarlo-medium-r-*-*-11-*-*-*-*-*-*-*" , "-nb", "#1b1b1b", "-nf", "#a5caef", "-sb", "#1b1b1b", "-sf", "#e8e8e8", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", "-*-montecarlo-medium-r-*-*-11-*-*-*-*-*-*-*" , "-nb", "#1b1b1b", "-nf", "#ea8484", "-sb", "#1b1b1b", "-sf", "#e8e8e8", NULL };
 static const char *termcmd[]  = { "urxvtc", "-name", "urxvt", NULL };
 /*static const char *chrome[] = { "google-chrome-stable", NULL };*/
 /*static const char *chromium[] = { "chromium", NULL };*/
@@ -81,7 +81,6 @@ static const char *dwb[] = { "dwb", NULL };
 static const char *mail[] = { "thunderbird", NULL };
 static const char *files[] = { "thunar", NULL };
 static const char *ranger[] = { "urxvtc", "-name", "ranger", "-e", "ranger", NULL };
-static const char *pidgin[] = { "pidgin", NULL };
 static const char *ncmpcpp[] = { "urxvtc" , "-name", "ncmpcpp", "-e", "ncmpcpp", NULL };
 static const char *vim[] = { "urxvtc" , "-name", "vim", "-e", "vim", NULL };
 static const char *ttytter[] = { "urxvtc" , "-name", "ttytter", "-e", "ttytter", NULL };
