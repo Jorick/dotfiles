@@ -12,7 +12,7 @@ static const char urgbgcolor[]	    = "#1b1b1b";
 static const char urgfgcolor[]	    = "#8b171a";
 static const char urgbordercolor[]  = "#f8f8f8";
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx	    = 4;	/* gap pixel between windows */
+static const unsigned int gappx	    = 6;	/* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
@@ -38,7 +38,7 @@ static const Rule rules[] = {
 	{ "libreoffice-writer", NULL, NULL,   1 << 4,	    False,	 -1 },
 	{ "libreoffice-calc", NULL, NULL,     1 << 4,	    False, 	 -1 },
 	{ "Lyx",	NULL,	NULL,	      1 << 4,	    False,	 -1 },
-	{ "Gvim", 	NULL,	NULL,	      1 << 4,	    False,	 -1 },
+	{ "Gvim", 	NULL,	NULL,	      1 << 2,	    False,	 -1 },
 	{ "VLC",	NULL,	NULL,	      1 << 5,	    True,	 -1 },
     { "URxvt", "ranger", NULL,   1 << 3,       False,  -1 },
     { "URxvt", "ncmpcpp", NULL, 1 << 5,       False,  -1 },
