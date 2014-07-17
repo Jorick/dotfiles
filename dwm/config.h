@@ -20,14 +20,14 @@ static const unsigned int systrayspacing = 1;                // space between sy
 static const Bool showsystray            = True;             // False means no systray
 
 /* tagging */
-static const char *tags[] = { "terms", "web", "code", "files", "doc", "media" };
+static const char *tags[] = { "terms", "web", "code", "files", "soc", "media" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       1 << 5,           False,   -1 },
 	{ "Inkscape",	NULL,	  NULL,	      1 << 4,		False,	 -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 1,       False,       -1 },
-	{ "URxvt" , NULL,	  NULL,	      1 << 0,	    False,	 -1 },
+	{ "URxvt" , "urxvt",	  NULL,	      1 << 0,	    False,	 -1 },
 	{ "Chromium",	NULL,	  NULL,	      1 << 1,	    False,	 -1 },
 	{ "Google-chrome", NULL,  NULL,	      1 << 1,	    False,	 -1 },
 	{ "Dwb",	NULL,	  NULL,	      1 << 1,	    False,	 -1 },
@@ -40,9 +40,11 @@ static const Rule rules[] = {
 	{ "Lyx",	NULL,	NULL,	      1 << 4,	    False,	 -1 },
 	{ "Gvim", 	NULL,	NULL,	      1 << 4,	    False,	 -1 },
 	{ "VLC",	NULL,	NULL,	      1 << 5,	    True,	 -1 },
-    { "URxvt", "ranger", "ranger",   1 << 3,       False,  -1 },
-    { "URxvt", "ncmpcpp", "ncmpcpp", 1 << 5,       False,  -1 },
+    { "URxvt", "ranger", NULL,   1 << 3,       False,  -1 },
+    { "URxvt", "ncmpcpp", NULL, 1 << 5,       False,  -1 },
 	{ "MPlayer",	NULL,	NULL,	      1 << 5,	    True,	 -1 },
+    { "URxvt", "ttytter", NULL, 1 << 4,      False, -1 },
+    { "URxvt", "irssi", NULL, 1 << 4,           False, -1}
 };
 
 /* layout(s) */
@@ -71,17 +73,18 @@ static const Layout layouts[] = {
 #include <X11/XF86keysym.h> 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", "-*-montecarlo-medium-r-*-*-11-*-*-*-*-*-*-*" , "-nb", "#1b1b1b", "-nf", "#a5caef", "-sb", "#1b1b1b", "-sf", "#e8e8e8", NULL };
-static const char *termcmd[]  = { "urxvtc", NULL };
-static const char *chrome[] = { "google-chrome-stable", NULL };
-static const char *chromium[] = { "chromium", NULL };
+static const char *termcmd[]  = { "urxvtc", "-name", "urxvt", NULL };
+/*static const char *chrome[] = { "google-chrome-stable", NULL };*/
+/*static const char *chromium[] = { "chromium", NULL };*/
+static const char *firefox[] = { "firefox", NULL };
 static const char *dwb[] = { "dwb", NULL };
 static const char *mail[] = { "thunderbird", NULL };
 static const char *files[] = { "thunar", NULL };
-static const char *ranger[] = { "urxvtc", "-title", "ranger", "-e", "ranger", NULL };
+static const char *ranger[] = { "urxvtc", "-name", "ranger", "-e", "ranger", NULL };
 static const char *pidgin[] = { "pidgin", NULL };
-static const char *text[] = { "gvim", NULL };
-static const char *ncmpcpp[] = { "urxvtc" , "-title", "ncmpcpp", "-e", "ncmpcpp", NULL };
-static const char *vim[] = { "urxvtc" , "-title", "vim", "-e", "vim", NULL };
+static const char *ncmpcpp[] = { "urxvtc" , "-name", "ncmpcpp", "-e", "ncmpcpp", NULL };
+static const char *vim[] = { "urxvtc" , "-name", "vim", "-e", "vim", NULL };
+static const char *ttytter[] = { "urxvtc" , "-name", "ttytter", "-e", "ttytter", NULL };
 static const char *mpdpause[] = { "ncmpcpp", "toggle", NULL };
 static const char *mpdstop[] = { "ncmpcpp", "stop", NULL };
 static const char *mpdnext[] = { "ncmpcpp", "next", NULL };
@@ -93,12 +96,11 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ControlMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ControlMask,             XK_c, spawn,          {.v = chrome } },
+	{ MODKEY|ControlMask,             XK_c, spawn,          {.v = firefox} },
 	{ MODKEY|ControlMask,		  XK_d, spawn,		{.v = dwb } },
 	{ MODKEY|ControlMask,             XK_f, spawn,          {.v = files } },
-	{ MODKEY|ControlMask,             XK_p, spawn,          {.v = pidgin } },
 	{ MODKEY|ControlMask,             XK_m, spawn,          {.v = mail } },
-	{ MODKEY|ControlMask,		  XK_t, spawn,		{.v = text } },
+	{ MODKEY|ControlMask,		  XK_t, spawn,		{.v = ttytter } },
     { MODKEY|ControlMask,           XK_n, spawn,    {.v = ncmpcpp} },
     { MODKEY|ControlMask,           XK_r, spawn,    {.v = ranger} },
     { MODKEY|ControlMask,           XK_v, spawn,    {.v = vim } },
