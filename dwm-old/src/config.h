@@ -1,1 +1,0 @@
-/home/jorick/github/config/dwm/config.h
