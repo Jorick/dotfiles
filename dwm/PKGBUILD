@@ -51,21 +51,7 @@ package() {
 }
 
 md5sums=('8bb00d4142259beb11e13473b81c0857'
-         'e02d3d45d26a777e289f1490b99a5a78'
-         '939f403a71b6e85261d09fc3412269ee'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         '138d2041f07f1aedc457e376b3ab61fb'
-         'efd1aaf6beebbbbd2cbf3f919ba68095'
-         'd3a502b4d4a3aa15c20468e13c86f5b0')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '493cfaa076157417c45c01041a021092'
-         '939f403a71b6e85261d09fc3412269ee'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         '138d2041f07f1aedc457e376b3ab61fb'
-         'efd1aaf6beebbbbd2cbf3f919ba68095'
-         'd3a502b4d4a3aa15c20468e13c86f5b0')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         'b6cc9728fb86d8f22da9816869c11377'
+         'f2de6c58a0cfb0efcae7b7634ccee62c'
          '939f403a71b6e85261d09fc3412269ee'
          '0c92bac9c1b675d0a66e6a60b9ea8c60'
          '138d2041f07f1aedc457e376b3ab61fb'

@@ -11,7 +11,7 @@ static const char selfgcolor[]      = "#ea8484";
 static const char urgbgcolor[]	    = "#1b1b1b";
 static const char urgfgcolor[]	    = "#ffcc9a";
 static const char urgbordercolor[]  = "#ffcc9a";
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int gappx	    = 6;	/* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
@@ -24,27 +24,27 @@ static const char *tags[] = { "terms", "web", "code", "files", "soc", "media" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       1 << 5,           False,   -1 },
-	{ "Inkscape",	NULL,	  NULL,	      1 << 4,		False,	 -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 1,       False,       -1 },
-	{ "URxvt" , "urxvt",	  NULL,	      1 << 0,	    False,	 -1 },
-	{ "Chromium",	NULL,	  NULL,	      1 << 1,	    False,	 -1 },
-	{ "Google-chrome", NULL,  NULL,	      1 << 1,	    False,	 -1 },
-	{ "Dwb",	NULL,	  NULL,	      1 << 1,	    False,	 -1 },
-    { "URxvt",  "vim",    "vim",      1 << 2,       False,  -1},
-	{ "Thunar",  NULL,	  NULL,	      1 << 3,	    False,	 -1 },
-	{ "Acroread", NULL,	  NULL,	      1 << 3,	    False,	 -1 },
-	{ "gpicview",  NULL,	  NULL,	      1 << 3,	    False,	 -1 },
-	{ "libreoffice-writer", NULL, NULL,   1 << 4,	    False,	 -1 },
-	{ "libreoffice-calc", NULL, NULL,     1 << 4,	    False, 	 -1 },
-	{ "Lyx",	NULL,	NULL,	      1 << 4,	    False,	 -1 },
-	{ "Gvim", 	NULL,	NULL,	      1 << 2,	    False,	 -1 },
-	{ "VLC",	NULL,	NULL,	      1 << 5,	    True,	 -1 },
-    { "URxvt", "ranger", NULL,   1 << 3,       False,  -1 },
-    { "URxvt", "ncmpcpp", NULL, 1 << 5,       False,  -1 },
-	{ "MPlayer",	NULL,	NULL,	      1 << 5,	    True,	 -1 },
-    { "URxvt", "ttytter", NULL, 1 << 4,      False, -1 },
-    { "URxvt", "irssi", NULL, 1 << 4,           False, -1}
+	{ "Gimp"               , NULL      , NULL  , 1 << 5 , False , -1 } ,
+	{ "Inkscape"           , NULL      , NULL  , 1 << 4 , False , -1 } ,
+	{ "Firefox"            , NULL      , NULL  , 1 << 1 , False , -1 } ,
+	{ "URxvt"              , "urxvt"   , NULL  , 1 << 0 , False , -1 } ,
+	{ "Chromium"           , NULL      , NULL  , 1 << 1 , False , -1 } ,
+	{ "Google-chrome"      , NULL      , NULL  , 1 << 1 , False , -1 } ,
+	{ "Dwb"                , NULL      , NULL  , 1 << 1 , False , -1 } ,
+    { "URxvt"              , "vim"     , "vim" , 1 << 2 , False , -1 } ,
+	{ "Thunar"             , NULL      , NULL  , 1 << 3 , False , -1 } ,
+	{ "Acroread"           , NULL      , NULL  , 1 << 3 , False , -1 } ,
+	{ "gpicview"           , NULL      , NULL  , 1 << 3 , False , -1 } ,
+	{ "libreoffice-writer" , NULL      , NULL  , 1 << 4 , False , -1 } ,
+	{ "libreoffice-calc"   , NULL      , NULL  , 1 << 4 , False , -1 } ,
+	{ "Lyx"                , NULL      , NULL  , 1 << 4 , False , -1 } ,
+	{ "Gvim"               , NULL      , NULL  , 1 << 2 , False , -1 } ,
+	{ "vlc"                , NULL      , NULL  , 1 << 5 , True  , -1 } ,
+    { "URxvt"              , "ranger"  , NULL  , 1 << 3 , False , -1 } ,
+    { "URxvt"              , "ncmpcpp" , NULL  , 1 << 5 , False , -1 } ,
+	{ "MPlayer"            , NULL      , NULL  , 1 << 5 , True  , -1 } ,
+    { "URxvt"              , "ttytter" , NULL  , 1 << 4 , False , -1 } ,
+    { "URxvt"              , "irssi"   , NULL  , 1 << 4 , False , -1}
 };
 
 /* layout(s) */
@@ -84,6 +84,7 @@ static const char *ranger[] = { "urxvtc", "-name", "ranger", "-e", "ranger", NUL
 static const char *ncmpcpp[] = { "urxvtc" , "-name", "ncmpcpp", "-e", "ncmpcpp", NULL };
 static const char *vim[] = { "urxvtc" , "-name", "vim", "-e", "vim", NULL };
 static const char *ttytter[] = { "urxvtc" , "-name", "ttytter", "-e", "ttytter", NULL };
+static const char *irssi[] = { "urxvtc" , "-name", "irssi", "-e", "irssi", NULL };
 static const char *mpdpause[] = { "ncmpcpp", "toggle", NULL };
 static const char *mpdstop[] = { "ncmpcpp", "stop", NULL };
 static const char *mpdnext[] = { "ncmpcpp", "next", NULL };
@@ -103,6 +104,7 @@ static Key keys[] = {
     { MODKEY|ControlMask,           XK_n, spawn,    {.v = ncmpcpp} },
     { MODKEY|ControlMask,           XK_r, spawn,    {.v = ranger} },
     { MODKEY|ControlMask,           XK_v, spawn,    {.v = vim } },
+    { MODKEY|ControlMask,           XK_i, spawn,    {.v = irssi} },
 	{ MODKEY,			XK_Down,spawn,		{.v = mpdpause } },
 	{ MODKEY,			XK_Up,  spawn,		{.v = mpdstop } },
 	{ MODKEY,			XK_Right, spawn,		{.v = mpdnext } },
