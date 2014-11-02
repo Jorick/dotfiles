@@ -2,13 +2,13 @@
 
 /* appearance */
 static const char font[]            = "-*-Terminus-medium-r-*-*-12-*-*-*-*-*-*-*";
-static const char normbordercolor[] = "#151515";
-static const char normbgcolor[]     = "#151515";
-static const char normfgcolor[]     = "#d0d0d0";
-static const char selbordercolor[]  = "#ac4142";
-static const char selbgcolor[]      = "#151515";
-static const char selfgcolor[]      = "#ac4142";
-static const char urgbgcolor[]	    = "#151515";
+static const char normbordercolor[] = "#2b303b";
+static const char normbgcolor[]     = "#2b303b";
+static const char normfgcolor[]     = "#c0c5ce";
+static const char selbordercolor[]  = "#bf616a";
+static const char selbgcolor[]      = "#2b303b";
+static const char selfgcolor[]      = "#bf616a";
+static const char urgbgcolor[]	    = "#2b303b";
 static const char urgfgcolor[]	    = "#ffcc9a";
 static const char urgbordercolor[]  = "#ffcc9a";
 static const unsigned int borderpx  = 4;        /* border pixel of windows */
@@ -45,7 +45,8 @@ static const Rule rules[] = {
 	{ "MPlayer"            , NULL      , NULL  , 1 << 5 , True  , -1 } ,
     { "URxvt"              , "ttytter" , NULL  , 1 << 4 , False , -1 } ,
     { "URxvt"              , "irssi"   , NULL  , 1 << 4 , False , -1} ,
-    { "URxvt"              , "rainbowstream", NULL, 1 << 4, False, -1}
+    { "URxvt"              , "rainbowstream", NULL, 1 << 4, False, -1},
+    { "URxvt"              , "vifm"    , NULL, 1 << 3, False, -1 }
 };
 
 /* layout(s) */
@@ -80,8 +81,8 @@ static const char *termcmd[]  = { "urxvtc", "-name", "urxvt", NULL };
 static const char *firefox[] = { "firefox", NULL };
 static const char *dwb[] = { "dwb", NULL };
 static const char *mail[] = { "thunderbird", NULL };
-static const char *files[] = { "thunar", NULL };
 static const char *ranger[] = { "urxvtc", "-name", "ranger", "-e", "ranger", NULL };
+static const char *files[] = { "urxvtc", "-name", "vifm", "-e", "vifm", NULL };
 static const char *ncmpcpp[] = { "urxvtc" , "-name", "ncmpcpp", "-e", "ncmpcpp", NULL };
 static const char *vim[] = { "urxvtc" , "-name", "vim", "-e", "vim", NULL };
 static const char *ttytter[] = { "urxvtc" , "-name", "ttytter", "-e", "ttytter", NULL };
