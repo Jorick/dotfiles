@@ -32,8 +32,10 @@ static const Rule rules[] = {
 	{ "Google-chrome"      , NULL      , NULL  , 1 << 1 , False , -1 } ,
 	{ "Dwb"                , NULL      , NULL  , 1 << 1 , False , -1 } ,
     { "URxvt"              , "vim"     , "vim" , 1 << 2 , False , -1 } ,
+    { "Atom"               , NULL      , NULL  , 1 << 2 , False , -1 } ,
 	{ "Thunar"             , NULL      , NULL  , 1 << 3 , False , -1 } ,
-	{ "Acroread"           , NULL      , NULL  , 1 << 3 , False , -1 } ,
+	{ "mupdf"              , NULL      , NULL  , 1 << 3 , False , -1 } ,
+    { "Transmission"       ,NULL       ,NULL   , 1 << 3 , False , -1 } ,
 	{ "gpicview"           , NULL      , NULL  , 1 << 3 , False , -1 } ,
 	{ "libreoffice-writer" , NULL      , NULL  , 1 << 4 , False , -1 } ,
 	{ "libreoffice-calc"   , NULL      , NULL  , 1 << 4 , False , -1 } ,
@@ -74,7 +76,7 @@ static const Layout layouts[] = {
 /* Include XF86 Keys */
 #include <X11/XF86keysym.h> 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", "-*-Terminus-medium-r-*-*-12-*-*-*-*-*-*-*" , "-nb", "#151515", "-nf", "#b0b0b0", "-sb", "#151515", "-sf", "#ac4142", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", "-*-Terminus-medium-r-*-*-12-*-*-*-*-*-*-*" , "-nb", "#2b303b", "-nf", "#c0c5ce", "-sb", "#2b303b", "-sf", "#bf616a", NULL };
 static const char *termcmd[]  = { "urxvtc", "-name", "urxvt", NULL };
 /*static const char *chrome[] = { "google-chrome-stable", NULL };*/
 /*static const char *chromium[] = { "chromium", NULL };*/
