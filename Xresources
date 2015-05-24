@@ -1,21 +1,26 @@
 ! Import color scheme
-#include ".Xresources.d/base16-xresources/base16-tomorrow.dark.256.xresources"
+#include ".Xresources.d/base16-xresources/base16-solarized.dark.256.xresources"
+! Set default font
 !*.font: -*-terminus-*-r-normal-*-12-*-*-*-*-*-*-*
 *.font: -*-profont-*-r-*-*-12-*-*-*-*-*-*-*
-#URxvt.font: xft:Terminess\ Powerline:pixelsize=12
+!*.font: xft:Terminess\ Powerline:pixelsize=12
+!*.font: xft:Inconsolata:medium:pixelsize=12
+! URxvt options
 !URxvt.depth: 32
 !URxvt.background: #151515
 URxvt.scrollBar: false
 URxvt.url-select.launcher: /usr/bin/xdg-open
 URxvt.url-select.underline: true
-
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: true
 ! Set the cursor theme
 Xcursor.theme: Neutral_Plus
 
-Xft.dpi: 96
+! Font options
+!Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
-Xft.autohint: false
+!Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
