@@ -1,0 +1,99 @@
+#!/bin/sh
+#        ██
+#       ░██
+#      ██████ ██████████  ██   ██ ██   ██
+#     ░░░██░ ░░██░░██░░██░██  ░██░░██ ██
+#       ░██   ░██ ░██ ░██░██  ░██ ░░███
+#       ░██   ░██ ░██ ░██░██  ░██  ██░██
+#       ░░██  ███ ░██ ░██░░██████ ██ ░░██
+#        ░░  ░░░  ░░  ░░  ░░░░░░ ░░   ░░
+#           ██               ██
+#          ░██              ░██
+#  ██████ ██████  ██████   ██████ ██   ██  ██████
+# ██░░░░ ░░░██░  ░░░░░░██ ░░░██░ ░██  ░██ ██░░░░
+#░░█████   ░██    ███████   ░██  ░██  ░██░░█████
+# ░░░░░██  ░██   ██░░░░██   ░██  ░██  ░██ ░░░░░██
+# ██████   ░░██ ░░████████  ░░██ ░░██████ ██████
+#░░░░░░     ░░   ░░░░░░░░    ░░   ░░░░░░ ░░░░░░
+#
+#  ▓▓▓▓▓▓▓▓▓▓
+# ░▓ author ▓ xero <x@xero.nu>
+# ░▓ code   ▓ http://code.xero.nu/dotfiles
+# ░▓ mirror ▓ http://git.io/.files
+# ░▓▓▓▓▓▓▓▓▓▓
+# ░░░░░░░░░░
+
+FULL=▓
+EMPTY=░
+EOL=▒ 
+SIZE=7
+C0="#2b303b"
+C1="#65737e"
+C2="#65737e"
+C3="#96b5b4"
+C4="dfe1e8"
+
+draw()
+{
+	perc=$1
+	SIZE=$2
+	inc=$(( perc * SIZE / 100 ))
+	out=
+	thiscolor=
+	for v in `seq 0 $(( SIZE - 1 ))`; do
+		test "$v" -le "$inc"   \
+		&& out="${out}#[fg=$C0]${FULL}" \
+		|| out="${out}#[fg=$C0]${EMPTY}"
+	done
+	echo $out
+}
+temp()
+{
+	t=$(sensors | awk '/Core\ 0/ {gsub(/\+/,"",$3); gsub(/\..+/,"",$3)    ; print $3}')
+	tc=$C0
+	case 1 in
+		$((t <= 50)))
+			tc=$C0
+			;;
+		$((t >= 75)))
+			tc=$C2
+			;;
+	esac
+	echo "#[fg=$tc]$t°c"
+}
+bat()
+{
+	BATPATH=/sys/class/power_supply/BAT1
+	STATUS=$BATPATH/status
+	BAT_FULL=$BATPATH/charge_full
+	BAT_NOW=$BATPATH/charge_now
+	bf=$(cat $BAT_FULL)
+	bn=$(cat $BAT_NOW)
+	stat=$(cat $STATUS)
+	case $stat in
+		Full)
+			st="="
+			;;
+		Discharging)
+			st="-"
+			;;
+		Charging)
+			st="+"
+			;;
+	esac
+	echo $st$(( 100 * $bn / $bf ))"%"
+}
+clock()
+{
+	mtime=$(date +'%H:%M')
+	myear=$(date +'%Y-%m-')
+	mday=$(date +'%d')
+	echo "#[fg=$C0]#[bg=$C3] $mtime #[fg=$C4]#[bg=$C1] $myear#[fg=$C0]$mday #[fg=$C0]$EOL"
+}
+front()
+{
+	echo "#[bg=$C1]#[fg=$C0]▓░"
+}
+CPU_INFO=`cpu`
+RAM_INFO=`ram`
+echo `front` `bat` `draw $RAM_INFO 4` `temp` `draw $CPU_INFO 7` `clock`

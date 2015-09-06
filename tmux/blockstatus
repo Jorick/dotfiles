@@ -1,0 +1,44 @@
+# Tmux statusline config
+# command/message line colors
+set-option -g message-fg white
+set-option -g message-bg black
+set-option -g message-attr bright
+
+# CENTER {{{
+# window notifications; display activity on other window
+set-window-option -g monitor-activity on
+set-option -g visual-activity on
+
+# statusbar colors
+set-option -g status-fg white
+set-option -g status-bg black
+set-option -g status-attr default
+
+# window title colors; non active
+#set-window-option -g window-status-fg cyan
+#set-window-option -g window-status-bg default
+#set-window-option -g window-status-attr dim
+
+# window title colors; active
+#set-window-option -g window-status-current-fg white #font
+#set-window-option -g window-status-current-bg red	#boarder
+#set-window-option -g window-status-current-attr bright
+
+# window status
+set-option -g status-position bottom
+setw -g window-status-format "#[bg=colour2,fg=colour0,noreverse]█▓░ #W "
+setw -g window-status-current-format "#[bg=colour1,fg=colour0,noreverse]█▓░ #W "
+#}}}
+# LEFT SIDE {{{
+# in the status bar.
+#set-option -g status-justify centre
+#set-option -g status-left-length 40
+#set-option -g status-left "#[fg=green]Session: #S #[fg=yellow]#I #[fg=cyan]#P"
+
+#}}}
+# RIGHT SIDE {{{
+# use "man date" to set the clock to your liking
+set-option -g status-right "#[fg=blue]#(~/battery Discharging) | #[fg=cyan]%a %D %l:%M:%p"
+set -g status-right-length 100
+set -g status-right ''
+set -g status-right '#(~/.tmux/status)'
