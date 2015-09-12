@@ -133,7 +133,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec i3-msg exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -166,13 +166,25 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Control+c exec firefox
 bindsym $mod+Control+f exec urxvtc -name "vifm" -e vifm
 bindsym $mod+Control+n exec urxvtc -name "ncmpcpp" -e ncmpcpp
-bindsym $mod+Control+t exec urxvtc -name "rainbowstream" -e rainbowstream
+bindsym $mod+Control+r exec urxvtc -name "rainbowstream" -e rainbowstream
 bindsym $mod+Control+v exec urxvtc -name "vim" -e vim
 bindsym $mod+Control+i exec urxvtc -name "irssi" -e irssi
+
+# Music Controls
+
 bindsym $mod+Up exec mpc stop
 bindsym $mod+Down exec mpc toggle
 bindsym $mod+Left exec mpc prev
 bindsym $mod+Right exec mpc next
+
+# Audio Controls
+
+bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 5%+
+bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
+
+# Lockscreen
+
+bindsym $mod+Control+l exec i3lock-wrapper
 
 # Assign applications to workspace
 
@@ -184,6 +196,7 @@ assign [class="Atom"] 3: code
 assign [class="^URxvt$" instance="^vifm$"] 4: files
 assign [class="Gpicview"] 4: files
 assign [class="^Thunar"] 4: files
+assign [class="libreoffice"] 4: files
 assign [class="^URxvt$" instance="^irssi$"] 5: soc
 assign [class="^URxvt$" instance="^rainbowstream$"] 5: soc
 assign [class="^Gimp"] 5: files
@@ -219,6 +232,7 @@ bar {
         status_command conky -c .conky/conky_i3
         mode dock
         position top
+        font "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
         font "-*-profont-*-r-*-*-12-*-*-*-c-*-*-1"
 
         colors {
