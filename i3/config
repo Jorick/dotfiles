@@ -185,7 +185,7 @@ bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
 
 # Lockscreen
 
-bindsym $mod+Control+l exec i3lock-wrapper
+bindsym $mod+Control+l exec $HOME/bin/lock -p 10
 
 # Assign applications to workspace
 
@@ -242,9 +242,9 @@ bar {
         position top
 
         colors {
-            background #2d2d2d
-            statusline #d3d0c8
-            separator #f2777a
+            background #2b303b
+            statusline #c0c5ce
+            separator #c0c5ce
 
             #colorclass         <border> <background> <text>
             focused_workspace  #2b303b #2b303b #bf616a
