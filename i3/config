@@ -14,7 +14,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font ProFont 9
+font "-*-profont-*-r-*-*-12-*-*-*-c-*-*-1"
+#font pango:Inconsolata 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -44,7 +45,7 @@ bindsym $mod+Control+Return exec urxvtc
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+p exec dmenu_run -fn "-*-Terminus-medium-r-*-*-12-*-*-*-*-*-*-*" -nb "#2b303b" -nf "#c0c5ce" -sb "#2b303b" -sf "#bf616a"
+#bindsym $mod+p exec dmenu_run -fn "-*-Terminus-medium-r-*-*-12-*-*-*-*-*-*-*" -nb "#2d2d2d" -nf "#d3d0c8" -sb "#2d2d2d" -sf "#f2777a"
 bindsym $mod+p exec rofi -show run
 bindsym $mod+o exec rofi -show window
 
@@ -196,11 +197,14 @@ assign [class="Atom"] 3: code
 assign [class="^URxvt$" instance="^vifm$"] 4: files
 assign [class="Gpicview"] 4: files
 assign [class="^Thunar"] 4: files
+assign [class="Transmission"] 4: files
 assign [class="libreoffice"] 4: files
 assign [class="^URxvt$" instance="^irssi$"] 5: soc
 assign [class="^URxvt$" instance="^rainbowstream$"] 5: soc
-assign [class="^Gimp"] 5: files
+assign [class="Gimp"] 4: files
 assign [class="^URxvt$" instance="^ncmpcpp"] 6: media
+assign [class="VLC"] 6: media
+assign [class="Popcorntime"] 6: media
 assign [class="^MPlayer$"] 6: media
 assign [class="Steam"] 7: games
 
@@ -213,9 +217,13 @@ for_window [class="^MPlayer$"] floating enable
 gaps inner 8
 gaps outer 0
 
+#smart_gaps off
+
 # set border style for windows
 new_window pixel 4
 new_float pixel 4
+
+#smart_borders off
 
 # Colors
 # class                 border  backgr. text    indicator
@@ -232,13 +240,11 @@ bar {
         status_command conky -c .conky/conky_i3
         mode dock
         position top
-        font "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
-        font "-*-profont-*-r-*-*-12-*-*-*-c-*-*-1"
 
         colors {
-            background #2b303b
-            statusline #c0c5ce
-            separator #bf616a
+            background #2d2d2d
+            statusline #d3d0c8
+            separator #f2777a
 
             #colorclass         <border> <background> <text>
             focused_workspace  #2b303b #2b303b #bf616a
