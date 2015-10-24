@@ -1,0 +1,62 @@
+#!/bin/sh
+
+bspc config border_width        4
+bspc config window_gap          8
+
+i=1
+for monitor in $(bspc query -M); do
+bspc monitor $monitor \
+        -n "$i" \
+        -d {term,web,code,files,soc,media}
+    let i++
+done
+NMON=$i
+unset i
+
+bspc config top_padding 16
+
+# Visual options
+bspc config split_ratio         0.50
+bspc config borderless_monocle  false
+bspc config gapless_monocle     false
+bspc config focus_follows_pointer true
+bspc config auto_alternate true
+bspc config auto_cancel true
+bspc config normal_border_color "#2b303b"
+bspc config active_border_color "#2b303b"
+bspc config focused_border_color "#bf616a"
+bspc config presel_border_color "#ebcb8b"
+bspc config urgent_border_color "#a3be8c"
+bspc config focused_locked_border_color "#eff1f5"
+bspc config normal_frame_opacity 0.0
+bspc config focused_frame_opacity 0.0
+
+bspc rule -a Dmenu border=on
+
+# Setting default layouts for desktops
+bspc desktop ^2 -l monocle
+bspc desktop ^3 -l monocle
+
+# Rules
+bspc rule -a Firefox desktop=^2
+bspc rule -a Google-chrome-stable desktop=^2
+bspc rule -a Thunar desktop=^4 
+bspc rule -a File-roller pseudo_tiled=on
+bspc rule -a Transmission-gtk desktop=^4
+bspc rule -a Conky sticky=on manage=off lower=on
+bspc rule -a astime sticky=on
+bspc rule -a MPlayer floating=on
+bspc rule -a Steam desktop=^4
+bspc rule -a Atom destkop=^3
+
+# Placing CLI apps on desktops
+bspc rule -a ncmpcpp desktop=^6
+bspc rule -a irssi desktop=^5
+bspc rule -a rainbowstream desktop=^5
+bspc rule -a twitter desktop=^5
+bspc rule -a vifm desktop=^4
+bspc rule -a vim desktop=^3
+bspc rule -a ranger desktop=^4
+
+#/home/jorick/.config/bspwm/panel/panel &
+panel &
