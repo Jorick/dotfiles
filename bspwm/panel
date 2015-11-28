@@ -1,0 +1,55 @@
+#! /bin/zsh
+. panel_config
+# set custom refresh rate
+REFRESH=2
+# check if the panel is already running
+if [ $(pgrep -cx panel) -gt 1 ] ; then
+	printf "%s\n" "The panel is already running." >&2
+	exit 1
+fi
+
+# exit gracefully when terminated
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+# remove old panel_fifo and create new one
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+# bspwm workspace info
+bspc control --subscribe > "$PANEL_FIFO" &
+# conky
+#conky > "$PANEL_FIFO" &
+
+# current playing song
+# requires mpc
+while true; do
+  MUSIC=$(mpc)
+  MUSIC_STATUS=$(echo $MUSIC | awk 'NR==2' | awk '{print $1}' | tr -d '[]')
+  MUSIC_CURRENT=$(echo $MUSIC | awk 'NR==1')
+  MUSIC_POS=$(echo $MUSIC | awk 'NR==2' | awk '{print $3}')
+  echo -e "MUSIC$MUSIC_STATUS: $MUSIC_CURRENT - $MUSIC_POS"
+  sleep $REFRESH
+done > "$PANEL_FIFO" &
+
+# wifi ssid and signal strenght
+while true; do
+  WIFI_SSID=$(iw "wlp7s0b1" link | grep "SSID" | sed 's/SSID: //')
+  WIFI_SIGNAL=$(iw "wlp7s0b1" link | grep "signal" | sed 's/signal: //')
+  echo -e "WIFIwifi: $WIFI_SSID $WIFI_SIGNAL"
+  sleep $REFRESH
+done > "$PANEL_FIFO" &
+
+# volume indicator
+while true; do
+  echo -e "VOLvolume: $(pamixer --get-volume)%"
+  sleep $REFRESH 
+done > "$PANEL_FIFO" &
+
+# clock
+clock -sf 'S%a %d %b %H:%M' > "$PANEL_FIFO" &
+. panel_colors
+
+# start the panel
+cat "$PANEL_FIFO" | panel_bar | lemonbar -g "1600x$PANEL_HEIGHT" -f "$PANEL_FONT_FAMILY" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -u 0 &
+
+wait
