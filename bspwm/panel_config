@@ -1,10 +1,12 @@
 # File locations
 # fifo file
-export PANEL_FIFO="/tmp/panel-fifo"
-
-export PANEL_HEIGHT=16
-export PANEL_FONT_FAMILY="-*-profont-*-r-*-*-12-*-*-*-c-*-*-1"
-
+PANEL_FIFO="/tmp/panel-fifo"
+# panel height
+PANEL_HEIGHT=16
+# panel font
+PANEL_FONT_FAMILY="-*-profont-*-r-*-*-12-*-*-*-c-*-*-1"
+# refresh rate of the scripts
+REFRESH=2 
 # Icons
 ICON_CLOCK='\uf017 '
 ICON_DATE='\uf073  '
