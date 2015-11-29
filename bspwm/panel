@@ -24,10 +24,15 @@ bspc control --subscribe > "$PANEL_FIFO" &
 # requires mpc
 while true; do
   MUSIC=$(mpc)
-  MUSIC_STATUS=$(echo $MUSIC | awk 'NR==2' | awk '{print $1}' | tr -d '[]')
-  MUSIC_CURRENT=$(echo $MUSIC | awk 'NR==1')
-  MUSIC_POS=$(echo $MUSIC | awk 'NR==2' | awk '{print $3}')
-  echo -e "MUSIC$MUSIC_STATUS: $MUSIC_CURRENT - $MUSIC_POS"
+  MUSIC_LINES=$(echo $MUSIC | wc -l) 
+  if [[ $MUSIC_LINES -eq 3 ]]; then
+    MUSIC_STATUS=$(echo $MUSIC | awk 'NR==2' | awk '{print $1}' | tr -d '[]')
+    MUSIC_CURRENT=$(echo $MUSIC | awk 'NR==1')
+    MUSIC_POS=$(echo $MUSIC | awk 'NR==2' | awk '{print $3}')
+    echo -e "MUSIC$MUSIC_STATUS: $MUSIC_CURRENT - $MUSIC_POS"
+  else
+    echo -e "MUSICstopped"
+  fi
   sleep $REFRESH
 done > "$PANEL_FIFO" &
 
@@ -35,7 +40,7 @@ done > "$PANEL_FIFO" &
 while true; do
   WIFI_SSID=$(iw "wlp7s0b1" link | grep "SSID" | sed 's/SSID: //')
   WIFI_SIGNAL=$(iw "wlp7s0b1" link | grep "signal" | sed 's/signal: //')
-  echo -e "WIFIwifi: $WIFI_SSID $WIFI_SIGNAL"
+  echo -e "WIFIwifi:$WIFI_SSID$WIFI_SIGNAL"
   sleep $REFRESH
 done > "$PANEL_FIFO" &
 
