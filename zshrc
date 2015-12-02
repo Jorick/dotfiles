@@ -38,6 +38,7 @@ unsetopt correct_all
 setopt correct
 
 zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash true
 
 setopt completealiases
 
@@ -45,7 +46,7 @@ setopt completealiases
 xhost +local:root > /dev/null 2>&1
 
 export HISTCONTROL=ignoreboth
-export EDITOR="vim"
+export EDITOR="nvim"
 # set colors for ls
 eval $(dircolors ~/.dircolors)
 
@@ -57,19 +58,22 @@ alias grep='grep --color=tty -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
+# editor
+alias v='nvim'
 # Pacman aliasses
 alias ipac='sudo pacman -S'
-alias spac='sudo pacman -Ss'
+alias spac='pacman -Ss'
 alias upac='sudo pacman -Syu'
 # Packer aliasses
+#alias packer='packer-color'
 alias upacaur='packer-color -Su --auronly'
-alias packer='packer-color'
 # various aliasses
 alias google-chrome='google-chrome-stable'
 alias um='udiskie-umount'
+alias ssh-pi='ssh -p 50299 192.168.0.128'
 alias screensaver-off='xset -dpms && xset s off'
 alias screensaver-on='xset +dpms && xset s on'
-alias mirror-update='sudo reflector -p http -l 100 -f 10 --sort score --save /etc/pacman.d/mirrorlist'
+alias mirror-update='sudo reflector -p https -l 100 -f 10 --sort score --save /etc/pacman.d/mirrorlist'
 # Reddit cli app
 alias rtv='rtv -u Vargman'
 # Copy and paste to/from clipboard
@@ -105,22 +109,16 @@ ex ()
 
 # Path for own scripts
 export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.config/bspwm/panel
 # prompt
 #PS1=' \e[0;34m\u \e[0m@ \h \w \n\$ '
 #PS1="%F{blue}%n%f @ %m %~
 #%# %F{blue}>>>%f "
 BROWSER=/usr/bin/firefox
 
-# env variable for topmenu
-#export GTK_MODULES=topmenu-gtk-module
 # Variables to run bar with bspwm
-export PANEL_FIFO="/tmp/panel-fifo"
-export PANEL_HEIGHT=16
-export PATH=$PATH:$HOME/.config/bspwm/panel
-export PANEL_FONT_FAMILY="-*-profont-*-r-*-*-12-*-*-*-c-*-*-1"
-#export PANEL_FONT_FAMILY="inconsolata:medium:pixelsize=12"
 
 # Add Fish like syntac highlighting
 # requires zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/github/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh

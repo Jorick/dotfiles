@@ -3,7 +3,7 @@
 
 " ======== Vim-plug settings ========
 " set the runtime path to include Vim-plug and initialize
-call plug#begin('~/.vim/bundle')"
+call plug#begin("~/.config/nvim/bundle")
 
 " Colors
 Plug 'chriskempson/base16-vim'
@@ -20,6 +20,7 @@ Plug 'walm/jshint.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'othree/html5.vim'
 Plug 'tpope/vim-surround'
+Plug 'hail2u/vim-css3-syntax'
 " interface and utilities
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
@@ -129,15 +130,14 @@ autocmd BufNewFile,BufReadPost *.txt set filetype=markdown
 "autocmd vimenter * if !argc() | NERDTree | endif
 map <C-t> :NERDTreeToggle<CR>
 " Close vim when a file is closed and NERDTree is the last open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Autoloading NERDTree when opening a file
 "autocmd vimenter * NERDTree
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " set NERDTree arrows
-"let g:NERDTreeDirArrows = 1
-"let g:NERDTreeDirArrowExpandable = '▸'
-"let g:NERDTreeDirArrowCollapsible = '▾'
+"let g:NERDTreeDirArrowExpandable = '+'
+"let g:NERDTreeDirArrowCollapsible = '-'
 " ======== Syntastic settings ========
 " Set checkers for syntastic:
 

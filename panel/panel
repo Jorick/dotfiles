@@ -1,22 +1,74 @@
-#! /bin/sh
+#! /bin/zsh
+# import config variables
+. panel_config
 
+# check if the panel is already running
 if [ $(pgrep -cx panel) -gt 1 ] ; then
 	printf "%s\n" "The panel is already running." >&2
 	exit 1
 fi
 
+# exit gracefully when terminated
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
+# remove old panel_fifo and create new one
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-#bspc config top_padding $PANEL_HEIGHT
+# bspwm workspace info
 bspc control --subscribe > "$PANEL_FIFO" &
-xtitle -sf 'T%s' > "$PANEL_FIFO" &
-conky > "$PANEL_FIFO" &
-clock -sf 'S%a %d %b %H:%M' > "$PANEL_FIFO" &
-. panel_colors
 
-cat "$PANEL_FIFO" | panel_bar | lemonbar -g "1600x$PANEL_HEIGHT" -f "$PANEL_FONT_FAMILY" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -u 0 &
+# display current playing song info
+# requires mpc
+while true; do
+  # Get the current status from mpc
+  MUSIC=$(mpc)
+  # When music is playing, mpc shows 3 lines, when stopped only one line. Get the number of lines.
+  MUSIC_LINES=$(echo $MUSIC | wc -l) 
+  # When number of lines is 3, music is playing
+  if [[ $MUSIC_LINES -eq 3 ]]; then
+    # get status: playing or paused
+    MUSIC_STATUS=$(echo $MUSIC | awk 'NR==2' | awk '{print $1}' | tr -d '[]')
+    # get current playing song
+    MUSIC_CURRENT=$(echo $MUSIC | awk 'NR==1')
+    # get current position in song
+    MUSIC_POS=$(echo $MUSIC | awk 'NR==2' | awk '{print $3}')
+    # put all info together
+    echo -e "MUSIC$MUSIC_STATUS: $MUSIC_CURRENT - $MUSIC_POS"
+  else
+    # When number of lines is not 3, no music is playing: display stopped
+    echo -e "MUSICstopped"
+  fi
+  sleep $REFRESH
+done > "$PANEL_FIFO" &
+
+# wifi ssid and signal strenght
+while true; do
+  # get the ssid
+  WIFI_SSID=$(iw $WIFI_DEV link | grep "SSID" | sed 's/SSID: //')
+  # get the signal strength
+  WIFI_SIGNAL=$(iw $WIFI_DEV link | grep "signal" | sed 's/signal: //')
+  # display all info
+  echo -e "WIFIwifi:$WIFI_SSID$WIFI_SIGNAL"
+  sleep $REFRESH
+done > "$PANEL_FIFO" &
+
+# volume indicator
+while true; do
+  # get the current pulseaudio volume ( use amixer for alsa )
+  echo -e "VOLvolume: $(pamixer --get-volume)%"
+  sleep $REFRESH 
+done > "$PANEL_FIFO" &
+
+# clock
+while true; do
+  echo -e "$(date +'S%a %d %b %H:%M')"
+  sleep $REFRESH
+done > "$PANEL_FIFO" &
+
+# import color variables
+. panel_colors
+# start the panel
+cat "$PANEL_FIFO" | panel_bar | lemonbar -g "${PANEL_WIDTH}x${PANEL_HEIGHT}" -f "$PANEL_FONT_FAMILY" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -u 0 &
 
 wait
