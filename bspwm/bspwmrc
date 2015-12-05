@@ -7,7 +7,7 @@ i=1
 for monitor in $(bspc query -M); do
 bspc monitor $monitor \
         -n "$i" \
-        -d {$(echo -e '\uf120'),$(echo -e '\uf269'),$(echo -e '\uf121'),$(echo -e '\uf016'),$(echo -e '\uf099'),$(echo -e '\uf1bc'),$(echo -e '\uf11b')}
+        -d {$(echo -e '\uf120'),$(echo -e '\uf269'),$(echo -e '\uf121'),$(echo -e '\uf07b'),$(echo -e '\uf099'),$(echo -e '\uf1bc'),$(echo -e '\uf11b')}
     let i++
 done
 NMON=$i

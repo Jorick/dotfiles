@@ -20,4 +20,3 @@ Neovim in action
 
 Firefox with stylish and vimperator
 ![firefox](firefox.png)
-
