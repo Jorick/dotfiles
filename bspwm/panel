@@ -29,12 +29,17 @@ while true; do
   if [[ $MUSIC_LINES -eq 3 ]]; then
     # get status: playing or paused
     MUSIC_STATUS=$(echo $MUSIC | awk 'NR==2' | awk '{print $1}' | tr -d '[]')
+    if [[ $MUSIC_STATUS = "playing" ]]; then
+      MUSIC_STATUS_ICON=$ICON_MEDIA_PLAY
+    else
+      MUSIC_STATUS_ICON=$ICON_MEDIA_PAUSE
+    fi
     # get current playing song
     MUSIC_CURRENT=$(echo $MUSIC | awk 'NR==1')
     # get current position in song
     MUSIC_POS=$(echo $MUSIC | awk 'NR==2' | awk '{print $3}')
     # put all info together
-    echo -e "MUSIC$MUSIC_STATUS: $MUSIC_CURRENT - $MUSIC_POS"
+    echo -e "MUSIC$MUSIC_STATUS_ICON $MUSIC_CURRENT - $MUSIC_POS"
   else
     # When number of lines is not 3, no music is playing: display stopped
     echo -e "MUSICstopped"
@@ -45,30 +50,30 @@ done > "$PANEL_FIFO" &
 # wifi ssid and signal strenght
 while true; do
   # get the ssid
-  WIFI_SSID=$(iw "wlp7s0b1" link | grep "SSID" | sed 's/SSID: //')
+  WIFI_SSID=$(iw $WIFI_DEV link | grep "SSID" | sed 's/SSID: //')
   # get the signal strength
-  WIFI_SIGNAL=$(iw "wlp7s0b1" link | grep "signal" | sed 's/signal: //')
+  WIFI_SIGNAL=$(iw $WIFI_DEV link | grep "signal" | sed 's/signal: //')
   # display all info
-  echo -e "WIFIwifi:$WIFI_SSID$WIFI_SIGNAL"
+  echo -e "WIFI$ICON_WIFI_CONNECTED$WIFI_SSID$WIFI_SIGNAL"
   sleep $REFRESH
 done > "$PANEL_FIFO" &
 
 # volume indicator
 while true; do
   # get the current pulseaudio volume ( use amixer for alsa )
-  echo -e "VOLvolume: $(pamixer --get-volume)%"
+  echo -e "VOL$ICON_VOLUME_HIGH $(pamixer --get-volume)"
   sleep $REFRESH 
 done > "$PANEL_FIFO" &
 
 # clock
 while true; do
-  echo -e "$(date +'S%a %d %b %H:%M')"
+  echo -e "S$ICON_DATE$(date +'%a %d %b') $ICON_CLOCK$(date +'%H:%M')"
   sleep $REFRESH
 done > "$PANEL_FIFO" &
 
 # import color variables
 . panel_colors
 # start the panel
-cat "$PANEL_FIFO" | panel_bar | lemonbar -g "1600x$PANEL_HEIGHT" -f "$PANEL_FONT_FAMILY" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -u 0 &
+cat "$PANEL_FIFO" | panel_bar | lemonbar -g "${PANEL_WIDTH}x${PANEL_HEIGHT}" -f "$PANEL_FONT_FAMILY" -f "$PANEL_FONT_ICON" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -u 0 &
 
 wait

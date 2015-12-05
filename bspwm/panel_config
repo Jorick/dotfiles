@@ -1,12 +1,16 @@
 # File locations
 # fifo file
 PANEL_FIFO="/tmp/panel-fifo"
-# panel height
-PANEL_HEIGHT=16
+# panel dimensions
+PANEL_WIDTH=1600
+PANEL_HEIGHT=20
 # panel font
 PANEL_FONT_FAMILY="-*-profont-*-r-*-*-12-*-*-*-c-*-*-1"
+PANEL_FONT_ICON="FontAwesome:size=9"
 # refresh rate of the scripts
-REFRESH=2 
+REFRESH=5
+# Wifi device name
+WIFI_DEV="wlp7s0b1"
 # Icons
 ICON_CLOCK='\uf017 '
 ICON_DATE='\uf073  '
@@ -29,4 +33,7 @@ ICON_WIFI_CONNECTED='\uf1eb'
 ICON_WIFI_DISCONNECTED='\uf05e'
 ICON_MEDIA_BACK='\uf19c'
 ICON_MEDIA_FORWARD='\uf17c'
-ICON_MEDIA_PLAY='\uf198'
+ICON_MEDIA_PLAY='\uf04b'
+ICON_MEDIA_PAUSE='\uf04c'
+ICON_LAYOUT_TILE='\uf196'
+ICON_LAYOUT_MONO='\uf096'
