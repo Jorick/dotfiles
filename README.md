@@ -8,6 +8,7 @@ This repository contains the dotfiles and configuration files of my current setu
 * Panel: lemonbar xft
 * Colorscheme: [base16 ocean dark](https://github.com/chriskempson/base16)
 * Text editor: [neovim](https://github.com/neovim/neovim)
+* Web browser: Firefox using stylish and vimperator extensions
 
 ## Screenshot
 
@@ -16,3 +17,7 @@ Clean:
 
 Neovim in action
 ![neovim](vim.png)
+
+Firefox with stylish and vimperator
+![firefox](firefox.png)
+
