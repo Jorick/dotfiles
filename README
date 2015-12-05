@@ -1,12 +1,18 @@
-Contains:
+This repository contains the dotfiles and configuration files of my current setup. You can also find configuration for some of my older setups: awesome WM, dwm, subtle wm.
 
-Xdefaults
+# Current setup:
 
-Awesome WM theme: 
-Wabbit
-Fence
-tree
+* OS: Arch Linux
+* WM: [bspwm](https://github.com/baskerville/bspwm)
+* Hotkey daemon: [sxhkd](https://github.com/baskerville/sxhkd)
+* Panel: lemonbar xft
+* Colorscheme: [base16 ocean dark](https://github.com/chriskempson/base16)
+* Text editor: [neovim](https://github.com/neovim/neovim)
 
-Subtle theme
+## Screenshot
 
-dwm config
+Clean:
+![clean screenshot](clean.png)
+
+Neovim in action
+![neovim](vim.png)
