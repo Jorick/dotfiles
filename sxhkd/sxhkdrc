@@ -1,0 +1,153 @@
+#
+# bspwm hotkeys
+#
+
+super + alt + Escape
+	bspc quit
+
+super + w
+	bspc window -c
+
+super + t
+	bspc desktop -l next
+
+super + b
+	bspc desktop -B
+
+super + {s,f}
+	bspc window -t {floating,fullscreen}
+
+super + {grave,Tab}
+	bspc {window,desktop} -f last
+
+super + apostrophe
+	bspc window -s last
+
+super + y
+	bspc window -w last.manual
+
+super + m
+	bspc window -s biggest
+
+super + {_,shift + }{h,j,k,l}
+	bspc window -{f,s} {left,down,up,right}
+
+super + {_,shift + }c
+	bspc window -f {next,prev}
+
+super + {comma,period}
+	bspc desktop -C {backward,forward}
+
+super + bracket{left,right}
+	bspc desktop -f {prev,next}
+
+super + ctrl + {h,j,k,l}
+	bspc window -p {left,down,up,right}
+
+super + ctrl + {_,shift + }space
+	bspc {window -p cancel,desktop -c}
+
+super + alt + {h,j,k,l}
+	bspc window -e {left -10,down +10,up -10,right +10}
+
+super + alt + shift + {h,j,k,l}
+	bspc window -e {right -10,up +10,down -10,left +10}
+
+super + e
+  bspc desktop -E
+
+super + b
+  bspc desktop -B
+
+super + ctrl + {1-9}
+	bspc window -r 0.{1-9}
+
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,window -d} ^{1-9,10}
+
+~button1
+  bspc pointer -g focus
+
+super + button{1-3}
+  ; bspc pointer -g {move,resize_side,resize_corner}
+
+super + @button{1-3}
+  bspc pointer -u
+
+#
+# wm independent hotkeys
+#
+super + ctrl + Return
+	urxvtc
+
+## run dialog
+#
+#super + p
+#	dmenu_run -fn '-*-profont-*-r-*-*-12-*-*-*-*-*-*-*' -nb '#2b303b' -nf '#c0c5ce' -sb '#2b303b' -sf '#bf616a'
+
+super + p
+  rofi -show run
+
+super + o
+  rofi -show window
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Lockscreen
+
+super + ctrl + Delete
+    lockscreen
+
+# Sound control: volume and mpd
+XF86AudioRaiseVolume
+    pamixer -i 5
+
+XF86AudioLowerVolume
+    pamixer -d 5
+
+super + Down
+    mpc toggle
+
+super + Up
+    mpc stop
+
+super + Left
+    mpc prev
+
+super + Right
+    mpc next
+
+## Application shortcuts
+
+super + ctrl + c
+    firefox
+
+super + ctrl + b
+    google-chrome-stable
+
+## terminal applications
+
+super + ctrl + r
+    urxvtc -name "rainbowstream" -e rainbowstream
+super + ctrl + t
+    urxvtc -name "twitter" -e twitter shell --format ansi
+
+super + ctrl + i
+    urxvtc -name "irssi" -e irssi
+
+super + ctrl + f
+    urxvtc -name "vifm" -e vifm
+
+super + ctrl + d
+    urxvtc -name "ranger" -e ranger
+
+super + ctrl + n
+    urxvtc -name "ncmpcpp" -e ncmpcpp
+
+super + ctrl + v
+    urxvtc -name "vim" -e nvim
+
+super + ctrl + a
+    urxvtc -name "alsamixer" -e alsamixer

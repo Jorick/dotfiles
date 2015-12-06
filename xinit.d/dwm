@@ -1,0 +1,11 @@
+#! /bin/sh
+
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+./.xinitd/background &
+setxkbmap "be" &
+urxvtd -q -o -f &
+udiskie &
+mopidy &
+conky | while read -r; do xsetroot -name "$REPLY"; done &
+
+exec dwm

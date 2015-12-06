@@ -1,0 +1,11 @@
+#! /bin/bash
+
+./.xinit.d/background &
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+urxvtd -q -o -f &
+udiskie &
+setxkbmap "be" &
+mopidy &
+xsetroot -cursor_name left_ptr &
+
+exec subtle

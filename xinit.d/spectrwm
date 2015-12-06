@@ -1,0 +1,10 @@
+#! /bin/bash
+
+./.xinitd/background &
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+LD_PRELOAD=/usr/lib/libswmhack.so.0.0 urxvtd -q -o -f &
+udiskie &
+setxkbmap "be" &
+mopidy &
+xsetroot -cursor_name left_ptr &
+exec spectrwm
