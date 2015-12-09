@@ -49,13 +49,19 @@ done > "$PANEL_FIFO" &
 
 # wifi ssid and signal strenght
 while true; do
-  # get the ssid
-  WIFI_SSID=$(iw $WIFI_DEV link | grep "SSID" | sed 's/SSID: //')
-  # get the signal strength
-  WIFI_SIGNAL=$(iw $WIFI_DEV link | grep "signal" | sed 's/signal: //')
-  # display all info
-  echo -e "WIFI$ICON_WIFI_CONNECTED$WIFI_SSID$WIFI_SIGNAL"
-  sleep $REFRESH
+  WIFI_INFO=$(iw $WIFI_DEV link)
+  if [[ $WIFI_INFO = "Not connected." ]]; then
+    # display wifi disconnected
+    echo -e "WIFI$ICON_WIFI_DISCONNECTED diconnected"
+  else
+    # get the ssid
+    WIFI_SSID=$(echo $WIFI_INFO | grep "SSID" | sed 's/SSID: //')
+    # get the signal strength
+    WIFI_SIGNAL=$(echo $WIFI_INFO | grep "signal" | sed 's/signal: //')
+    # display all info
+    echo -e "WIFI$ICON_WIFI_CONNECTED$WIFI_SSID$WIFI_SIGNAL"
+  fi
+    sleep $REFRESH
 done > "$PANEL_FIFO" &
 
 # volume indicator
