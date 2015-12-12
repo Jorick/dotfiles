@@ -57,9 +57,16 @@ while true; do
     # get the ssid
     WIFI_SSID=$(echo $WIFI_INFO | grep "SSID" | sed 's/SSID: //')
     # get the signal strength
-    WIFI_SIGNAL=$(echo $WIFI_INFO | grep "signal" | sed 's/signal: //')
+    WIFI_SIGNAL=$(echo $WIFI_INFO | grep "signal" | sed 's/signal: //' | tr -d ' dBm')
+    if (( $WIFI_SIGNAL > -50 )); then
+      WIFI_SIGNAL_PERCENT="100"
+    elif (( $WIFI_SIGNAL < -100 )); then
+      WIFI_SIGNAL_PERCENT="0"
+    else
+      WIFI_SIGNAL_PERCENT=$(echo $((2 * (100 + $WIFI_SIGNAL))))
+    fi
     # display all info
-    echo -e "WIFI$ICON_WIFI_CONNECTED$WIFI_SSID$WIFI_SIGNAL"
+    echo -e "WIFI$ICON_WIFI_CONNECTED$WIFI_SSID $WIFI_SIGNAL_PERCENT"
   fi
     sleep $REFRESH
 done > "$PANEL_FIFO" &
