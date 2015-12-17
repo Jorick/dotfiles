@@ -55,7 +55,7 @@ while true; do
     echo -e "WIFI$ICON_WIFI_DISCONNECTED diconnected"
   else
     # get the ssid
-    WIFI_SSID=$(echo $WIFI_INFO | grep "SSID" | sed 's/SSID: //')
+    #WIFI_SSID=$(echo $WIFI_INFO | grep "SSID" | sed 's/SSID: //')
     # get the signal strength
     WIFI_SIGNAL=$(echo $WIFI_INFO | grep "signal" | sed 's/signal: //' | tr -d ' dBm')
     if (( $WIFI_SIGNAL > -50 )); then
@@ -66,7 +66,7 @@ while true; do
       WIFI_SIGNAL_PERCENT=$(echo $((2 * (100 + $WIFI_SIGNAL))))
     fi
     # display all info
-    echo -e "WIFI$ICON_WIFI_CONNECTED$WIFI_SSID $WIFI_SIGNAL_PERCENT"
+    echo -e "WIFI$ICON_WIFI_CONNECTED $WIFI_SIGNAL_PERCENT"
   fi
     sleep $REFRESH
 done > "$PANEL_FIFO" &
@@ -78,6 +78,22 @@ while true; do
   sleep $REFRESH 
 done > "$PANEL_FIFO" &
 
+# battery indicator
+while true; do
+  if [ -e /sys/class/power_supply/BAT1 ]; then
+    ACPI_STAT=$(acpi)
+    BAT_STAT=$(echo $ACPI_STAT | awk '{print $3}' | tr -d ',')
+    BAT_PERC=$(echo $ACPI_STAT | awk '{print $4}' | tr -d '%,')
+    if [[ $BAT_STAT = "Discharging" ]]; then
+      echo -e "BAT$ICON_BATTERY_FULL $BAT_PERC"
+    else
+      echo -e "BAT$ICON_BATTERY_CHARGING $BAT_PERC"
+    fi
+  else
+    echo -e "BAT$ICON_BATTERY_CHARGING"
+  fi
+  sleep $REFRESH
+done > "$PANEL_FIFO" &
 # clock
 while true; do
   echo -e "S$ICON_DATE$(date +'%a %d %b') $ICON_CLOCK$(date +'%H:%M')"
