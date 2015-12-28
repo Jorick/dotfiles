@@ -1,7 +1,7 @@
 #!/bin/sh
 
 bspc config border_width        4
-bspc config window_gap          8
+bspc config window_gap          16
 
 i=1
 for monitor in $(bspc query -M); do
@@ -60,3 +60,6 @@ bspc rule -a ranger desktop=^4
 
 #/home/jorick/.config/bspwm/panel/panel &
 panel &
+
+# scrit to automatically adjust the gaps depending on number of windows
+#bspwm_auto_gap.sh &
