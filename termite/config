@@ -1,0 +1,78 @@
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = false
+allow_bold = false
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+#font = Profont 9
+font = Source Code Pro Regular 8
+scrollback_lines = 10000
+search_wrap = true
+#icon_name = terminal
+#geometry = 640x480
+
+# "system", "on" or "off"
+cursor_blink = system
+
+# "block", "underline" or "ibeam"
+cursor_shape = underline
+
+# $BROWSER is used by default if set, with xdg-open as a fallback
+browser = firefox
+
+# set size hints for the window
+#size_hints = false
+
+# emit escape sequences for other keys modified by Control
+#modify_other_keys = false
+
+[colors]
+# Base16 Ocean
+# Scheme: Chris Kempson (http://chriskempson.com)
+
+foreground      = #c0c5ce
+foreground_bold = #c0c5ce
+cursor          = #c0c5ce
+background      = #2b303b
+
+# 16 color space
+color0  = #2b303b
+color1  = #bf616a
+color2  = #a3be8c
+color3  = #ebcb8b
+color4  = #8fa1b3
+color5  = #b48ead
+color6  = #96b5b4
+color7  = #c0c5ce
+color8  = #65737e
+color9  = #bf616a
+color10 = #a3be8c
+color11 = #ebcb8b
+color12 = #8fa1b3
+color13 = #b48ead
+color14 = #96b5b4
+color15 = #eff1f5
+
+# 256 color space
+color16 = #d08770
+color17 = #ab7967
+color18 = #343d46
+color19 = #4f5b66
+color20 = #a7adba
+color21 = #dfe1e8
+
+[hints]
+font = Source Code Pro 8
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini cms=#%s
