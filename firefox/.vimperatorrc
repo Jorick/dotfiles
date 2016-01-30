@@ -1,0 +1,14 @@
+"3.9 (created: 2015/02/15 15:49:05)
+
+set hintchars=jfhgkdlsmqrueizoapcnxw
+colorscheme ocean
+source! /home/jorick/.vimperatorrc.local
+noremap j 10j
+noremap k 10k
+
+" vim: set ft=vimperator:
+
+hi CompItem font-family: Source Code Pro; font-size: 8pt;
+hi CmdLine>* font-family: Source Code Pro; font-size: 8pt;
+hi ModeMsg font-family: Source Code Pro; font-size: 8pt;
+

@@ -2,17 +2,13 @@
 URxvt.termName: rxvt-256color
 ! Import color scheme
 #include ".Xresources.d/base16/base16-ocean.dark.256.xresources"
-!#include ".Xresources.d/var/gruvbox-dark.xresources"
-!#include ".Xresources.d/var/navy_and_ivory"
+!#include ".Xresources.d/var/seti.xresources"
 ! Set default font
-*.font: xft:ProFont:style=Regular:pixelsize=11
-*.boldFont: xft:ProFont:style=Regular:pixelsize=12
-!*.font: xft:Monaco:style=Regular:pixelsize=12
-!*.boldFont: xft:Monaco:style=Regular:pixelsize=12
-!*.font: xft:tewi:style=Regular:pixelsize=11
-!*.boldFont: xft:tewi:style=Regular:pixelsize=11
-!*.font: xft:Inconsolata:size=10
-!*.boldFont: xft:Inconsolata:size=10
+!*.font: xft:ProFont:style=Regular:pixelsize=11
+!*.boldFont: xft:ProFont:style=Regular:pixelsize=11
+*.font: xft:Source Code Pro:style=Regular:size=8, xft:Sans:style=Regular:size=8
+*.boldFont: xft:Source Code Pro:style=Regular:size=8, xft:Sans:style=Regular:size=8
+Emacs.font: Source Code Pro 9
 ! URxvt options
 !URxvt.borderColor: #272822
 URxvt.scrollBar: false
@@ -45,7 +41,7 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
 ! rofi options
-rofi.font:                           ProFont 9
+rofi.font:                           Source Code Pro 8
 rofi.fg:                             #c0c5ce
 rofi.bg:                             #2b303b
 rofi.fg-active:                      #eff1f5
@@ -61,10 +57,10 @@ rofi.hlfg:                           #bf616a
 rofi.hlbg:                           #2b303b
 rofi.terminal:                       urxvtc
 rofi.ssh-client:                     ssh
-rofi.bc:                             #4f5b66
+rofi.bc:                             #343d46
 !rofi.bc:                             #2b303b
 rofi.bw:                             1
 rofi.padding:                        4
 rofi.location:                       1
-rofi.yoffset:                        16
+rofi.yoffset:                        20
 rofi.width:                          100

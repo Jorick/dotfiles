@@ -5,7 +5,8 @@ PANEL_FIFO="/tmp/panel-fifo"
 PANEL_WIDTH=1600
 PANEL_HEIGHT=20
 # panel font
-PANEL_FONT_FAMILY="-*-profont-*-r-*-*-12-*-*-*-c-*-*-1"
+#PANEL_FONT_FAMILY="-*-profont-*-r-*-*-12-*-*-*-c-*-*-1"
+PANEL_FONT_FAMILY="Source Code Pro:style=Regular:size=8"
 PANEL_FONT_ICON="FontAwesome:size=9"
 # refresh rate of the scripts
 REFRESH=5
@@ -33,7 +34,9 @@ ICON_WIFI_CONNECTED='\uf1eb'
 ICON_WIFI_DISCONNECTED='\uf05e'
 ICON_MEDIA_BACK='\uf19c'
 ICON_MEDIA_FORWARD='\uf17c'
-ICON_MEDIA_PLAY='\uf04b'
-ICON_MEDIA_PAUSE='\uf04c'
-ICON_LAYOUT_TILE='\uf196'
-ICON_LAYOUT_MONO='\uf096'
+ICON_MEDIA_PLAY='\uf144'
+ICON_MEDIA_PAUSE='\uf28b'
+#ICON_LAYOUT_TILE='\uf196'
+#ICON_LAYOUT_MONO='\uf096'
+ICON_LAYOUT_TILE='\uf10c'
+ICON_LAYOUT_MONO='\uf111'

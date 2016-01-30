@@ -15,7 +15,7 @@ super + b
 	bspc desktop -B
 
 super + {s,f}
-	bspc window -t {floating,fullscreen}
+	bspc window -name {floating,fullscreen}
 
 super + {grave,Tab}
 	bspc {window,desktop} -f last
@@ -48,7 +48,7 @@ super + ctrl + {_,shift + }space
 	bspc {window -p cancel,desktop -c}
 
 super + alt + {h,j,k,l}
-	bspc window -e {left -10,down +10,up -10,right +10}
+	bspc window -e {left -40,down +40,up -40,right +40}
 
 super + alt + shift + {h,j,k,l}
 	bspc window -e {right -10,up +10,down -10,left +10}
@@ -78,7 +78,7 @@ super + @button{1-3}
 # wm independent hotkeys
 #
 super + ctrl + Return
-	urxvtc
+	termite
 
 ## run dialog
 #
@@ -91,6 +91,9 @@ super + p
 super + o
   rofi -show window
 
+super + i
+  rofi -show ssh
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -101,6 +104,12 @@ super + ctrl + Delete
     lockscreen
 
 # Sound control: volume and mpd
+#XF86AudioRaiseVolume
+    #amixer -q sset 'Master' 5%+
+#
+#XF86AudioLowerVolume
+    #amixer -q sset 'Master' 5%-
+#
 XF86AudioRaiseVolume
     pamixer -i 5
 
@@ -130,24 +139,25 @@ super + ctrl + b
 ## terminal applications
 
 super + ctrl + r
-    urxvtc -name "rainbowstream" -e rainbowstream
+    termite --name="rainbowstream" -e rainbowstream
+
 super + ctrl + t
-    urxvtc -name "twitter" -e twitter shell --format ansi
+    termite --name="twitter" -e twitter shell --format ansi
 
 super + ctrl + i
-    urxvtc -name "irssi" -e irssi
-
-super + ctrl + f
-    urxvtc -name "vifm" -e vifm
+    termite --name="irssi" -e irssi
 
 super + ctrl + d
-    urxvtc -name "ranger" -e ranger
+    termite --name="vifm" -e vifm
+
+super + ctrl + f
+    termite --name="ranger" -e ranger
 
 super + ctrl + n
-    urxvtc -name "ncmpcpp" -e ncmpcpp
+    termite --name="ncmpcpp" -e ncmpcpp
 
 super + ctrl + v
-    urxvtc -name "vim" -e nvim
+    termite --name="vim" -e nvim
 
 super + ctrl + a
-    urxvtc -name "alsamixer" -e alsamixer
+    termite --name="alsamixer" -e alsamixer
