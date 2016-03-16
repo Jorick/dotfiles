@@ -3,10 +3,16 @@
 . panel_config
 
 # check if the panel is already running
+# old
 if [ $(pgrep -cx panel) -gt 1 ] ; then
 	printf "%s\n" "The panel is already running." >&2
 	exit 1
 fi
+# new
+#if xdo id -a "$PANEL_WM_NAME" > /dev/null ; then
+  #printf "%s\n" "The panel is already running." >&2
+  #exit 1
+#fi
 
 # exit gracefully when terminated
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
@@ -16,7 +22,7 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 mkfifo "$PANEL_FIFO"
 
 # bspwm workspace info
-bspc control --subscribe > "$PANEL_FIFO" &
+bspc subscribe report > "$PANEL_FIFO" &
 
 # display current playing song info
 # requires mpc
@@ -72,17 +78,32 @@ while true; do
 done > "$PANEL_FIFO" &
 
 # volume indicator
+# requires amixer for alsa or pamixer for pulseaudio
 while true; do
   # get the current pulseaudio volume ( use amixer for alsa )
-  echo -e "VOL$ICON_VOLUME_HIGH $(pamixer --get-volume)"
+  # uncomment for pulseaudio
+  VOLUME=$(pamixer --get-volume)
+  # uncomment for alsa
+  #VOLUME=$(amixer get Master -M | grep -oE '[[:digit:]]*%' | tr -d '%')"
+  # Adapt icon for high and low volume
+  if [ $VOLUME -ge 50 ]; then
+    echo -e "VOL$ICON_VOLUME_HIGH $VOLUME"
+  else
+    echo -e "VOL$ICON_VOLUME_LOW $VOLUME"
+  fi
   sleep $REFRESH 
 done > "$PANEL_FIFO" &
 
 # battery indicator
+# requires acpi
 while true; do
+  # check if battery is present
   if [ -e /sys/class/power_supply/BAT1 ]; then
+    # get the battery info from acpi
     ACPI_STAT=$(acpi)
+    # get the status: charging, discharging
     BAT_STAT=$(echo $ACPI_STAT | awk '{print $3}' | tr -d ',')
+    # get the current battery load percentage
     BAT_PERC=$(echo $ACPI_STAT | awk '{print $4}' | tr -d '%,')
     if [[ $BAT_STAT = "Discharging" ]]; then
       echo -e "BAT$ICON_BATTERY_FULL $BAT_PERC"

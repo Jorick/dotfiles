@@ -38,25 +38,26 @@ bspc desktop ^2 -l monocle
 bspc desktop ^3 -l monocle
 
 # Rules
-bspc rule -a Firefox desktop=^2
-bspc rule -a Google-chrome-stable desktop=^2
-bspc rule -a Thunar desktop=^4 
-bspc rule -a File-roller pseudo_tiled=on
-bspc rule -a Transmission-gtk desktop=^4
-bspc rule -a Conky sticky=on manage=off lower=on
-bspc rule -a astime sticky=on
-bspc rule -a MPlayer floating=on
-bspc rule -a Steam desktop=^7
-bspc rule -a Atom desktop=^3
+bspc rule -a Firefox desktop='^2'
+bspc rule -a Google-chrome-stable desktop='^2'
+bspc rule -a Atom desktop='^3'
+bspc rule -a Emacs desktop='^3'
+bspc rule -a Thunar desktop='^4'
+bspc rule -a Filezilla desktop='^4'
+bspc rule -a File-roller state=pseudo_tiled
+bspc rule -a Transmission-gtk desktop='^4'
+bspc rule -a astime flag=sticky
+bspc rule -a MPlayer state=floating
+bspc rule -a Steam desktop='^7'
 
 # Placing CLI apps on desktops
-bspc rule -a ncmpcpp desktop=^6
-bspc rule -a irssi desktop=^5
-bspc rule -a rainbowstream desktop=^5
-bspc rule -a twitter desktop=^5
-bspc rule -a vifm desktop=^4
-bspc rule -a vim desktop=^3
-bspc rule -a ranger desktop=^4
+bspc rule -a URxvt:vim desktop='^3'
+bspc rule -a URxvt:vifm desktop='^4'
+bspc rule -a URxvt:ranger desktop='^4'
+bspc rule -a URxvt:irssi desktop='^5'
+bspc rule -a URxvt:rainbowstream desktop='^5'
+bspc rule -a URxvt:twitter desktop='^5'
+bspc rule -a URxvt:ncmpcpp desktop='^6'
 
 #/home/jorick/.config/bspwm/panel/panel &
 panel &
