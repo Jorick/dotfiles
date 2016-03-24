@@ -1,55 +1,88 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-bindkey -v
-# path for custom zsh stuff
+# Path to your oh-my-zsh installation.
+  export ZSH=/home/jorick/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
 fpath=( "$HOME/.zshfunctions" $fpath )
+ZSH_THEME="pure"
 
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/jorick/.zshrc'
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git github node npm)
+
+# User configuration
+
+  export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jorick/bin:/home/jorick/.config/bspwm/panel:/home/jorick/node_modules/.bin:/home/jorick/bin:/home/jorick/.config/bspwm/panel:/home/jorick/node_modules/.bin"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+source $ZSH/oh-my-zsh.sh
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
 #
-# autoload zsh stuff
-# 
-# Base 16 shell color scheme
-#BASE16_SHELL="$HOME/.config/base16-shell/base16-monokai.dark.sh"
-#[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL ]
-##################
-# PURE zsh theme #
-##################
-autoload -U promptinit && promptinit
-
-# pure options
-PURE_CMD_MAX_EXEC_TIME=60
-PURE_PROMPT_SYMBOL=">>>"
-
-# load pure
-prompt pure
-
-autoload -U colors && colors
-# zsh options
-setopt nohashdirs
-unsetopt correct_all
-setopt correct
-
-zstyle ':completion:*' menu select
-zstyle ':completion:*' rehash true
-
-setopt completealiases
-
-# Stuff transfered from .bashrc
-xhost +local:root > /dev/null 2>&1
-
-export HISTCONTROL=ignoreboth
-export EDITOR="nvim"
-# set colors for ls
-eval $(dircolors ~/.dircolors)
-
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 # set aliasses
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
@@ -74,11 +107,11 @@ alias ssh-pi='ssh -p 50299 192.168.0.128'
 alias screensaver-off='xset -dpms && xset s off'
 alias screensaver-on='xset +dpms && xset s on'
 alias mirror-update='sudo reflector -p https -l 100 -f 10 --sort score --save /etc/pacman.d/mirrorlist'
-# Reddit cli app
-alias rtv='rtv -u Vargman'
 # Copy and paste to/from clipboard
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
+# Set pulseaudio volume to valua with pamixer
+#alias setvolume='pamixer --set-volume'
 # Crazy hacking stuff
 alias haxor='cat /dev/urandom | hexdump -C | grep "ca fe"'
 #alias twitter='twitter --format ansi'
@@ -107,18 +140,5 @@ ex ()
   fi
 }
 
-# Path for own scripts
-export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/.config/bspwm/panel
-# prompt
-#PS1=' \e[0;34m\u \e[0m@ \h \w \n\$ '
-#PS1="%F{blue}%n%f @ %m %~
-#%# %F{blue}>>>%f "
 BROWSER=/usr/bin/firefox
-
-# Variables to run bar with bspwm
-
-# Add Fish like syntac highlighting
-# requires zsh-syntax-highlighting
 source $HOME/github/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
