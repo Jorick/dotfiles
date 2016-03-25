@@ -6,8 +6,8 @@
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 fpath=( "$HOME/.zshfunctions" $fpath )
+PURE_CMD_MAX_EXEC_TIME=60
 ZSH_THEME="pure"
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
