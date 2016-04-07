@@ -7,34 +7,46 @@ call plug#begin("~/.config/nvim/bundle")
 
 " Colors
 Plug 'chriskempson/base16-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'morhetz/gruvbox'
 " Syntax & autocomplete stuff
 Plug 'scrooloose/syntastic'
-Plug 'marijnh/tern_for_vim'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'myhere/vim-nodejs-complete'
-Plug 'moll/vim-node'
 Plug 'Valloric/YouCompleteMe'
+" Javascript & node
+Plug 'ternjs/tern_for_vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'moll/vim-node'
 Plug 'walm/jshint.vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
+" Python
+Plug 'davidhalter/jedi-vim'
+" HTML & CSS
 Plug 'othree/html5.vim'
-Plug 'tpope/vim-surround'
 Plug 'hail2u/vim-css3-syntax'
+" Golang
+Plug 'fatih/vim-go'
+Plug 'vim-jp/vim-go-extra'
+" Various
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'tpope/vim-surround'
 " interface and utilities
 Plug 'kien/ctrlp.vim'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'Townk/vim-autoclose'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
+"Plug 'vim-scripts/utl.vim'
+"Plug 'jceb/vim-orgmode'
+" Snippets
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'honza/vim-snippets'
 " Fancy things
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'https://github.com/vim-scripts/vimwiki.git'
-"Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
@@ -120,12 +132,21 @@ syntax on
 " ======== Set color scheme ========
 let base16colorspace=256
 colorscheme base16-ocean
+"colorscheme seti
 " transparent background
 hi Normal ctermbg=none
+
+" Setting a different <leader>
+let  mapleader = ','
 
 " ======== Options for markdown text ========
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.txt set filetype=markdown
+
+" ======== allow css and sass autocomple ========
+set omnifunc=csscomplete#CompleteCSS
+autocmd BufNewFile,BufRead *.scss set ft=scss.css<Paste>
+
 " ======== NERDTree options ========
 "autocmd vimenter * if !argc() | NERDTree | endif
 map <C-t> :NERDTreeToggle<CR>
@@ -138,16 +159,17 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " set NERDTree arrows
 "let g:NERDTreeDirArrowExpandable = '+'
 "let g:NERDTreeDirArrowCollapsible = '-'
+"
+"
+" ======== YouCompleteMe settings =========
+let g:ycm_auto_stop_csharp_server = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+
 " ======== Syntastic settings ========
 " Set checkers for syntastic:
-
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_python_checkers = ['pylint']
-
-" ======== Nerdcommenter settings ========
-" Setting a different <leader> for nerdcommenter
-let  mapleader = ','
 
 " ======== Tmuxline settings ========
 let g:tmuxline_powerline_separators = 1
@@ -163,6 +185,7 @@ let g:tagbar_type_css = {
         \ 'i:identities'
     \ ]
     \ }
+
 " ======== Vim-airline settings ========
 set laststatus=2
 let g:airline_theme='base16'
@@ -173,6 +196,7 @@ let g:airline#extensions#tabline#left_alt_sep = '░'
 " Disable powerline arrows and setting blank seperators creates a rectangular box
 let g:airline_left_sep = '█▓░'
 let g:airline_right_sep = '░▓█'
+
 " ========= vim-nodejs-complete settings =========
 let g:nodejs_complete_config = {
 \  'js_compl_fn': 'jscomplete#CompleteJS',
