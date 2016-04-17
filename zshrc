@@ -30,9 +30,12 @@ PURE_CMD_MAX_EXEC_TIME=60
 prompt pure
 autoload -U colors && colors
 
+zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash true
+
 # PLUGINS
 # list plugins
-plugins=(grml-comp zsh-syntax-highlighting update)
+plugins=(grml-comp update golang manpage zsh-syntax-highlighting)
 
 # Load them from ZSHFUNC location
 for plugin ($plugins); do
@@ -46,11 +49,14 @@ setopt correct
 setopt completealiases
 setopt HIST_IGNORE_SPACE 
 
+# shell settings
+#set -eu
+set -o pipefail
 # zsh-syntax-highlighting options
 # source and instructions see: https://github.com/zsh-users/zsh-syntax-highlighting
 
 # highlighters to use
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern line)
 # override highlighters 
 typeset -A ZSH_HIGHLIGHT_STYLES
 # remove all underline in main
@@ -60,8 +66,8 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=gree,none'
 
 # Stuff transfered from .bashrc
-xhost +local:root > /dev/null 2>&1
-export HISTCONTROL=ignoreboth
+#xhost +local:root > /dev/null 2>&1
+#export HISTCONTROL=ignoreboth
 
 # set default apps
 export EDITOR="nvim"
@@ -132,3 +138,7 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.config/bspwm/panel
 # Path for local nodejs modules
 export PATH=$PATH:$HOME/node_modules/.bin
+export GOPATH=$HOME/gocode
+export PATH=$PATH:$GOPATH/bin
+# Path for ruby gems
+export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin

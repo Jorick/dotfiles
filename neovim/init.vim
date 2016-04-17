@@ -21,8 +21,9 @@ Plug 'davidhalter/jedi-vim'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 " Golang
-Plug 'fatih/vim-go'
-Plug 'vim-jp/vim-go-extra'
+"Plug 'fatih/vim-go'
+"Plug 'vim-jp/vim-go-extra'
+"Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 " Various
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'tpope/vim-surround'
@@ -145,7 +146,7 @@ autocmd BufNewFile,BufReadPost *.txt set filetype=markdown
 
 " ======== allow css and sass autocomple ========
 set omnifunc=csscomplete#CompleteCSS
-autocmd BufNewFile,BufRead *.scss set ft=scss.css<Paste>
+"autocmd BufNewFile,BufRead *.scss set ft=scss.css<Paste>
 
 " ======== NERDTree options ========
 "autocmd vimenter * if !argc() | NERDTree | endif
