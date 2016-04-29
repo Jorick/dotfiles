@@ -6,8 +6,16 @@ URxvt.termName: rxvt-256color
 ! Set default font
 !*.font: xft:ProFont:style=Regular:pixelsize=11
 !*.boldFont: xft:ProFont:style=Regular:pixelsize=11
-*.font: xft:Source Code Pro:style=Regular:size=8, xft:Sans:style=Regular:size=8
-*.boldFont: xft:Source Code Pro:style=Regular:size=8, xft:Sans:style=Regular:size=8
+*.font: xft:Source Code Pro:style=Regular:size=8, \
+        xft:Sans:style=Regular:size=8, \
+        xft:FreeSerif:style=Regular:size=8, \
+        xft:Unifont:style=Sans-Serif:size=8, \
+        xft:FontAwesome:size=9
+*.boldFont: xft:Source Code Pro:style=Regular:size=8, \
+        xft:Sans:style=Regular:size=8, \
+        xft:FreeSerif:style=Regular:size=8, \
+        xft:Unifont:style=Sans-Serif:size=8, \
+        xft:FontAwesome:size=9
 Emacs.font: Source Code Pro 9
 ! URxvt options
 !URxvt.borderColor: #272822
@@ -42,23 +50,13 @@ Xft.lcdfilter: lcddefault
 
 ! rofi options
 rofi.font:                           Source Code Pro 8
-rofi.fg:                             #c0c5ce
-rofi.bg:                             #2b303b
-rofi.fg-active:                      #eff1f5
-rofi.fg-urgent:                      #a3be8c
-rofi.hlfg-active:                    #bf616a
-rofi.hlfg-urgent:                    #bf616a
-rofi.bg-active:                      #2b303b
-rofi.bg-urgent:                      #2b303b
-rofi.hlbg-active:                    #2b303b
-rofi.hlbg-urgent:                    #2b303b
-rofi.bgalt:                          #2b303b
-rofi.hlfg:                           #bf616a
-rofi.hlbg:                           #2b303b
+rofi.color-normal:                   #2b303b, #c0c5ce, #2b303b, #bf616a, #2b303b
+rofi.color-urgent:                   #2b303b, #d08770, #2b303b, #d08770, #2b303b
+rofi.color-active:                   #2b303b, #a3be8c, #2b303b, #a3be8c, #2b303b
+rofi.color-window:                   #2b303b, #343d46
+rofi.opacity:                        100
 rofi.terminal:                       urxvtc
 rofi.ssh-client:                     ssh
-rofi.bc:                             #343d46
-!rofi.bc:                             #2b303b
 rofi.bw:                             1
 rofi.padding:                        4
 rofi.location:                       1

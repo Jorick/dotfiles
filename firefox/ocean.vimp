@@ -13,7 +13,7 @@ hi Normal               color: #c0c5ce; background: #2b303b;
 hi CmdLine              background: #2b303b; color: #c0c5ce; font-family: Source Code Pro; font-size: 8pt;
 hi CompDesc             color: #c6c6c6; width: 50%; font-family: Source Code Pro; font-size: 8pt;
 hi CompIcon             width: 16px; min-width: 16px; display: inline-block; margin-right: .5ex;
-hi CompItem[selected]   background: #2b303b; color: #bf616a; font-family: Source Code Pro;
+hi CompItem[selected]   background: #bf616a; color: #2b303b; font-family: Source Code Pro;
 " hi CompLess             text-align: center; height: 0; line-height: .5ex; padding-top: 1ex;
 " hi CompMore             text-align: center; height: .5ex; line-height: .5ex; margin-bottom: -.5ex;
 hi CompMsg              font-family: Source Code Pro; font-style: monospace; margin-left: 16px; font-size: 8pt;
