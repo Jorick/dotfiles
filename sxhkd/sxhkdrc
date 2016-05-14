@@ -156,17 +156,17 @@ super + ctrl + Delete
     lockscreen
 
 # Sound control: volume and mpd
-#XF86AudioRaiseVolume
-    #amixer -q sset 'Master' 5%+
-#
-#XF86AudioLowerVolume
-    #amixer -q sset 'Master' 5%-
-#
 XF86AudioRaiseVolume
-    pamixer -i 5
+    amixer -q sset 'Master' 5%+
 
 XF86AudioLowerVolume
-    pamixer -d 5
+    amixer -q sset 'Master' 5%-
+
+#XF86AudioRaiseVolume
+    #pamixer -i 5
+
+#XF86AudioLowerVolume
+    #pamixer -d 5
 
 super + Down
     mpc toggle

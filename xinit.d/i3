@@ -2,7 +2,6 @@
 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 ./.xinit.d/background &
-setxkbmap "be" &
 urxvtd -q -o -f &
 udiskie &
 xsetroot -cursor_name left_ptr &

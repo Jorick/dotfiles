@@ -1,0 +1,4 @@
+#! /bin/bash
+
+setxkbmap "be" &
+exec steam -bigpicture
