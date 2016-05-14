@@ -1,5 +1,14 @@
 #!/bin/sh
-
+#
+# ██                                                           
+#░██              ██████                                       
+#░██       ██████░██░░░██ ███     ██ ██████████  ██████  █████ 
+#░██████  ██░░░░ ░██  ░██░░██  █ ░██░░██░░██░░██░░██░░█ ██░░░██
+#░██░░░██░░█████ ░██████  ░██ ███░██ ░██ ░██ ░██ ░██ ░ ░██  ░░ 
+#░██  ░██ ░░░░░██░██░░░   ░████░████ ░██ ░██ ░██ ░██   ░██   ██
+#░██████  ██████ ░██      ███░ ░░░██ ███ ░██ ░██░███   ░░█████ 
+#░░░░░   ░░░░░░  ░░      ░░░    ░░░ ░░░  ░░  ░░ ░░░     ░░░░░  
+#
 bspc config border_width        4
 bspc config window_gap          16
 
@@ -35,11 +44,11 @@ bspc rule -a Dmenu border=on
 
 # Setting default layouts for desktops
 bspc desktop ^2 -l monocle
-bspc desktop ^3 -l monocle
+#bspc desktop ^3 -l monocle
 
 # Rules
 bspc rule -a Firefox desktop='^2'
-bspc rule -a Google-chrome-stable desktop='^2'
+bspc rule -a Google-chrome desktop='^2'
 bspc rule -a Atom desktop='^3'
 bspc rule -a Emacs desktop='^3'
 bspc rule -a Thunar desktop='^4'

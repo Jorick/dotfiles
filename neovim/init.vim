@@ -1,4 +1,13 @@
-" .vimrc
+"
+"          ██                           
+"         ░░                            
+" ██    ██ ██ ██████████  ██████  █████ 
+"░██   ░██░██░░██░░██░░██░░██░░█ ██░░░██
+"░░██ ░██ ░██ ░██ ░██ ░██ ░██ ░ ░██  ░░ 
+" ░░████  ░██ ░██ ░██ ░██ ░██   ░██   ██
+"  ░░██   ░██ ███ ░██ ░██░███   ░░█████ 
+"   ░░    ░░ ░░░  ░░  ░░ ░░░     ░░░░░  
+"
 " See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
 
 " ======== Vim-plug settings ========
@@ -10,8 +19,11 @@ Plug 'chriskempson/base16-vim'
 " Syntax & autocomplete stuff
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe'
+" C language
+"Plug 'Rip-Rip/clang_complete'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Javascript & node
-Plug 'ternjs/tern_for_vim'
+"Plug 'ternjs/tern_for_vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'moll/vim-node'
 Plug 'walm/jshint.vim'
@@ -20,6 +32,7 @@ Plug 'davidhalter/jedi-vim'
 " HTML & CSS
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'digitaltoad/vim-pug'
 " Golang
 "Plug 'fatih/vim-go'
 "Plug 'vim-jp/vim-go-extra'
@@ -40,14 +53,14 @@ Plug 'godlygeek/tabular'
 "Plug 'vim-scripts/utl.vim'
 "Plug 'jceb/vim-orgmode'
 " Snippets
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'honza/vim-snippets'
+"Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'tomtom/tlib_vim'
+"Plug 'honza/vim-snippets'
 " Fancy things
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'https://github.com/vim-scripts/vimwiki.git'
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
@@ -165,12 +178,15 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " ======== YouCompleteMe settings =========
 let g:ycm_auto_stop_csharp_server = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 " ======== Syntastic settings ========
 " Set checkers for syntastic:
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_python_checkers = ['pylint']
+autocmd bufwritepost *.js silent !standard-format -w %
+set autoread
 
 " ======== Tmuxline settings ========
 let g:tmuxline_powerline_separators = 1

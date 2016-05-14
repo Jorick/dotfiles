@@ -2,22 +2,35 @@
 #
 # Example panel for LemonBoy's bar
 . panel_colors
+. panel_config
 
 num_mon=$(bspc query -M | wc -l)
 
 while read -r line ; do
 	case $line in
-    C*)
-			# conky output 
-      conky="%{F$COLOR_CONCKY_FG}%{B$COLOR_CONKY_BG} ${line#?} %{B-}%{F-}"
-			;;
+#    C*)
+#			# conky output 
+#      conky="%{F$COLOR_CONCKY_FG}%{B$COLOR_CONKY_BG} ${line#?} %{B-}%{F-}"
+#			;;
 		S*)
 			# clock output
 			sys_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
 			;;
-		T*)
-			# xtitle output
-			title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG} ${line#?} %{B-}%{F-}"
+		MUSIC*)
+			# clock output
+			music="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?????} %{B-}%{F-}"
+			;;
+		VOL*)
+			# clock output
+			volume="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#???} %{B-}%{F-}"
+			;;
+		BAT*)
+			# clock output
+			battery="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#???} %{B-}%{F-}"
+			;;
+		WIFI*)
+			# clock output
+			wifi="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#????} %{B-}%{F-}"
 			;;
 		W*)
 			# bspwm internal state
@@ -66,12 +79,16 @@ while read -r line ; do
 						;;
 					L*)
 						# layout
-						wm_infos="$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${name} %{B-}%{F-}"
+            if [[ $name = "T" ]]; then
+              wm_infos="$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} $(echo -e ${ICON_LAYOUT_TILE}) %{B-}%{F-}"
+            else
+              wm_infos="$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} $(echo -e ${ICON_LAYOUT_MONO}) %{B-}%{F-}"
+            fi
 						;;
 				esac
 				shift
 			done
 			;;
 	esac 
-  printf "%s\n" "%{l}${wm_infos}${title}%{r}${conky}${sys_infos}"
+  printf "%s\n" "%{l}${wm_infos}%{r}${music}${volume}${wifi}${battery}${sys_infos}"
 done
