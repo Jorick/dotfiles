@@ -19,9 +19,13 @@ Plug 'chriskempson/base16-vim'
 " Syntax & autocomplete stuff
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe'
+"function! DoRemote(arg)
+  "UpdateRemotePlugins
+"endfunction
+"Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 " C language
 "Plug 'Rip-Rip/clang_complete'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Javascript & node
 "Plug 'ternjs/tern_for_vim'
 Plug 'jelera/vim-javascript-syntax'
@@ -38,7 +42,7 @@ Plug 'digitaltoad/vim-pug'
 "Plug 'vim-jp/vim-go-extra'
 "Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 " Various
-Plug 'PotatoesMaster/i3-vim-syntax'
+"Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'tpope/vim-surround'
 " interface and utilities
 Plug 'kien/ctrlp.vim'
@@ -176,9 +180,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "
 "
 " ======== YouCompleteMe settings =========
-let g:ycm_auto_stop_csharp_server = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"let g:ycm_auto_stop_csharp_server = 1
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"
+" ======== Use deoplete ===========
+let g:deoplete#enable_at_startup = 1
 
 " ======== Syntastic settings ========
 " Set checkers for syntastic:
