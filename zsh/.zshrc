@@ -103,7 +103,7 @@ alias spac='pacman -Ss'
 alias upac='sudo pacman -Syu'
 # Packer aliasses
 #alias packer='packer-color'
-alias upacaur='packer-color -Su --auronly'
+alias upacaur='pacaur -Sua' 
 # various aliasses
 alias google-chrome='google-chrome-stable'
 alias um='udiskie-umount'
@@ -146,7 +146,7 @@ ex ()
 
 # Path for own scripts
 export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/.config/bspwm/panel
+export PATH=$PATH:$HOME/.config/panel
 # Path for local nodejs modules
 export PATH=$PATH:$HOME/node_modules/.bin
 export GOPATH=$HOME/gocode

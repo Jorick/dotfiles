@@ -153,7 +153,7 @@ super + Escape
 # Lockscreen
 
 super + ctrl + Delete
-    lockscreen
+    i3lock-fancy -pf Source-Code-Pro
 
 # Sound control: volume and mpd
 XF86AudioRaiseVolume
