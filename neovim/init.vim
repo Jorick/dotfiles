@@ -24,7 +24,7 @@ function! DoRemote(arg)
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 " C language
-"Plug 'Rip-Rip/clang_complete'
+Plug 'Rip-Rip/clang_complete'
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Javascript & node
 Plug 'ternjs/tern_for_vim'

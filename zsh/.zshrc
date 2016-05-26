@@ -34,7 +34,7 @@ autoload -U promptinit && promptinit
 
 # pure options
 PURE_CMD_MAX_EXEC_TIME=60
-PURE_PROMPT_SYMBOL=">"
+#PURE_PROMPT_SYMBOL=">"
 #
 # load pure
 prompt pure
