@@ -27,6 +27,10 @@ zstyle :compinstall filename '/home/jorick/.zshrc'
 autoload -Uz compinit
 compinit
 
+# Base16 Shell colors
+BASE16_SHELL="$HOME/github/base16-shell/base16-ocean.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
 # PURE zsh theme
 # source and instructions see: https://github.com/sindresorhus/pure
 
@@ -88,8 +92,9 @@ eval $(dircolors ~/.dircolors)
 
 # set aliasses
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
-alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias ll='ls -lhs --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias lla='ls -lahs --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias grep='grep --color=tty -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
@@ -101,9 +106,10 @@ alias v='nvim'
 alias ipac='sudo pacman -S'
 alias spac='pacman -Ss'
 alias upac='sudo pacman -Syu'
-# Packer aliasses
-#alias packer='packer-color'
-alias upacaur='pacaur -Sua' 
+# pacaur aliasses
+alias saur='pacaur -Ss'
+alias iaur='pacaur -S'
+alias uaur='pacaur -Sua' 
 # various aliasses
 alias google-chrome='google-chrome-stable'
 alias um='udiskie-umount'
@@ -153,3 +159,10 @@ export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin
 # Path for ruby gems
 export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin
+export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
+export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
+
+## Linuxbrew paths
+#export PATH=$PATH:$HOME/.linuxbrew/bin
+#export MANPATH=$MANPATH:$HOME/.linuxbrew/share/man
+#export INFOPATH=$INFOPATH:$HOME/.linuxbrew/share/info

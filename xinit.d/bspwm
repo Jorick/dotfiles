@@ -5,7 +5,7 @@
 sxhkd &
 urxvtd -q -o -f &
 udiskie &
-#setxkbmap "be" &
+setxkbmap "be" &
 compton -c -r 8 -o 0.70 -l -5 -t -5 -b &
 mopidy &
 xsetroot -cursor_name left_ptr &

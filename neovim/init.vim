@@ -37,6 +37,8 @@ Plug 'davidhalter/jedi-vim'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'digitaltoad/vim-pug'
+" Lisp
+Plug 'kovisoft/slimv'
 " Golang
 "Plug 'fatih/vim-go'
 "Plug 'vim-jp/vim-go-extra'
@@ -184,8 +186,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "let g:ycm_autoclose_preview_window_after_completion = 1
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "
-" ======== Use deoplete ===========
+" ======== Deoplete settings ===========
 let g:deoplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" ======== Python Jedi settings ========
+let g:jedi#auto_vim_configuration = 0
 
 " ======== Syntastic settings ========
 " Set checkers for syntastic:
@@ -226,3 +232,6 @@ let g:nodejs_complete_config = {
 \  'js_compl_fn': 'jscomplete#CompleteJS',
 \  'max_node_compl_len': 15
 \}
+
+" ========== Goyo settings ===========
+let g:goyo_width = 120
