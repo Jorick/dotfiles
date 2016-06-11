@@ -2,10 +2,10 @@ This repository contains the dotfiles and configuration files of my current setu
 
 # Current setup:
 
-* OS: Arch Linux
+* OS: [Arch Linux](http://www.archlinux.org)
 * WM: [bspwm](https://github.com/baskerville/bspwm)
 * Hotkey daemon: [sxhkd](https://github.com/baskerville/sxhkd)
-* Panel: lemonbar xft
+* Panel: [lemonbar xft](https://github.com/krypt-n/bar)
 * Colorscheme: [base16 ocean dark](https://github.com/chriskempson/base16)
 * Text editor: [neovim](https://github.com/neovim/neovim)
 * Web browser: Firefox using stylish and vimperator extensions
@@ -20,6 +20,3 @@ Neovim in action
 
 Firefox with stylish and vimperator
 ![firefox](firefox.png)
-
-Lockscreen
-![lockscreen](lockscreen.png)
