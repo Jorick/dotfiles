@@ -28,8 +28,8 @@ autoload -Uz compinit
 compinit
 
 # Base16 Shell colors
-BASE16_SHELL="$HOME/github/base16-shell/base16-ocean.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+#BASE16_SHELL="$HOME/github/base16-shell/base16-ocean.dark.sh"
+#[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # PURE zsh theme
 # source and instructions see: https://github.com/sindresorhus/pure
@@ -61,6 +61,7 @@ setopt nohashdirs
 unsetopt correct_all
 setopt correct
 setopt completealiases
+# ignore command beginning with a space
 setopt HIST_IGNORE_SPACE 
 
 # shell settings
@@ -162,7 +163,7 @@ export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin
 export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
 export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
 
-## Linuxbrew paths
+# Linuxbrew paths
 #export PATH=$PATH:$HOME/.linuxbrew/bin
 #export MANPATH=$MANPATH:$HOME/.linuxbrew/share/man
 #export INFOPATH=$INFOPATH:$HOME/.linuxbrew/share/info
