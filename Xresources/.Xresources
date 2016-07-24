@@ -2,7 +2,6 @@
 URxvt.termName: rxvt-256color
 ! Import color scheme
 #include ".Xresources.d/base16/base16-ocean.dark.256.xresources"
-!#include ".Xresources.d/var/seti.xresources"
 ! Set default font
 !*.font: xft:ProFont:style=Regular:pixelsize=11
 !*.boldFont: xft:ProFont:style=Regular:pixelsize=11
@@ -16,7 +15,7 @@ URxvt.termName: rxvt-256color
         xft:FreeSerif:style=Regular:size=8, \
         xft:Unifont:style=Sans-Serif:size=8, \
         xft:FontAwesome:size=9
-Emacs.font: Source Code Pro 9
+!Emacs.font: Source Code Pro 9
 ! URxvt options
 !URxvt.borderColor: #272822
 URxvt.scrollBar: false
@@ -25,7 +24,8 @@ URxvt.cursorUnderline: true
 URxvt.internalBorder: 8
 !real trasnparancy and background color
 !URxvt.depth: 32
-!URxvt.background: [90]#2d2d2d
+!URxvt.background: [95]#2b303b
+!URxvt.geometry: 165x40
 ! urxvt perl extensions
 URxvt.perl-ext-common: fullscreen,default,matcher,url-select
 ! fullscreen

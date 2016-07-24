@@ -40,9 +40,9 @@ Plug 'digitaltoad/vim-pug'
 " Lisp
 Plug 'kovisoft/slimv'
 " Golang
-"Plug 'fatih/vim-go'
-"Plug 'vim-jp/vim-go-extra'
-"Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'fatih/vim-go'
+Plug 'vim-jp/vim-go-extra'
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 " Various
 "Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'tpope/vim-surround'
@@ -191,7 +191,7 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " ======== Python Jedi settings ========
-let g:jedi#auto_vim_configuration = 0
+"let g:jedi#auto_vim_configuration = 0
 
 " ======== Syntastic settings ========
 " Set checkers for syntastic:

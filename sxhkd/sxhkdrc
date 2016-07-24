@@ -190,6 +190,9 @@ super + ctrl + b
 
 super + ctrl + a
     atom
+
+super + ctrl + p
+    pcmanfm
 ## terminal applications
 
 super + ctrl + r
