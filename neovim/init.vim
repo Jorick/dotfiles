@@ -44,7 +44,7 @@ Plug 'fatih/vim-go'
 Plug 'vim-jp/vim-go-extra'
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 " Various
-"Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'tpope/vim-surround'
 " interface and utilities
 Plug 'kien/ctrlp.vim'

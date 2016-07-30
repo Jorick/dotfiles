@@ -107,6 +107,10 @@ alias v='nvim'
 alias ipac='sudo pacman -S'
 alias spac='pacman -Ss'
 alias upac='sudo pacman -Syu'
+# Dnf aliasses
+#alias ipac='sudo dnf install'
+#alias spac='sudo dnf search'
+#alias upac='sudo dnf upgrade'
 # pacaur aliasses
 alias saur='pacaur -Ss'
 alias iaur='pacaur -S'

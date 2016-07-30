@@ -1,10 +1,16 @@
 #! /bin/bash
 
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 ./.xinit.d/background &
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+sxhkd &
 urxvtd -q -o -f &
-udiskie &
-xsetroot -cursor_name left_ptr &
+udiskie -T &
+#setxkbmap "be" &
+compton -c -r 8 -o 0.70 -l -5 -t -5 -b &
 mopidy &
+xsetroot -cursor_name left_ptr &
+dunst &
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 
 exec i3
