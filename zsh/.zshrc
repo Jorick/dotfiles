@@ -168,6 +168,6 @@ export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
 export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
 
 # Linuxbrew paths
-export PATH=$PATH:$HOME/.linuxbrew/bin
-export MANPATH=$MANPATH:$HOME/.linuxbrew/share/man
-export INFOPATH=$INFOPATH:$HOME/.linuxbrew/share/info
+#export PATH=$PATH:$HOME/.linuxbrew/bin
+#export MANPATH=$MANPATH:$HOME/.linuxbrew/share/man
+#export INFOPATH=$INFOPATH:$HOME/.linuxbrew/share/info

@@ -19,6 +19,7 @@ Plug 'chriskempson/base16-vim'
 " Syntax & autocomplete stuff
 Plug 'scrooloose/syntastic'
 "Plug 'Valloric/YouCompleteMe'
+" Deoplete completiong
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
@@ -32,7 +33,8 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'moll/vim-node'
 Plug 'walm/jshint.vim'
 " Python
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
 " HTML & CSS
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
@@ -189,9 +191,15 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " ======== Deoplete settings ===========
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:deoplete#sources#jedi#show_docstring = 1
 
 " ======== Python Jedi settings ========
-"let g:jedi#auto_vim_configuration = 0
+"let g:jedi#auto_initialization = 1
+"let g:jedi#auto_vim_configuration = 1
+"let g:jedi#use_splits_not_buffers = "bottom"
+"let g:jedi#completions_command = "<C-Space>"
+"let g:jedi#completions_command = "<Tab>"
+"let g:jedi#use_tabs_not_buffers = 1
 
 " ======== Syntastic settings ========
 " Set checkers for syntastic:

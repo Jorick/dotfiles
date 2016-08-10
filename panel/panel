@@ -90,9 +90,9 @@ done > "$PANEL_FIFO" &
 while true; do
   # get the current pulseaudio volume ( use amixer for alsa )
   # uncomment for pulseaudio
-  #VOLUME=$(pamixer --get-volume)
+  VOLUME=$(pamixer --get-volume)
   # uncomment for alsa
-  VOLUME=$(amixer get Master -M | grep -oE '[[:digit:]]*%' | tr -d '%')
+  #VOLUME=$(amixer get Master -M | grep -oE '[[:digit:]]*%' | tr -d '%')
   # Adapt icon for high and low volume
   if [ $VOLUME -ge 50 ]; then
     echo -e "VOL$ICON_VOLUME_HIGH $VOLUME"
