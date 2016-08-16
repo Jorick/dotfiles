@@ -6,6 +6,7 @@ This repository contains the dotfiles and configuration files of my current setu
 * WM: [bspwm](https://github.com/baskerville/bspwm)
 * Hotkey daemon: [sxhkd](https://github.com/baskerville/sxhkd)
 * Panel: [lemonbar xft](https://github.com/krypt-n/bar)
+* Shell: Zsh with [Pure prompt](https://github.com/sindresorhus/pure)
 * Colorscheme: [base16 ocean dark](https://github.com/chriskempson/base16)
 * Text editor: [neovim](https://github.com/neovim/neovim)
 * Web browser: Firefox using stylish and vimperator extensions
