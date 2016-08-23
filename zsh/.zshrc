@@ -38,7 +38,7 @@ autoload -U promptinit && promptinit
 
 # pure options
 PURE_CMD_MAX_EXEC_TIME=60
-#PURE_PROMPT_SYMBOL=">"
+#PURE_PROMPT_SYMBOL="λ"
 #
 # load pure
 prompt pure
@@ -107,11 +107,7 @@ alias v='nvim'
 alias ipac='sudo pacman -S'
 alias spac='pacman -Ss'
 alias upac='sudo pacman -Syu'
-# Dnf aliasses
-#alias ipac='sudo dnf install'
-#alias spac='sudo dnf search'
-#alias upac='sudo dnf upgrade'
-# pacaur aliasses
+# Pacaur aliasses
 alias saur='pacaur -Ss'
 alias iaur='pacaur -S'
 alias uaur='pacaur -Sua' 

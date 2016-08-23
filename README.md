@@ -21,3 +21,6 @@ Neovim in action
 
 Firefox with stylish and vimperator
 ![firefox](firefox.png)
+
+Irssi and [Rainbowstream](https://github.com/DTVD/rainbowstreaml)
+![social](social.png)

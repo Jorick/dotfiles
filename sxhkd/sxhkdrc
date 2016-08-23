@@ -150,6 +150,11 @@ super + i
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# Printscreen
+
+Print
+  scrot
+
 # Lockscreen
 
 super + ctrl + Delete
@@ -215,6 +220,9 @@ super + ctrl + n
 
 super + ctrl + v
     urxvtc -name "vim" -e nvim
+
+super + ctrl + m
+    urxvtc -name "mutt" -e mutt
 
 super + ctrl + a
     urxvtc -name "alsamixer" -e alsamixer

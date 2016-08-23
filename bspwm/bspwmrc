@@ -49,6 +49,7 @@ bspc desktop ^2 -l monocle
 # Rules
 bspc rule -a Firefox desktop='^2'
 bspc rule -a Google-chrome desktop='^2'
+bspc rule -a chromium desktop='^2'
 bspc rule -a Atom desktop='^3'
 bspc rule -a Emacs desktop='^3'
 bspc rule -a Thunar desktop='^4'
