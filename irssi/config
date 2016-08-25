@@ -13,8 +13,6 @@ chatnets = {
   SILC = { type = "SILC"; };
   fn = {
     type = "IRC";
-    nick = "boombanana";
-    autosendcmd = "/msg nickserv IDENTIFY Saracenia14irc; wait 7000";
   };
 };
 
