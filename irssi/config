@@ -143,3 +143,4 @@ settings = {
   "fe-common/core" = { theme = "nixers.theme"; };
 };
 ignores = ( { level = "JOINS PARTS QUITS"; } );
+
