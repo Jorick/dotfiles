@@ -13,8 +13,6 @@ chatnets = {
   SILC = { type = "SILC"; };
   fn = {
     type = "IRC";
-    nick = "boombanana";
-    autosendcmd = "/msg nickserv IDENTIFY Saracenia14irc; wait 7000";
   };
 };
 
@@ -139,8 +137,6 @@ statusbar = {
 };
 settings = {
   core = {
-    real_name = "Jorick Roels";
-    user_name = "jorick";
     nick = "jorick";
   };
   "fe-text" = { actlist_sort = "refnum"; };
