@@ -1,8 +1,7 @@
-! set 256 color mode
-URxvt.termName: rxvt-256color
 ! Import color scheme
 #include ".Xresources.d/base16/base16-ocean.dark.256.xresources"
-! Set default font
+!#include ".Xresources.d/var/onedark.xresources"
+! ### Set default font ###
 !*.font: xft:ProFont:style=Regular:pixelsize=11
 !*.boldFont: xft:ProFont:style=Regular:pixelsize=11
 *.font: xft:Source Code Pro:style=Regular:size=8, \
@@ -15,8 +14,10 @@ URxvt.termName: rxvt-256color
         xft:FreeSerif:style=Regular:size=8, \
         xft:Unifont:style=Sans-Serif:size=8, \
         xft:FontAwesome:size=9
-!Emacs.font: Source Code Pro 9
-! URxvt options
+
+! ### URxvt options ###
+! set 256 color mode
+URxvt.termName: rxvt-256color
 !URxvt.borderColor: #272822
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
@@ -27,19 +28,23 @@ URxvt.internalBorder: 8
 !URxvt.background: [95]#2b303b
 !URxvt.geometry: 165x40
 ! urxvt perl extensions
-URxvt.perl-ext-common: fullscreen,default,matcher,url-select
-! fullscreen
-URxvt.keysym.F11: perl:fullscreen:switch
+URxvt.perl-ext-common: default,matcher,url-select
 ! open url in browser
 URxvt.url-launcher: /usr/bin/firefox
+! Use Alt-U to start url-select and open in firefox
 URxvt.matcher.button: 1
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: /usr/bin/firefox
 URxvt.url-select.underline: true
+
+! ### XTerm options ###
+Xterm*utf8: 1
+Xterm*font: -*-ProFont-Regular-*-*-*-9-*-*-*-*-*-*-*
+
 ! Set the cursor theme
 Xcursor.theme: Neutral_Plus
 
-! Font options
+! ### Font options ###
 !Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
@@ -48,7 +53,7 @@ Xft.rgba: rgb
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
-! rofi options
+! ### rofi options ###
 rofi.font:                           Source Code Pro 8
 rofi.color-normal:                   #2b303b, #c0c5ce, #2b303b, #bf616a, #2b303b
 rofi.color-urgent:                   #2b303b, #d08770, #2b303b, #d08770, #2b303b

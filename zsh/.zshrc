@@ -49,7 +49,7 @@ zstyle ':completion:*' rehash true
 
 # PLUGINS
 # list plugins
-plugins=(grml-comp update golang manpage zsh-syntax-highlighting)
+plugins=(grml-comp update golang manpage safe-paste zsh-syntax-highlighting)
 
 # Load them from ZSHFUNC location
 for plugin ($plugins); do

@@ -1,6 +1,7 @@
 #! /bin/bash
 
-./.xinit.d/background &
+#./.xinit.d/background &
+./.fehbg &
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 sxhkd &
 urxvtd -q -o -f &
