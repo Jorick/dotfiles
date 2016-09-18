@@ -1,5 +1,5 @@
 ! Import color scheme
-#include ".Xresources.d/base16/base16-ocean.dark.256.xresources"
+#include ".Xresources.d/base16/xresources/base16-ocean-256.Xresources"
 !#include ".Xresources.d/var/onedark.xresources"
 ! ### Set default font ###
 !*.font: xft:ProFont:style=Regular:pixelsize=11
@@ -7,12 +7,10 @@
 *.font: xft:Source Code Pro:style=Regular:size=8, \
         xft:Sans:style=Regular:size=8, \
         xft:FreeSerif:style=Regular:size=8, \
-        xft:Unifont:style=Sans-Serif:size=8, \
         xft:FontAwesome:size=9
 *.boldFont: xft:Source Code Pro:style=Regular:size=8, \
         xft:Sans:style=Regular:size=8, \
         xft:FreeSerif:style=Regular:size=8, \
-        xft:Unifont:style=Sans-Serif:size=8, \
         xft:FontAwesome:size=9
 
 ! ### URxvt options ###
