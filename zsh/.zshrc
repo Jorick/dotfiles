@@ -104,17 +104,17 @@ alias rm='rm -I'
 # editor
 alias v='nvim'
 ## Pacman aliasses
-#alias ipac='sudo pacman -S'
-#alias spac='pacman -Ss'
-#alias upac='sudo pacman -Syu'
+alias ipac='sudo pacman -S'
+alias spac='pacman -Ss'
+alias upac='sudo pacman -Syu'
 # emerge aliasses
-alias ipac='sudo emerge --ask'
-alias spac='emerge -s'
-alias upac='sudo emerge --sync && sudo emerge --ask --update --deep @world'
+#alias ipac='sudo emerge --ask'
+#alias spac='emerge -s'
+#alias upac='sudo emerge --sync && sudo emerge --ask --update --deep @world'
 # Pacaur aliasses
-#alias saur='pacaur -Ss'
-#alias iaur='pacaur -S'
-#alias uaur='pacaur -Sua' 
+alias saur='pacaur -Ss'
+alias iaur='pacaur -S'
+alias uaur='pacaur -Sua' 
 # various aliasses
 alias google-chrome='google-chrome-stable'
 alias um='udiskie-umount'
