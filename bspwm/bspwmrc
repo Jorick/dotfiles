@@ -77,3 +77,4 @@ panel &
 
 # scrit to automatically adjust the gaps depending on number of windows
 #bspwm_auto_gap.sh &
+#./.xinit.d/bspwm

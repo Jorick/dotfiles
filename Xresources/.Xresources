@@ -40,7 +40,7 @@ Xterm*utf8: 1
 Xterm*font: -*-ProFont-Regular-*-*-*-9-*-*-*-*-*-*-*
 
 ! Set the cursor theme
-Xcursor.theme: Neutral_Plus
+Xcursor.theme: Neutral++
 
 ! ### Font options ###
 !Xft.dpi: 96
