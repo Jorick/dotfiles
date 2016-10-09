@@ -6,12 +6,14 @@
 !*.boldFont: xft:ProFont:style=Regular:pixelsize=11
 *.font: xft:Source Code Pro:style=Regular:size=8, \
         xft:Sans:style=Regular:size=8, \
-        xft:FreeSerif:style=Regular:size=8, \
-        xft:FontAwesome:size=9
+        xft:FreeSans:style=Regular:size=8, \
+        xft:FontAwesome:size=9, \
+        xft:Unifont:size=9
 *.boldFont: xft:Source Code Pro:style=Regular:size=8, \
         xft:Sans:style=Regular:size=8, \
         xft:FreeSerif:style=Regular:size=8, \
-        xft:FontAwesome:size=9
+        xft:FontAwesome:size=9, \
+        xft:Unifont
 
 ! ### URxvt options ###
 ! set 256 color mode
@@ -26,18 +28,18 @@ URxvt.internalBorder: 8
 !URxvt.background: [95]#2b303b
 !URxvt.geometry: 165x40
 ! urxvt perl extensions
-URxvt.perl-ext-common: default,matcher,url-select
+#URxvt.perl-ext-common: default,matcher,url-select
 ! open url in browser
 URxvt.url-launcher: /usr/bin/firefox
 ! Use Alt-U to start url-select and open in firefox
-URxvt.matcher.button: 1
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.launcher: /usr/bin/firefox
-URxvt.url-select.underline: true
+!URxvt.matcher.button: 1
+!URxvt.keysym.M-u: perl:url-select:select_next
+!URxvt.url-select.launcher: /usr/bin/firefox
+!URxvt.url-select.underline: true
 
 ! ### XTerm options ###
 Xterm*utf8: 1
-Xterm*font: -*-ProFont-Regular-*-*-*-9-*-*-*-*-*-*-*
+#Xterm*font: -*-ProFont-Regular-*-*-*-9-*-*-*-*-*-*-*
 
 ! Set the cursor theme
 Xcursor.theme: Neutral++

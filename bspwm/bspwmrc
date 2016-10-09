@@ -65,6 +65,7 @@ bspc rule -a Steam desktop='^7'
 
 # Placing CLI apps on desktops
 bspc rule -a URxvt:vim desktop='^3'
+bspc rule -a URxvt:mutt desktop='^4'
 bspc rule -a URxvt:vifm desktop='^4'
 bspc rule -a URxvt:ranger desktop='^4'
 bspc rule -a URxvt:irssi desktop='^5'

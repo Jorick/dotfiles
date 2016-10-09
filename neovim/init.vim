@@ -10,7 +10,7 @@
 "
 " See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
 
-" ======== Vim-plug settings ========
+" Vim-plug settings {{{
 " set the runtime path to include Vim-plug and initialize
 call plug#begin("~/.config/nvim/bundle")
 
@@ -49,6 +49,7 @@ Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/sy
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'tpope/vim-surround'
 " interface and utilities
+Plug 'mileszs/ack.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -73,7 +74,9 @@ Plug 'https://github.com/vim-scripts/vimwiki.git'
 " All of your Plugs must be added before the following line
 call plug#end()            " required
 
-" ======== General Vim settings ========
+" }}}
+
+" General Vim settings {{{
 "
 " For multi-byte character support (CJK support, for example):
 "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
@@ -149,27 +152,37 @@ set mouse=a         " Enable the use of the mouse.
 
 set encoding=utf-8  " Enforce UTF-8 encoding
 
+set foldmethod=marker
+
 syntax on
 
-" ======== Set color scheme ========
+" }}}
+
+" Color scheme {{{
 let base16colorspace=256
 colorscheme base16-ocean
 "colorscheme seti
 " transparent background
 hi Normal ctermbg=none
 
+" }}}
+
 " Setting a different <leader>
 let  mapleader = ','
 
-" ======== Options for markdown text ========
+" Options for markdown text {{{
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.txt set filetype=markdown
 
-" ======== allow css and sass autocomple ========
+" }}}
+
+" allow css and sass autocomple {{{
 set omnifunc=csscomplete#CompleteCSS
 "autocmd BufNewFile,BufRead *.scss set ft=scss.css<Paste>
 
-" ======== NERDTree options ========
+" }}}
+
+" NERDTree options {{{
 "autocmd vimenter * if !argc() | NERDTree | endif
 map <C-t> :NERDTreeToggle<CR>
 " Close vim when a file is closed and NERDTree is the last open window
@@ -181,19 +194,24 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " set NERDTree arrows
 "let g:NERDTreeDirArrowExpandable = '+'
 "let g:NERDTreeDirArrowCollapsible = '-'
-"
-"
-" ======== YouCompleteMe settings =========
+
+" }}}
+
+" YouCompleteMe settings {{{
 "let g:ycm_auto_stop_csharp_server = 1
 "let g:ycm_autoclose_preview_window_after_completion = 1
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"
-" ======== Deoplete settings ===========
+
+" }}}
+
+" Deoplete settings {{{
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:deoplete#sources#jedi#show_docstring = 1
 
-" ======== Python Jedi settings ========
+" }}}
+
+" Python Jedi settings {{{
 "let g:jedi#auto_initialization = 1
 "let g:jedi#auto_vim_configuration = 1
 "let g:jedi#use_splits_not_buffers = "bottom"
@@ -201,7 +219,9 @@ let g:deoplete#sources#jedi#show_docstring = 1
 "let g:jedi#completions_command = "<Tab>"
 "let g:jedi#use_tabs_not_buffers = 1
 
-" ======== Syntastic settings ========
+" }}}
+
+" Syntastic settings {{{
 " Set checkers for syntastic:
 let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_css_checkers = ['csslint']
@@ -209,10 +229,14 @@ let g:syntastic_python_checkers = ['pylint']
 autocmd bufwritepost *.js silent !standard-format -w %
 set autoread
 
-" ======== Tmuxline settings ========
+" }}}
+
+" Tmuxline settings {{{
 let g:tmuxline_powerline_separators = 1
 
-" ======== Tagbar settings ========
+" }}}
+
+" Tagbar settings {{{
 " Enable tagbar for CSS
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_type_css = {
@@ -224,7 +248,9 @@ let g:tagbar_type_css = {
     \ ]
     \ }
 
-" ======== Vim-airline settings ========
+" }}}
+
+" Vim-airline settings {{{
 set laststatus=2
 let g:airline_theme='base16'
 let g:airline_powerline_fonts = 0
@@ -235,11 +261,22 @@ let g:airline#extensions#tabline#left_alt_sep = '░'
 let g:airline_left_sep = '█▓░'
 let g:airline_right_sep = '░▓█'
 
-" ========= vim-nodejs-complete settings =========
+" }}}
+
+" vim-nodejs-complete settings {{{
 let g:nodejs_complete_config = {
 \  'js_compl_fn': 'jscomplete#CompleteJS',
 \  'max_node_compl_len': 15
 \}
 
-" ========== Goyo settings ===========
+" }}}
+
+" Goyo settings {{{
 let g:goyo_width = 120
+
+" }}}
+
+" Ack settings {{{
+let g:ackprg = 'ag --vimgrep'
+
+" }}}
