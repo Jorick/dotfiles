@@ -2,7 +2,7 @@ This repository contains the dotfiles and configuration files of my current setu
 
 # Current setup:
 
-* OS: [Gentoo Linux](http://www.gentoo.org)
+* OS: [Arch Linux](http://www.archlinux.org)
 * WM: [bspwm](https://github.com/baskerville/bspwm)
 * Hotkey daemon: [sxhkd](https://github.com/baskerville/sxhkd)
 * Panel: [lemonbar xft](https://github.com/krypt-n/bar)
