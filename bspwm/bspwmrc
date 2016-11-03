@@ -57,6 +57,7 @@ bspc rule -a Filezilla desktop='^4'
 bspc rule -a Gimp desktop='^4'
 bspc rule -a Inkscape desktop='^4'
 bspc rule -a Pcmanfm desktop='^4'
+bspc rule -a Blender desktop='^4' state=pseudo_tiled
 bspc rule -a File-roller state=pseudo_tiled
 bspc rule -a Transmission-gtk desktop='^4'
 bspc rule -a astime flag=sticky

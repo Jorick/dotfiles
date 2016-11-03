@@ -170,6 +170,11 @@ hi Normal ctermbg=none
 " Setting a different <leader>
 let  mapleader = ','
 
+" Custom commands {{{
+
+command Deltralingwhite execute "%s/\s\+$//e"
+" }}}
+
 " Options for markdown text {{{
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.txt set filetype=markdown

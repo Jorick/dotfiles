@@ -39,7 +39,7 @@ URxvt.url-select.underline: true
 
 ! ### XTerm options ###
 Xterm*utf8: 1
-#Xterm*font: -*-ProFont-Regular-*-*-*-9-*-*-*-*-*-*-*
+!Xterm*font: -*-ProFont-Regular-*-*-*-9-*-*-*-*-*-*-*
 
 ! Set the cursor theme
 Xcursor.theme: Neutral++

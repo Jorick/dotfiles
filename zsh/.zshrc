@@ -1,12 +1,12 @@
 #
-#                   ██                    
-#                  ░██                    
-#    ██████  ██████░██      ██████  █████ 
+#                   ██
+#                  ░██
+#    ██████  ██████░██      ██████  █████
 #   ░░░░██  ██░░░░ ░██████ ░░██░░█ ██░░░██
-#      ██  ░░█████ ░██░░░██ ░██ ░ ░██  ░░ 
+#      ██  ░░█████ ░██░░░██ ░██ ░ ░██  ░░
 # ██  ██    ░░░░░██░██  ░██ ░██   ░██   ██
-#░██ ██████ ██████ ░██  ░██░███   ░░█████ 
-#░░ ░░░░░░ ░░░░░░  ░░   ░░ ░░░     ░░░░░  
+#░██ ██████ ██████ ░██  ░██░███   ░░█████
+#░░ ░░░░░░ ░░░░░░  ░░   ░░ ░░░     ░░░░░
 #
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -62,7 +62,7 @@ unsetopt correct_all
 setopt correct
 setopt completealiases
 # ignore command beginning with a space
-setopt HIST_IGNORE_SPACE 
+setopt HIST_IGNORE_SPACE
 
 # shell settings
 #set -eu
@@ -70,9 +70,34 @@ set -o pipefail
 # zsh-syntax-highlighting options
 # source and instructions see: https://github.com/zsh-users/zsh-syntax-highlighting
 
+# Keybindings to correct Home, End, Del,... in vi mode
+# fix keys home
+bindkey -M viins "^[[7~" beginning-of-line
+bindkey -M vicmd "^[[7~" beginning-of-line
+
+# fix keys end
+bindkey -M viins "^[[8~" end-of-line
+bindkey -M vicmd "^[[8~" end-of-line
+
+# fix keys insert
+bindkey -M viins "^[[2~" overwrite-mode
+bindkey -M vicmd "^[[2~" overwrite-mode
+
+# fix keys delete
+bindkey -M viins "^[[3~" delete-char
+bindkey -M vicmd "^[[3~" delete-char
+
+# fix keys pgup
+bindkey -M viins "^[[5~" up-history
+bindkey -M vicmd "^[[5~" up-history
+
+# fix keys pgdown
+bindkey -M viins "^[[6~" down-history
+bindkey -M vicmd "^[[6~" down-history
+
 # highlighters to use
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern line)
-# override highlighters 
+# override highlighters
 typeset -A ZSH_HIGHLIGHT_STYLES
 # remove all underline in main
 ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green,none'
@@ -114,7 +139,7 @@ alias upac='sudo pacman -Syu'
 # Pacaur aliasses
 alias saur='pacaur -Ss'
 alias iaur='pacaur -S'
-alias uaur='pacaur -Sua' 
+alias uaur='pacaur -Sua'
 # various aliasses
 alias google-chrome='google-chrome-stable'
 alias um='udiskie-umount'
