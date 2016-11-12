@@ -48,7 +48,7 @@ super + {_,shift + }{h,j,k,l}
 
 # focus the next/previous node
 super + {_,shift + }c
-	bspc node -f {next,prev}
+	bspc node -f {next,prev}.local
 
 # focus the next/previous desktop
 super + bracket{left,right}
