@@ -40,7 +40,12 @@ bspc config focused_locked_border_color "#65737e"
 bspc config normal_frame_opacity 0.0
 bspc config focused_frame_opacity 0.0
 
-bspc rule -a Dmenu border=on
+# Pointer options
+bspc config pointer_modifier mod4
+#bspc config pointer_action1 move
+#bspc config pointer_action2 resize_side
+#bspc config pointer_action3 resize_corner
+
 
 # Setting default layouts for desktops
 bspc desktop ^2 -l monocle

@@ -7,6 +7,7 @@ PANEL_HEIGHT=20
 # panel font
 #PANEL_FONT_FAMILY="-*-profont-*-r-*-*-12-*-*-*-c-*-*-1"
 PANEL_FONT_FAMILY="Source Code Pro:style=Regular:size=8"
+#PANEL_FONT_FAMILY="Go Mono:style=Regular:size=7"
 #PANEL_FONT_FAMILY="Fira Mono:style=Regular:size=8"
 PANEL_FONT_ICON="FontAwesome:size=9"
 # refresh rate of the scripts
