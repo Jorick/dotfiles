@@ -18,10 +18,6 @@ super + r
 super + y
 	bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
 
-# swap the current node and the biggest node
-super + g
-	bspc node -s biggest
-
 #
 # state/flags
 #
@@ -57,6 +53,10 @@ super + bracket{left,right}
 # focus the last node/desktop
 super + {grave,Tab}
 	bspc {node,desktop} -f last
+
+# swap the current node and the biggest local node
+super + g
+	bspc node -s biggest.local
 
 # focus the older or newer node in the focus history
 #super + {o,i}
@@ -105,6 +105,12 @@ super + alt + {h,j,k,l}
 # contract the tiled space in the given direction
 super + alt + shift + {h,j,k,l}
 	bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+
+super + e
+  bspc node -E
+
+super + b
+  bspc node -B
 
 # move a floating window
 #super + {Left,Down,Up,Right}
@@ -175,7 +181,7 @@ super + ctrl + c
     firefox
 
 super + ctrl + b
-    google-chrome-stable
+    chromium
 
 super + ctrl + a
     atom

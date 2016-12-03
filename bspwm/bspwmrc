@@ -8,9 +8,6 @@
 #░██  ░██ ░░░░░██░██░░░   ░████░████ ░██ ░██ ░██ ░██   ░██   ██
 #░██████  ██████ ░██      ███░ ░░░██ ███ ░██ ░██░███   ░░█████ 
 #░░░░░   ░░░░░░  ░░      ░░░    ░░░ ░░░  ░░  ░░ ░░░     ░░░░░  
-#
-bspc config border_width        4
-bspc config window_gap          16
 
 i=1
 for monitor in $(bspc query -M); do
@@ -22,23 +19,22 @@ done
 NMON=$i
 unset i
 
-bspc config top_padding 20
-
 # Visual options
+bspc config top_padding 20
+bspc config border_width 4
+bspc config window_gap 16
+bspc config normal_border_color "#2b303b"
+bspc config active_border_color "#2b303b"
+bspc config focused_border_color "#8fa1b3"
+bspc config presel_feedback_color "#96b5b4"
+bspc config focused_locked_border_color "#b48ead"
+
+# Behavior
 bspc config split_ratio         0.50
 bspc config borderless_monocle  false
 bspc config gapless_monocle     false
 bspc config focus_follows_pointer true
-bspc config auto_alternate true
-bspc config auto_cancel true
-bspc config normal_border_color "#2b303b"
-bspc config active_border_color "#2b303b"
-bspc config focused_border_color "#bf616a"
-bspc config presel_border_color "#343d46"
-bspc config urgent_border_color "#a3be8c"
-bspc config focused_locked_border_color "#65737e"
-bspc config normal_frame_opacity 0.0
-bspc config focused_frame_opacity 0.0
+bspc config initial_polarity first_child
 
 # Pointer options
 bspc config pointer_modifier mod4
@@ -49,7 +45,7 @@ bspc config pointer_modifier mod4
 
 # Setting default layouts for desktops
 bspc desktop ^2 -l monocle
-#bspc desktop ^3 -l monocle
+bspc desktop ^3 -l monocle
 
 # Rules
 bspc rule -a Firefox desktop='^2'
