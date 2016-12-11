@@ -17,19 +17,23 @@ while read -r line ; do
 			sys_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
 			;;
 		MUSIC*)
-			# clock output
+			# music output
 			music="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?????} %{B-}%{F-}"
 			;;
 		VOL*)
-			# clock output
+			# volume output
 			volume="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#???} %{B-}%{F-}"
 			;;
+		BRT*)
+			# battery output
+			brightness="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#???} %{B-}%{F-}"
+			;;
 		BAT*)
-			# clock output
+			# battery output
 			battery="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#???} %{B-}%{F-}"
 			;;
 		WIFI*)
-			# clock output
+			# wifi output
 			wifi="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#????} %{B-}%{F-}"
 			;;
 		W*)
@@ -90,5 +94,5 @@ while read -r line ; do
 			done
 			;;
 	esac 
-  printf "%s\n" "%{l}${wm_infos}%{r}${music}${volume}${wifi}${battery}${sys_infos}"
+  printf "%s\n" "%{l}${wm_infos}%{r}${music}${volume}${brightness}${wifi}${battery}${sys_infos}"
 done
