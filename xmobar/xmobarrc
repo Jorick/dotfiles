@@ -1,6 +1,6 @@
 Config { font = "xft:Source Code Pro:style=Regular:size=8,FontAwesome:size=9" 
        , bgColor = "#2b303b"
-       , fgColor = "#65737e"
+       , fgColor = "#c0c5ce"
        , border = NoBorder
        , borderColor = "#000000"
        , position = Top 
@@ -11,7 +11,7 @@ Config { font = "xft:Source Code Pro:style=Regular:size=8,FontAwesome:size=9"
        , sepChar = "%"
        , alignSep = "}{"
        , template = " %StdinReader% }{ %mpd% %vol% %brt% %wifi% %bat% %date%"
-       , commands = [ Run Date "\xf073 %a %b %_d %Y \xf017 %H:%M:%S " "date" 10,
+       , commands = [ Run Date "\xf073 %a %b %_d \xf017 %H:%M " "date" 10,
                       Run StdinReader,
                       Run Com "zsh" ["/home/jorick/.xmobar/bat"] "bat" 30,
                       Run Com "zsh" ["/home/jorick/.xmobar/brt"] "brt" 15,

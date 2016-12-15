@@ -65,5 +65,5 @@ rofi.ssh-client:                     ssh
 rofi.bw:                             1
 rofi.padding:                        4
 rofi.location:                       1
-rofi.yoffset:                        20
+rofi.yoffset:                        18
 rofi.width:                          100

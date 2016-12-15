@@ -5,12 +5,14 @@ import XMonad.Util.Run (safeSpawn)
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
+import Data.List
 import XMonad.Layout.Spacing 
+import XMonad.Layout.Grid
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import System.Exit
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.EwmhDesktops
+import System.Exit
 
 -- Main process
 main :: IO()
@@ -50,7 +52,7 @@ myWorkspaces = [myws1, myws2, myws3, myws4, myws5, myws6 , myws7 ]
 myLayoutHook = mySpacing
 
 -- 16px gap around windows and avoid panel or dock
-mySpacing = spacing 16 (avoidStruts (tall ||| Mirror tall)) 
+mySpacing = spacing 16 (avoidStruts (tall ||| Mirror tall ||| GridRatio (4/3) ||| Full )) 
                    where tall = Tall 1 (3/100) (1/2) 
 
 -- Mangehooks
@@ -58,7 +60,9 @@ myManageHook = composeAll [ isFullscreen            --> doFullFloat,
                          className =? "Firefox" --> doShift myws2,
                          className =? "Chromium" --> doShift myws2,
                          className =? "Pcmanfm" --> doShift myws4,
-                         className =? "Gimp" --> doShift myws4,
+                         -- manage Gimp toolbox windows
+                         className =? "Gimp"  --> doShift myws4, -- may be "Gimp" or "Gimp-2.4" instead
+                         (className =? "Gimp" <&&> fmap ("tool" `isSuffixOf`) role) --> doFloat,
                          className =? "Filezilla" --> doShift myws4,
                          className =? "Blender" --> doShift myws4,
                          className =? "Transmission-gtk" --> doShift myws4,
@@ -73,9 +77,10 @@ myManageHook = composeAll [ isFullscreen            --> doFullFloat,
                          appName =? "ncmpcpp" --> doShift myws6,
                          manageDocks
                        ]
+                       where role = stringProperty "WM_WINDOW_ROLE"
 
 -- Event Hooks
-myEventHook = docksEventHook 
+myEventHook = docksEventHook
 
 -- Looks
 myBorderWidth = 4
@@ -137,7 +142,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_m     ), windows W.focusMaster)
 
     -- swapping
-    , ((modMask,               xK_Return), windows W.swapMaster)
+    , ((modMask,               xK_Return), windows W.shiftMaster)
     , ((modMask .|. shiftMask, xK_j     ), windows W.swapDown  )
     , ((modMask .|. shiftMask, xK_k     ), windows W.swapUp    )
 

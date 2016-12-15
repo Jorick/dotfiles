@@ -3,9 +3,8 @@ This repository contains the dotfiles and configuration files of my current setu
 # Current setup:
 
 * OS: [Arch Linux](http://www.archlinux.org)
-* WM: [bspwm](https://github.com/baskerville/bspwm)
-* Hotkey daemon: [sxhkd](https://github.com/baskerville/sxhkd)
-* Panel: [lemonbar xft](https://github.com/krypt-n/bar)
+* WM: [XMonad](http://xmonad.org/)
+* Panel: [Xmobar](http://projects.haskell.org/xmobar/)
 * Shell: Zsh with [Pure prompt](https://github.com/sindresorhus/pure)
 * Colorscheme: [base16 ocean dark](https://github.com/chriskempson/base16)
 * Text editor: [neovim](https://github.com/neovim/neovim)
