@@ -1,0 +1,21 @@
+#! /bin/zsh
+. $HOME/.xmobar/icons
+WIFI_INFO=$(iw $WIFI_DEV link)
+if [[ $WIFI_INFO = "Not connected." ]]; then
+  # display wifi disconnected
+  echo -e "$ICON_WIFI_DISCONNECTED diconnected"
+else
+  # get the ssid
+  #WIFI_SSID=$(echo $WIFI_INFO | grep "SSID" | sed 's/SSID: //')
+  # get the signal strength
+  WIFI_SIGNAL=$(echo $WIFI_INFO | grep "signal" | sed 's/signal: //' | tr -d ' dBm')
+  if (( $WIFI_SIGNAL > -50 )); then
+    WIFI_SIGNAL_PERCENT="100"
+  elif (( $WIFI_SIGNAL < -100 )); then
+    WIFI_SIGNAL_PERCENT="0"
+  else
+    WIFI_SIGNAL_PERCENT=$(echo $((2 * (100 + $WIFI_SIGNAL))))
+  fi
+  # display all info
+  echo -e "$ICON_WIFI_CONNECTED $WIFI_SIGNAL_PERCENT"
+fi

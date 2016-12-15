@@ -1,0 +1,9 @@
+#! /bin/zsh
+. $HOME/.xmobar/icons
+if [ -e /sys/class/backlight/acpi_video0/brightness ]; then
+  # read the status from file (0 = max brightness, 7 = min brightness)
+  BACK_STAT=$(cat /sys/class/backlight/acpi_video0/brightness)
+  # convert to fake percentage: 100 = max, 30 = min
+  BACK_BRT=$(echo $((100 - (10 * $BACK_STAT))))
+  echo -e "$ICON_BACKLIGHT $BACK_BRT"
+fi

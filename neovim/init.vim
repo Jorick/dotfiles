@@ -35,6 +35,8 @@ Plug 'walm/jshint.vim'
 " Python
 "Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
+" Haskell
+Plug 'eagletmt/neco-ghc'
 " HTML & CSS
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'

@@ -1,0 +1,19 @@
+#! /bin/bash
+
+#./.xinit.d/background &
+./.fehbg &
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+urxvtd -q -o -f &
+#udiskie -T &
+#setxkbmap "be" &
+#compton -c -r 8 -o 0.70 -l -5 -t -5 -b --unredir-if-possible &
+#compton --config .config/compton.conf &
+#redshift &
+#mopidy &
+xsetroot -cursor_name left_ptr &
+#dunst &
+xmobar &
+#eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+#export SSH_AUTH_SOCK
+
+exec xmonad

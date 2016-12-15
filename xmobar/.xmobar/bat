@@ -1,0 +1,20 @@
+#! /bin/zsh
+. $HOME/.xmobar/icons
+# battery indicator
+# requires acpi
+# check if battery is present
+if [ -e /sys/class/power_supply/BAT1 ]; then
+  # get the battery info from acpi
+  ACPI_STAT=$(acpi)
+  # get the status: charging, discharging
+  BAT_STAT=$(echo $ACPI_STAT | awk '{print $3}' | tr -d ',')
+  # get the current battery load percentage
+  BAT_PERC=$(echo $ACPI_STAT | awk '{print $4}' | tr -d '%,')
+  if [[ $BAT_STAT = "Discharging" ]]; then
+    echo -e "$ICON_BATTERY_FULL $BAT_PERC"
+  else
+    echo -e "$ICON_BATTERY_CHARGING $BAT_PERC"
+  fi
+else
+  echo -e "$ICON_BATTERY_CHARGING"
+fi
