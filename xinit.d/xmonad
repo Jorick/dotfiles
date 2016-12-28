@@ -8,7 +8,7 @@ udiskie -T &
 #setxkbmap "be" &
 #compton -c -r 8 -o 0.70 -l -5 -t -5 -b --unredir-if-possible &
 compton --config .config/compton.conf &
-#redshift &
+redshift &
 mopidy &
 xsetroot -cursor_name left_ptr &
 dunst &

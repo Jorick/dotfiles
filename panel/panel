@@ -32,6 +32,9 @@ mkfifo "$PANEL_FIFO"
 # bspwm workspace info
 bspc subscribe report > "$PANEL_FIFO" &
 
+# display title of current focussed window
+xtitle -sf 'T%s' > "$PANEL_FIFO" &
+
 # display current playing song info
 # requires mpc
 while true; do
@@ -144,6 +147,6 @@ done > "$PANEL_FIFO" &
 # import color variables
 . panel_colors
 # start the panel
-cat "$PANEL_FIFO" | panel_bar | lemonbar -g "${PANEL_WIDTH}x${PANEL_HEIGHT}" -f "$PANEL_FONT_FAMILY" -f "$PANEL_FONT_ICON" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -u 0 &
+cat "$PANEL_FIFO" | panel_bar | lemonbar -g "${PANEL_WIDTH}x${PANEL_HEIGHT}" -f "$PANEL_FONT_FAMILY" -f "$PANEL_FONT_ICON" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -u 0 -U $COLOR_BORDER &
 
 wait

@@ -3,7 +3,7 @@
 #
 
 # quit bspwm normally
-super + alt + Escape
+super + shift + Escape
 	pkill -x panel; bspc quit
 
 # close and kill
@@ -55,7 +55,7 @@ super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # swap the current node and the biggest local node
-super + g
+super + s
 	bspc node -s biggest.local
 
 # focus the older or newer node in the focus history
@@ -115,6 +115,14 @@ super + b
 # move a floating window
 #super + {Left,Down,Up,Right}
 	#xdo move {-x -20,-y +20,-y -20,-x +20}
+
+
+# Toggle gaps
+super + g
+  bspc config window_gap 16 && bspc config single_monocle false && bspc config gapless_monocle false && bspc config borderless_monocle false
+
+super + shift + g
+  bspc config window_gap 0 && bspc config single_monocle true && bspc config gapless_monocle true && bspc config borderless_monocle true
 
 #
 # wm independent hotkeys

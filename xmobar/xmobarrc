@@ -1,9 +1,9 @@
 Config { font = "xft:Source Code Pro:style=Regular:size=8,FontAwesome:size=9" 
        , bgColor = "#2b303b"
        , fgColor = "#c0c5ce"
-       , border = NoBorder
-       , borderColor = "#000000"
-       , position = Top 
+       , border = BottomB 2
+       , borderColor = "#343d46"
+       , position = Static { xpos = 0 , ypos = 0, width = 1600, height = 20}
        , lowerOnStart = True
        , hideOnStart = False
        , persistent = True

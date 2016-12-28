@@ -6,12 +6,13 @@ import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import Data.List
-import XMonad.Layout.Spacing 
+--import XMonad.Layout.Spacing 
 import XMonad.Layout.Grid
+import XMonad.Layout.Fullscreen
+import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.EwmhDesktops
 import System.Exit
 
 -- Main process
@@ -49,11 +50,14 @@ myWorkspaces :: [String]
 myWorkspaces = [myws1, myws2, myws3, myws4, myws5, myws6 , myws7 ]
 
 -- Layouts
-myLayoutHook = mySpacing
+myLayoutHook = mySpacing ||| myFullscreen
 
 -- 16px gap around windows and avoid panel or dock
-mySpacing = spacing 16 (avoidStruts (tall ||| Mirror tall ||| GridRatio (4/3) ||| Full )) 
+mySpacing = avoidStruts (smartBorders (tall ||| Mirror tall ||| GridRatio (4/3) ||| Full ))
                    where tall = Tall 1 (3/100) (1/2) 
+
+-- fullscreen layout
+myFullscreen = (fullscreenFloat . fullscreenFull) (smartBorders Full)
 
 -- Mangehooks
 myManageHook = composeAll [ isFullscreen            --> doFullFloat,
@@ -65,6 +69,9 @@ myManageHook = composeAll [ isFullscreen            --> doFullFloat,
                          (className =? "Gimp" <&&> fmap ("tool" `isSuffixOf`) role) --> doFloat,
                          className =? "Filezilla" --> doShift myws4,
                          className =? "Blender" --> doShift myws4,
+                         className =? "Inkscape" --> doShift myws4,
+                         className =? "libreoffice" --> doShift myws4,
+                         className =? "libreoffice-startcenter" --> doShift myws4,
                          className =? "Transmission-gtk" --> doShift myws4,
                          className =? "MPlayer" --> doFloat,
                          className =? "MPlayer" --> doShift myws4,
@@ -72,15 +79,17 @@ myManageHook = composeAll [ isFullscreen            --> doFullFloat,
                          -- cli apps
                          appName =? "vim" --> doShift myws3,
                          appName =? "ranger" --> doShift myws4,
+                         appName =? "mutt" --> doShift myws4,
                          appName =? "irssi" --> doShift myws5,
                          appName =? "rainbowstream" --> doShift myws5,
                          appName =? "ncmpcpp" --> doShift myws6,
-                         manageDocks
+                         manageDocks,
+                         fullscreenManageHook
                        ]
                        where role = stringProperty "WM_WINDOW_ROLE"
 
 -- Event Hooks
-myEventHook = docksEventHook
+myEventHook = fullscreenEventHook <+> docksEventHook 
 
 -- Looks
 myBorderWidth = 4
@@ -106,6 +115,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching apps
     [ ((modMask .|. controlMask, xK_Return), safeSpawn (XMonad.terminal conf) []) 
     , ((modMask,                 xK_p     ), safeSpawn "rofi" ["-show", "run"]) 
+    , ((modMask,                 xK_o     ), safeSpawn "rofi" ["-show", "window"]) 
     , ((modMask .|. controlMask, xK_c     ), safeSpawn "firefox" [])
     , ((modMask .|. controlMask, xK_b     ), safeSpawn "chromium" [])
     , ((modMask .|. controlMask, xK_p     ), safeSpawn "pcmanfm" [])
@@ -118,6 +128,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. controlMask, xK_m     ), safeSpawn "urxvtc" ["-name", "mutt", "-e", "mutt"])
     -- Kill windows
     , ((modMask .|. controlMask, xK_w     ), kill)
+    -- lock screen
+    , ((modMask .|. controlMask, xK_Delete), safeSpawn "i3lock-fancy" ["-p"])
     -- multimedia
     , ((0, xF86XK_AudioRaiseVolume      ), safeSpawn "pamixer" ["-i", "5"])
     , ((0, xF86XK_AudioLowerVolume      ), safeSpawn "pamixer" ["-d", "5"])
