@@ -33,7 +33,7 @@ mkfifo "$PANEL_FIFO"
 bspc subscribe report > "$PANEL_FIFO" &
 
 # display title of current focussed window
-xtitle -sf 'T%s' > "$PANEL_FIFO" &
+#xtitle -sf 'T%s' > "$PANEL_FIFO" &
 
 # display current playing song info
 # requires mpc

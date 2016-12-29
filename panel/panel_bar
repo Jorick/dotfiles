@@ -12,10 +12,10 @@ while read -r line ; do
 			# clock output
 			clock="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
 			;;
-		T*)
-			# clock output
-			xtitle="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
-			;;
+		#T*)
+			## clock output
+			#xtitle="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
+			#;;
 		MUSIC*)
 			# music output
 			music="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?????} %{B-}%{F-}"
@@ -94,5 +94,5 @@ while read -r line ; do
 			done
 			;;
 	esac 
-  printf "%s\n" "%{l}${wm_infos}${xtitle}%{r}${music}${volume}${brightness}${wifi}${battery}${clock}"
+  printf "%s\n" "%{l}${wm_infos}%{r}${music}${volume}${brightness}${wifi}${battery}${clock}"
 done

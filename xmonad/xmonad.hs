@@ -6,18 +6,23 @@ import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import Data.List
---import XMonad.Layout.Spacing 
+-- layouts
+import XMonad.Layout.Spacing 
 import XMonad.Layout.Grid
-import XMonad.Layout.Fullscreen
+--import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
+import XMonad.Layout.MultiToggle
+-- hooks
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.EwmhDesktops
+-- var
 import System.Exit
 
 -- Main process
 main :: IO()
-main = xmonad =<< statusBar myBar myPP toggleStrutsKey  myConfig
+main = xmonad =<< statusBar myBar myPP toggleStrutsKey (ewmh $ myConfig)
 
 -- Configs
 myConfig = defaultConfig { modMask = myModMask,
@@ -50,14 +55,11 @@ myWorkspaces :: [String]
 myWorkspaces = [myws1, myws2, myws3, myws4, myws5, myws6 , myws7 ]
 
 -- Layouts
-myLayoutHook = mySpacing ||| myFullscreen
-
--- 16px gap around windows and avoid panel or dock
-mySpacing = avoidStruts (smartBorders (tall ||| Mirror tall ||| GridRatio (4/3) ||| Full ))
+myLayoutHook = (spacing 10 $ avoidStruts (smartBorders (tall ||| GridRatio (4/3) ||| Full ))) ||| smartBorders Full
                    where tall = Tall 1 (3/100) (1/2) 
 
 -- fullscreen layout
-myFullscreen = (fullscreenFloat . fullscreenFull) (smartBorders Full)
+--myFullscreen = (fullscreenFloat . fullscreenFull) (smartBorders Full)
 
 -- Mangehooks
 myManageHook = composeAll [ isFullscreen            --> doFullFloat,
@@ -75,6 +77,8 @@ myManageHook = composeAll [ isFullscreen            --> doFullFloat,
                          className =? "Transmission-gtk" --> doShift myws4,
                          className =? "MPlayer" --> doFloat,
                          className =? "MPlayer" --> doShift myws4,
+                         className =? "mpv" --> doFloat,
+                         className =? "mpv" --> doShift myws4,
                          className =? "Steam" --> doShift myws7,
                          -- cli apps
                          appName =? "vim" --> doShift myws3,
@@ -83,13 +87,13 @@ myManageHook = composeAll [ isFullscreen            --> doFullFloat,
                          appName =? "irssi" --> doShift myws5,
                          appName =? "rainbowstream" --> doShift myws5,
                          appName =? "ncmpcpp" --> doShift myws6,
-                         manageDocks,
-                         fullscreenManageHook
+                         manageDocks
+--                         fullscreenManageHook
                        ]
                        where role = stringProperty "WM_WINDOW_ROLE"
 
 -- Event Hooks
-myEventHook = fullscreenEventHook <+> docksEventHook 
+myEventHook = docksEventHook <+> fullscreenEventHook
 
 -- Looks
 myBorderWidth = 4

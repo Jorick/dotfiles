@@ -23,8 +23,8 @@ fi
 
 #exec xfce4-session
 
-exec $HOME/.xinit.d/bspwm
+#exec $HOME/.xinit.d/bspwm
 
-#exec $HOME/.xinit.d/xmonad
+exec $HOME/.xinit.d/xmonad
 
 #exec $HOME/.xinit.d/spectrwm
