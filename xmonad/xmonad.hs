@@ -134,6 +134,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. controlMask, xK_w     ), kill)
     -- lock screen
     , ((modMask .|. controlMask, xK_Delete), safeSpawn "i3lock-fancy" ["-p"])
+    -- screenshot
+    , ((0, xK_Print                       ), safeSpawn "scrot" [])
     -- multimedia
     , ((0, xF86XK_AudioRaiseVolume      ), safeSpawn "pamixer" ["-i", "5"])
     , ((0, xF86XK_AudioLowerVolume      ), safeSpawn "pamixer" ["-d", "5"])
