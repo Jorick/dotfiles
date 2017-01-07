@@ -27,26 +27,27 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 " C language
 Plug 'Rip-Rip/clang_complete'
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-" Javascript & node
-Plug 'ternjs/tern_for_vim'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'moll/vim-node'
-Plug 'walm/jshint.vim'
 " Python
 "Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
 " Haskell
 Plug 'eagletmt/neco-ghc'
+"Plug 'parsonsmatt/intero-neovim'
+" Lisp
+Plug 'kovisoft/slimv'
+" Javascript & node
+Plug 'ternjs/tern_for_vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'moll/vim-node'
+Plug 'walm/jshint.vim'
 " HTML & CSS
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'digitaltoad/vim-pug'
-" Lisp
-Plug 'kovisoft/slimv'
-" Golang
-Plug 'fatih/vim-go'
-Plug 'vim-jp/vim-go-extra'
-Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+"" Golang
+"Plug 'fatih/vim-go'
+"Plug 'vim-jp/vim-go-extra'
+"Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 " Various
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'tpope/vim-surround'
@@ -170,7 +171,7 @@ hi Normal ctermbg=none
 " }}}
 
 " Setting a different <leader>
-let  mapleader = ','
+let  mapleader = "\<SPACE>"
 
 " Custom commands {{{
 
@@ -226,6 +227,30 @@ let g:deoplete#sources#jedi#show_docstring = 1
 "let g:jedi#completions_command = "<Tab>"
 "let g:jedi#use_tabs_not_buffers = 1
 
+" }}}
+
+"" Haskell Intero Settings {{{
+"" Process management:
+"nnoremap <Leader>hio :InteroOpen<CR>
+"nnoremap <Leader>hik :InteroKill<CR>
+"nnoremap <Leader>hic :InteroHide<CR>
+"nnoremap <Leader>hil :InteroLoadCurrentModule<CR>
+
+"" REPL commands
+"nnoremap <Leader>hie :InteroEval<CR>
+"nnoremap <Leader>hit :InteroGenericType<CR>
+"nnoremap <Leader>hiT :InteroType<CR>
+"nnoremap <Leader>hii :InteroInfo<CR>
+"nnoremap <Leader>hiI :InteroTypeInsert<CR>
+
+"" Go to definition:
+"nnoremap <Leader>hid :InteroGoToDef<CR>
+
+"" Highlight uses of identifier:
+"nnoremap <Leader>hiu :InteroUses<CR>
+
+"" Reload the file in Intero after saving
+"autocmd! BufWritePost *.hs InteroReload
 " }}}
 
 " Syntastic settings {{{

@@ -55,8 +55,13 @@ myWorkspaces :: [String]
 myWorkspaces = [myws1, myws2, myws3, myws4, myws5, myws6 , myws7 ]
 
 -- Layouts
-myLayoutHook = (spacing 10 $ avoidStruts (tall ||| GridRatio (4/3) ||| Full )) ||| smartBorders Full
+-- No spacing
+myLayoutHook = avoidStruts $ smartBorders (tall ||| GridRatio (4/3) ||| Full )
                    where tall = Tall 1 (3/100) (1/2) 
+
+-- with spacing
+{-myLayoutHook = (spacing 10 $ avoidStruts (tall ||| GridRatio (4/3) ||| Full )) ||| smartBorders Full-}
+                   {-where tall = Tall 1 (3/100) (1/2) -}
 
 -- fullscreen layout
 --myFullscreen = (fullscreenFloat . fullscreenFull) (smartBorders Full)
