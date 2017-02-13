@@ -49,7 +49,7 @@ zstyle ':completion:*' rehash true
 
 # PLUGINS
 # list plugins
-plugins=(grml-comp update golang manpage safe-paste zsh-syntax-highlighting)
+plugins=(grml-comp update golang manpage fix-bluetooth safe-paste zsh-syntax-highlighting)
 
 # Load them from ZSHFUNC location
 for plugin ($plugins); do
@@ -184,13 +184,16 @@ ex ()
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.config/panel
 # Path for local nodejs modules
-export PATH=$PATH:$HOME/node_modules/.bin
-export GOPATH=$HOME/gocode
-export PATH=$PATH:$GOPATH/bin
+#export PATH=$PATH:$HOME/node_modules/.bin
+# Path for go modules
+#export GOPATH=$HOME/gocode
+#export PATH=$PATH:$GOPATH/bin
+# Path for Haskell modules
+export PATH=$PATH:$HOME/.cabal/bin
 # Path for ruby gems
-export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin
-export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
-export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
+#export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin
+#export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
+#export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
 
 # Linuxbrew paths
 #export PATH=$PATH:$HOME/.linuxbrew/bin

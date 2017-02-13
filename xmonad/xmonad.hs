@@ -56,14 +56,14 @@ myWorkspaces = [myws1, myws2, myws3, myws4, myws5, myws6 , myws7 ]
 
 -- Layouts
 -- No spacing
-myLayoutHook = avoidStruts $ smartBorders (tall ||| GridRatio (4/3) ||| Full )
-                   where tall = Tall 1 (3/100) (1/2) 
-
--- with spacing
-{-myLayoutHook = (spacing 10 $ avoidStruts (tall ||| GridRatio (4/3) ||| Full )) ||| smartBorders Full-}
+{-myLayoutHook = avoidStruts $ smartBorders (tall ||| GridRatio (4/3) ||| Full )-}
                    {-where tall = Tall 1 (3/100) (1/2) -}
 
--- fullscreen layout
+-- with spacing
+myLayoutHook = (spacing 10 $ avoidStruts (tall ||| GridRatio (4/3) ||| Full )) ||| smartBorders Full
+                   where tall = Tall 1 (3/100) (1/2) 
+
+-- fullscreen layout (not needed with ewmh)
 --myFullscreen = (fullscreenFloat . fullscreenFull) (smartBorders Full)
 
 -- Mangehooks
@@ -138,7 +138,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- Kill windows
     , ((modMask .|. controlMask, xK_w     ), kill)
     -- lock screen
-    , ((modMask .|. controlMask, xK_Delete), safeSpawn "i3lock-fancy" ["-p"])
+    , ((modMask .|. controlMask, xK_Delete), safeSpawn "rmlock.sh" [])
     -- screenshot
     , ((0, xK_Print                       ), safeSpawn "scrot" [])
     -- multimedia

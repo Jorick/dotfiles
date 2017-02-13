@@ -24,6 +24,8 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+"Neomake
+Plug 'neomake/neomake'
 " C language
 Plug 'Rip-Rip/clang_complete'
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -32,6 +34,8 @@ Plug 'Rip-Rip/clang_complete'
 Plug 'zchee/deoplete-jedi'
 " Haskell
 Plug 'eagletmt/neco-ghc'
+Plug 'neovimhaskell/haskell-vim'
+"Plug 'bitc/vim-hdevtools'
 "Plug 'parsonsmatt/intero-neovim'
 " Lisp
 Plug 'kovisoft/slimv'
@@ -219,17 +223,18 @@ let g:deoplete#sources#jedi#show_docstring = 1
 
 " }}}
 
-" Python Jedi settings {{{
-"let g:jedi#auto_initialization = 1
-"let g:jedi#auto_vim_configuration = 1
-"let g:jedi#use_splits_not_buffers = "bottom"
-"let g:jedi#completions_command = "<C-Space>"
-"let g:jedi#completions_command = "<Tab>"
-"let g:jedi#use_tabs_not_buffers = 1
+"" Haskell {{{
 
-" }}}
+" Neovim haskell
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
-"" Haskell Intero Settings {{{
+" Haskell Intero Settings 
 "" Process management:
 "nnoremap <Leader>hio :InteroOpen<CR>
 "nnoremap <Leader>hik :InteroKill<CR>
@@ -251,8 +256,19 @@ let g:deoplete#sources#jedi#show_docstring = 1
 
 "" Reload the file in Intero after saving
 "autocmd! BufWritePost *.hs InteroReload
+
 " }}}
 
+"" Python Jedi settings {{{
+"let g:jedi#auto_initialization = 1
+"let g:jedi#auto_vim_configuration = 1
+"let g:jedi#use_splits_not_buffers = "bottom"
+"let g:jedi#completions_command = "<C-Space>"
+"let g:jedi#completions_command = "<Tab>"
+"let g:jedi#use_tabs_not_buffers = 1
+
+" }}}
+ 
 " Syntastic settings {{{
 " Set checkers for syntastic:
 let g:syntastic_javascript_checkers = ['standard']
