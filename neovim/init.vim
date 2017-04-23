@@ -16,6 +16,7 @@ call plug#begin("~/.config/nvim/bundle")
 
 " Colors
 Plug 'chriskempson/base16-vim'
+Plug 'ajh17/Spacegray.vim'
 " Syntax & autocomplete stuff
 Plug 'scrooloose/syntastic'
 "Plug 'Valloric/YouCompleteMe'
@@ -167,7 +168,7 @@ syntax on
 
 " Color scheme {{{
 let base16colorspace=256
-colorscheme base16-ocean
+colorscheme base16-google-dark
 "colorscheme seti
 " transparent background
 hi Normal ctermbg=none

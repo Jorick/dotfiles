@@ -1,5 +1,7 @@
 ! Import color scheme
-#include ".Xresources.d/base16/xresources/base16-ocean-256.Xresources"
+!#include ".Xresources.d/base16/xresources/base16-ocean-256.Xresources"
+#define background_opacity 95
+#include ".Xresources.d/base16/xresources/base16-google-light-256.Xresources"
 !#include ".Xresources.d/var/snazzy-xdefault"
 !#include ".Xresources.d/var/onedark.xresources"
 ! ### Set default font ###
@@ -25,9 +27,9 @@ URxvt.cursorBlink: true
 URxvt.cursorUnderline: true
 URxvt.internalBorder: 8
 !real trasnparancy and background color
-!URxvt.depth: 32
-!URxvt.background: [90]#2b303b
-!URxvt.geometry: 165x40
+URxvt.depth: 32
+!URxvt.background: [95]#ffffff
+URxvt.geometry: 165x40
 ! urxvt perl extensions
 URxvt.perl-ext-common: default,matcher,url-select
 ! open url in browser
@@ -43,7 +45,8 @@ Xterm*utf8: 1
 !Xterm*font: -*-ProFont-Regular-*-*-*-9-*-*-*-*-*-*-*
 
 ! Set the cursor theme
-Xcursor.theme: Neutral++
+!Xcursor.theme: Neutral++
+Xcursor.theme: Paper
 
 ! ### Font options ###
 !Xft.dpi: 96
@@ -56,15 +59,15 @@ Xcursor.theme: Neutral++
 
 ! ### rofi options ###
 rofi.font:                           Source Code Pro 8
-rofi.color-normal:                   #2b303b, #c0c5ce, #2b303b, #bf616a, #2b303b
-rofi.color-urgent:                   #2b303b, #d08770, #2b303b, #d08770, #2b303b
-rofi.color-active:                   #2b303b, #a3be8c, #2b303b, #a3be8c, #2b303b
-rofi.color-window:                   #2b303b, #343d46
+rofi.color-normal:                   #ffffff, #373b41, #ffffff, #cc342b, #ffffff
+rofi.color-urgent:                   #ffffff, #d08770, #ffffff, #d08770, #ffffff
+rofi.color-active:                   #ffffff, #198844, #ffffff, #198844, #ffffff
+rofi.color-window:                   #ffffff, #343d46
 rofi.opacity:                        100
 rofi.terminal:                       urxvtc
 rofi.ssh-client:                     ssh
 rofi.bw:                             1
 rofi.padding:                        4
 rofi.location:                       1
-rofi.yoffset:                        0
+rofi.yoffset:                        20
 rofi.width:                          100

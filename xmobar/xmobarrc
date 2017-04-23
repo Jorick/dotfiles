@@ -1,21 +1,20 @@
 Config { font = "xft:Source Code Pro:style=Regular:size=8,FontAwesome:size=9" 
-       , bgColor = "#2b303b"
-       , fgColor = "#c0c5ce"
+       , bgColor = "#ffffff"
+       , fgColor = "#c5c8c6"
        , border = BottomB 2
-       , borderColor = "#343d46"
-       , position = Static { xpos = 0 , ypos = 880, width = 1600, height = 20}
+       , borderColor = "#c5c8c6"
+       , position = Static { xpos = 0 , ypos = 0, width = 1600, height = 20}
        , lowerOnStart = True
        , hideOnStart = False
        , persistent = True
        , allDesktops = True
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %mpd% %vol% %brt% %wifi% %bat% %date%"
+       , template = " %StdinReader% }{ %vol% %brt% %wifi% %bat% %date%"
        , commands = [ Run Date "\xf073 %a %b %_d \xf017 %H:%M " "date" 10,
                       Run StdinReader,
                       Run Com "zsh" ["/home/jorick/.xmobar/bat"] "bat" 30,
                       Run Com "zsh" ["/home/jorick/.xmobar/brt"] "brt" 15,
-                      Run Com "zsh" ["/home/jorick/.xmobar/mpd"] "mpd" 5,
                       Run Com "zsh" ["/home/jorick/.xmobar/volume"] "vol" 10,
                       Run Com "zsh" ["/home/jorick/.xmobar/wifi"] "wifi" 15
                     ]

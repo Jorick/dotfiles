@@ -102,18 +102,18 @@ myEventHook = docksEventHook <+> fullscreenEventHook
 
 -- Looks
 myBorderWidth = 4
-myNormalBorderColor = "#2b303b"
-myFocusedBorderColor = "#bf616a"
+myNormalBorderColor = "#ffffff"
+myFocusedBorderColor = "#cc342b"
 
 -- Xmonbar
 myBar = "xmobar"
-myPP = xmobarPP { ppCurrent = xmobarColor "#bf616a" ""
-                     , ppHidden = xmobarColor "#c0c5ce" ""
-                     , ppHiddenNoWindows = xmobarColor "#4f5b66" ""
-                     , ppUrgent = xmobarColor "#a3be8c" ""
-                     , ppLayout = xmobarColor "#4f5b66" ""
-                     , ppTitle =  xmobarColor "#c0c5ce" "" . shorten 80
-                     , ppSep = xmobarColor "#4f5b66" "" "  "
+myPP = xmobarPP { ppCurrent = xmobarColor "#cc342b" ""
+                     , ppHidden = xmobarColor "#373b41" ""
+                     , ppHiddenNoWindows = xmobarColor "#c5c8c6" ""
+                     , ppUrgent = xmobarColor "#198844" ""
+                     , ppLayout = xmobarColor "#c5c8c6" ""
+                     , ppTitle =  xmobarColor "#373b41" "" . shorten 80
+                     , ppSep = xmobarColor "#c5c8c6" "" "  "
                      }
 
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
