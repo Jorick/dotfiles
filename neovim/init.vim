@@ -1,12 +1,12 @@
 "
-"          ██                           
-"         ░░                            
-" ██    ██ ██ ██████████  ██████  █████ 
+"          ██
+"         ░░
+" ██    ██ ██ ██████████  ██████  █████
 "░██   ░██░██░░██░░██░░██░░██░░█ ██░░░██
-"░░██ ░██ ░██ ░██ ░██ ░██ ░██ ░ ░██  ░░ 
+"░░██ ░██ ░██ ░██ ░██ ░██ ░██ ░ ░██  ░░
 " ░░████  ░██ ░██ ░██ ░██ ░██   ░██   ██
-"  ░░██   ░██ ███ ░██ ░██░███   ░░█████ 
-"   ░░    ░░ ░░░  ░░  ░░ ░░░     ░░░░░  
+"  ░░██   ░██ ███ ░██ ░██░███   ░░█████
+"   ░░    ░░ ░░░  ░░  ░░ ░░░     ░░░░░
 "
 " See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
 
@@ -16,38 +16,13 @@ call plug#begin("~/.config/nvim/bundle")
 
 " Colors
 "Plug 'phanviet/vim-monokai-pro'
-Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
-" Deoplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-" Syntax & autocomplete stuff
+Plug 'gruvbox-community/gruvbox'
+" syntac checking
 Plug 'scrooloose/syntastic'
-"Neomake
-Plug 'neomake/neomake'
-" C language
-"Plug 'Rip-Rip/clang_complete'
-" Javascript & node
-Plug 'ternjs/tern_for_vim'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'moll/vim-node'
-Plug 'walm/jshint.vim'
-" HTML & CSS
-Plug 'othree/html5.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'digitaltoad/vim-pug'
-"" Golang
-"Plug 'fatih/vim-go'
-"Plug 'vim-jp/vim-go-extra'
-"Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-" Rust
+" Auto complete languege server protocol
 " Collection of common configurations for the Nvim LSP client
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 
 " Completion framework
 Plug 'hrsh7th/nvim-cmp'
@@ -62,6 +37,23 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
 " See hrsh7th's other plugins for more completion sources!
+
+" C language
+"Plug 'Rip-Rip/clang_complete'
+" Javascript & node
+Plug 'ternjs/tern_for_vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'moll/vim-node'
+Plug 'walm/jshint.vim'
+" HTML & CSS
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'digitaltoad/vim-pug'
+" Golang
+Plug 'fatih/vim-go'
+Plug 'vim-jp/vim-go-extra'
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+" Rust
 " To enable more of the features of rust-analyzer, such as inlay hints and more!
 Plug 'simrat39/rust-tools.nvim'
 
@@ -81,6 +73,7 @@ Plug 'majutsushi/tagbar'
 Plug 'Townk/vim-autoclose'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
+Plug 'mbbill/undotree'
 " Fuzzy finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -101,80 +94,35 @@ call plug#end()            " required
 "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
 
 set tabstop=2       " Number of spaces that a <Tab> in the file counts for.
-
 set shiftwidth=2    " Number of spaces to use for each step of (auto)indent.
-
 set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
-                    " Spaces are used in indents with the '>' and '<' commands
-                    " and when 'autoindent' is on. To insert a real tab when
-                    " 'expandtab' is on, use CTRL-V <Tab>.
-
 set smarttab        " When on, a <Tab> in front of a line inserts blanks
-                    " according to 'shiftwidth'. 'tabstop' is used in other
-                    " places. A <BS> will delete a 'shiftwidth' worth of space
-                    " at the start of the line.
-
 set showcmd         " Show (partial) command in status line.
-
-                    " screen. The time to show the match can be set with
-                    " 'matchtime'.
-
-set hlsearch        " When there is a previous search pattern, highlight all
-                    " its matches.
-
+set nohlsearch        " When there is a previous search pattern, highlight all
 set incsearch       " While typing a search command, show immediately where the
-                    " so far typed pattern matches.
-
 set ignorecase      " Ignore case in search patterns.
-
 set smartcase       " Override the 'ignorecase' option if the search pattern
-                    " contains upper case characters.
-
 set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
-                    " and CTRL-U in Insert mode. This is a list of items,
-                    " separated by commas. Each item allows a way to backspace
-                    " over something.
-
 set autoindent      " Copy indent from current line when starting a new line
-                    " (typing <CR> in Insert mode or when using the "o" or "O"
-                    " command).
-
 set textwidth=250    " Maximum width of text that is being inserted. A longer
-                    " line will be broken after white space to get this width.
-
 set formatoptions=c,q,r,t " This is a sequence of letters which describes how
-                    " automatic formatting is to be done.
-                    "
-                    " letter    meaning when present in 'formatoptions'
-                    " ------    ---------------------------------------
-                    " c         Auto-wrap comments using textwidth, inserting
-                    "           the current comment leader automatically.
-                    " q         Allow formatting of comments with "gq".
-                    " r         Automatically insert the current comment leader
-                    "           after hitting <Enter> in Insert mode.
-                    " t         Auto-wrap text using textwidth (does not apply
-                    "           to comments)
-
 set ruler           " Show the line and column number of the cursor position,
-                    " separated by a comma.
-
 set background=dark " When set to "dark", Vim will try to use colors that look
-                    " good on a dark background. When set to "light", Vim will
-                    " try to use colors that look good on a light background.
-                    " Any other value is illegal.
-
 set mouse=a         " Enable the use of the mouse.
-
 set encoding=utf-8  " Enforce UTF-8 encoding
-
 set foldmethod=marker
-
 set number
+set relativenumber
+set hidden
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set scrolloff=8     " start scrolling when the cursor reaches 8 lines from end
+set signcolumn=auto " auto show the sign column
+set cursorline cursorlineopt=number " Highlight the current cursor line
 
 syntax on
-
-set relativenumber
-
 " Setting a different <leader>
 let  mapleader = "\<SPACE>"
 
@@ -182,7 +130,7 @@ let  mapleader = "\<SPACE>"
 
 " Color scheme {{{
 "let base16colorspace=256
-colorscheme gruvbox-baby
+colorscheme gruvbox
 "colorscheme seti
 " transparent background
 hi Normal ctermbg=none
@@ -215,7 +163,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "let g:NERDTreeDirArrowCollapsible = '-'
 " }}}
 
-" Rust setting {{{
+" LSP config {{{
 " Set completeopt to have a better completion experience
 " :help completeopt
 " menuone: popup even when there's only one match
@@ -262,9 +210,28 @@ local opts = {
     },
 }
 
+-- Rust
 require('rust-tools').setup(opts)
-EOF
 
+-- Python
+require('lspconfig')['pyright'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+-- Javascript and Typescript
+require('lspconfig')['tsserver'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+-- HTML
+require('lspconfig')['html'].setup{}
+
+-- Vim script
+require('lspconfig')['vimls'].setup{}
+
+EOF
 " Setup Completion
 " See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 lua <<EOF
@@ -304,8 +271,8 @@ EOF
 
 " }}}
 
-" Syntastic settings {{{
-" Set checkers for syntastic:
+" syntastic settings {{{
+" set checkers for syntastic:
 let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_python_checkers = ['pylint']
@@ -335,7 +302,7 @@ let g:tagbar_type_css = {
 
 " Vim-airline settings {{{
 set laststatus=2
-let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -361,7 +328,29 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " }}}
 
-" Ack settings {{{{{{
+" Ack settings {{{
 let g:ackprg = 'ag --vimgrep'
 
-" }}}}}}
+" }}}
+
+" UndoTree settings {{{
+nnoremap <F5> :UndotreeToggle<CR>
+
+" }}}
+
+" Autocmd {{{
+" Remove trailing whitespace
+function! <SID>StripTrailingWhitespaces()
+  if !&binary && &filetype != 'diff'
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+  endif
+endfun
+
+augroup onSave
+  autocmd!
+  autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+augroup END
+" }}}
+
