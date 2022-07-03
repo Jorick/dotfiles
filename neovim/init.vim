@@ -77,7 +77,7 @@ Plug 'mbbill/undotree'
 " Fuzzy finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+"Plug 'nvim-telescope/telescope.nvim'
 " Fancy stuff
 Plug 'junegunn/goyo.vim'
 Plug 'https://github.com/vim-scripts/vimwiki.git'
@@ -226,12 +226,70 @@ require('lspconfig')['tsserver'].setup{
 }
 
 -- HTML
-require('lspconfig')['html'].setup{}
+local html_capabilities = vim.lsp.protocol.make_client_capabilities()
+html_capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('lspconfig')['html'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = html_capabilities,
+}
 
+-- CSS
+--Enable (broadcasting) snippet capability for completion
+local css_capabilities = vim.lsp.protocol.make_client_capabilities()
+css_capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('lspconfig')['cssls'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = css_capabilities,
+}
+require('lspconfig')['cssmodules_ls'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+-- Theme check
+require('lspconfig')['theme_check'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    filetypes = {
+      "liquid",
+      "html",
+      },
+}
 -- Vim script
-require('lspconfig')['vimls'].setup{}
+require('lspconfig')['vimls'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
 
+-- LUA
+require('lspconfig')['sumneko_lua'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+-- R language server
+require('lspconfig')['r_language_server'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+-- JSON
+require('lspconfig')['jsonls'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+-- YAML
+require('lspconfig')['yamlls'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
 EOF
+" }}}
+
+" CMP setup {{{
 " Setup Completion
 " See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 lua <<EOF
@@ -281,29 +339,10 @@ set autoread
 
 " }}}
 
-" Tmuxline settings {{{
-let g:tmuxline_powerline_separators = 1
-
-" }}}
-
-" Tagbar settings {{{
-" Enable tagbar for CSS
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_type_css = {
-      \ 'ctagstype' : 'Css',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-    \ ]
-    \ }
-
-" }}}
-
 " Vim-airline settings {{{
 set laststatus=2
 let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '░'
@@ -321,11 +360,11 @@ let g:goyo_width = 120
 " telescope settings {{{
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"
 " }}}
 
 " Ack settings {{{
