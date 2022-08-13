@@ -2,7 +2,7 @@
 -- Markdown
 vim.api.nvim_create_autocmd(
   {"BufNewFile", "BufReadPost"}, {
-    pattern = { "*.md", "*.txt" },
+    pattern = { "*.md"},
     command = [[filetype=markdown]],
   }
 )

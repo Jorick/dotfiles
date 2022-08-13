@@ -28,7 +28,8 @@ local options = {
   cursorline = true, -- Highlight the current cursor line
   cursorlineopt = "number",
   syntax = "on",
-  autoread = true
+  autoread = true,
+  termguicolors = true
 }
 
 vim.opt.shortmess:append "c"

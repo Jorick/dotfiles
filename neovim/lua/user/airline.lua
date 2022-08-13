@@ -1,5 +1,5 @@
 -- Airline options
-vim.g.airline_theme = "gruvbox"
+vim.g.airline_theme = "gruvbox-baby"
 vim.g.airline_powerline_fonts = 0
 local gset = vim.api.nvim_set_var
 gset("airline#extensions#tabline#enabled", 1)

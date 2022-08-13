@@ -4,7 +4,10 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 
 -- Colors
 --Plug 'phanviet/vim-monokai-pro'
-Plug 'gruvbox-community/gruvbox'
+-- Plug 'gruvbox-community/gruvbox'
+Plug('luisiacc/gruvbox-baby', {branch = 'main'})
+Plug 'mhartington/oceanic-next'
+
 -- syntac checking
 Plug 'scrooloose/syntastic'
 -- Auto complete languege server protocol
@@ -24,7 +27,8 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lua'
 
--- See hrsh7th's other plugins for more completion sources!
+-- Treesitter
+Plug('nvim-treesitter/nvim-treesitter') --, {['do'] = vim.fn(':TSUpdate')})
 
 -- C language
 --Plug 'Rip-Rip/clang_complete'
@@ -41,18 +45,20 @@ Plug 'digitaltoad/vim-pug'
 -- To enable more of the features of rust-analyzer, such as inlay hints and more!
 Plug 'simrat39/rust-tools.nvim'
 
+-- Black python formatter
+Plug('psf/black', { branch = 'stable' })
+
 -- Snippet engine
 Plug 'hrsh7th/vim-vsnip'
 
 -- Various
 Plug 'tpope/vim-surround'
 -- interface and utilities
---Plug 'mileszs/ack.vim'
-Plug 'kien/ctrlp.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+--Plug 'scrooloose/nerdtree'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'majutsushi/tagbar'
 Plug 'Townk/vim-autoclose'
 Plug 'terryma/vim-multiple-cursors'
