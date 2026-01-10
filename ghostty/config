@@ -1,0 +1,9 @@
+# Ghostty configuration file
+
+# set the colorscheme
+#theme = Monokai Pro Machine 
+theme = Nord
+
+# font settings
+font-family = FiraCode Nerd Font Mono
+font-size = 14
